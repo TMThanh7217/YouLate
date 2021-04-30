@@ -1,0 +1,23 @@
+{
+  "name": "youlate",
+  "version": "1.0.0",
+  "description": "YouLate app",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TMThanh7217/YouLate.git"
+  },
+  "author": "18127217_18127130_18127077_18127176",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TMThanh7217/YouLate/issues"
+  },
+  "homepage": "https://github.com/TMThanh7217/YouLate#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
