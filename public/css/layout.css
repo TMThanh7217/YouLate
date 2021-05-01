@@ -1,0 +1,136 @@
+/*
+Color {
+    --success: #28a745
+    --blue: #007bff;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #dc3545;
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+    --green: #28a745;
+    --teal: #20c997;
+    --cyan: #17a2b8;
+    --white: #fff;
+    --gray: #6c757d;
+    --gray-dark: #343a40;
+    --primary: #007bff;
+    --secondary: #6c757d;
+    --success: #28a745;
+    --info: #17a2b8;
+    --warning: #ffc107;
+    --danger: #dc3545;
+    --light: #f8f9fa;
+    --dark: #343a40;
+*/
+.navbar-nav__nav-item--btn + .navbar-nav__nav-item--btn {
+    margin-left: 0.5rem;
+}
+
+nav.navbar {
+    margin-left: 10rem;
+    height: 4rem;
+}
+
+header nav div.navbar-collapse ul li.nav-item:not(.nav-item--active) a.nav-link {
+    color: #17a2b8;
+}
+
+.nav-item--active {
+    border: #17a2b8;
+    background-color: #17a2b8;
+    border-radius: 0.3rem;
+}
+
+ul.navbar-nav li.nav-item--active a.nav-link { 
+    color: azure;
+    font-weight: bold;
+}
+
+ul.navbar-nav li.nav-item a.nav-link:hover {
+    border: #17a2b8;
+    background-color: #17a2b8;
+    border-radius: 0.3rem;
+    color: azure !important;
+}
+
+.nav-item + .nav-item {
+    margin-left: 0.5rem;
+}
+
+.sidenav {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    height: 100%;
+    width: 10rem;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #dad720;
+    overflow-x: hidden;
+}
+
+.sidenav-nav__item {
+    width: 100%;
+}
+
+
+.sidenav a:not(.sidebar-brand) {
+    padding: 0.5rem 0.5rem;
+    text-decoration: none;
+    font-size: 1rem;
+    color: #000000;
+    display: block;
+}
+
+.dropdown-btn {
+    background: none;
+    border: none;
+    padding: 0.5rem 0.5rem;
+    text-decoration: none;
+    font-weight: 1rem;
+    font-size: 1rem;
+    color: #000000;
+    display: block;
+}
+
+.dropdown-btn:hover, .dropdown-btn:focus {
+    background: none;
+    border: none;
+    outline: none;
+}
+
+
+.sidenav a:hover, .dropdown-btn:hover {
+    color: #ffffff;
+}
+
+.sidebar-brand {
+    padding: auto;
+}
+
+.sidebar-brand {
+    display: flex;
+    justify-content: center;
+}
+
+.line {
+    height: 0%;
+    width: 80%;
+    border-bottom: 0.1rem solid #fcf7f7;
+}
+
+/* Add an active class to the active dropdown button */
+.active {
+    background-color: rgb(0, 0, 0);
+    color: white;
+}
+  
+/* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
+.dropdown-container {
+    display: none;
+    background-color: #c8d193;
+    padding-left: 8px;
+}
