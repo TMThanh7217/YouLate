@@ -23,13 +23,34 @@ Color {
     --light: #f8f9fa;
     --dark: #343a40;
 */
+/* * {
+    border: 1px solid black
+} */
+
+html {
+    height: 100vh;
+    min-height: 100vh;
+}
+body {
+    height: 100vh;
+    min-height: 100vh;
+}
+
 .navbar-nav__nav-item--btn + .navbar-nav__nav-item--btn {
     margin-left: 0.5rem;
 }
 
+.form-inline > input{
+    width: auto;
+}
+
+.navbar--collapse-on>* {
+    margin: 0 0;
+}
+
 nav.navbar {
-    margin-left: 10rem;
-    height: 4rem;
+    margin-left: 7rem;
+    background-color: #f8f9fa;
 }
 
 header nav div.navbar-collapse ul li.nav-item:not(.nav-item--active) a.nav-link {
@@ -63,12 +84,12 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
     flex-direction: column;
     justify-content: left;
     height: 100%;
-    width: 10rem;
+    width: 7rem;
     position: fixed;
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #dad720;
+    background-color: #f8f9fa;
     overflow-x: hidden;
 }
 
@@ -77,8 +98,8 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
 }
 
 
-.sidenav a:not(.sidebar-brand) {
-    padding: 0.5rem 0.5rem;
+.sidenav .container a:not(.sidenav-brand) {
+    padding: 0.75rem 0.75rem;
     text-decoration: none;
     font-size: 1rem;
     color: #000000;
@@ -103,15 +124,15 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
 }
 
 
-.sidenav a:hover, .dropdown-btn:hover {
-    color: #ffffff;
+.sidenav .container a:not(.sidenav-brand):hover, .sidenav .container .dropdown-btn:hover {
+    color: #28a745;
 }
 
-.sidebar-brand {
+.sidenav-brand {
     padding: auto;
 }
 
-.sidebar-brand {
+.sidenav-brand {
     display: flex;
     justify-content: center;
 }
@@ -119,18 +140,32 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
 .line {
     height: 0%;
     width: 80%;
-    border-bottom: 0.1rem solid #fcf7f7;
+    border-bottom: 0.1rem solid #b8b6b6;
 }
 
 /* Add an active class to the active dropdown button */
 .active {
-    background-color: rgb(0, 0, 0);
-    color: white;
+    background-color: none;
+    color: #28a745;
 }
   
 /* Dropdown container (hidden by default). Optional: add a lighter background color and some left padding to change the design of the dropdown content */
 .dropdown-container {
     display: none;
-    background-color: #c8d193;
+    background-color:whitesmoke;
     padding-left: 8px;
+}
+
+.sidenav + * {
+    margin-left: 7rem;
+}
+
+.sidenav .link .icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    background-color: #f8f9fa;
 }

@@ -13,44 +13,145 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>    
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item navbar-nav__nav-item--btn">
-                <button type="button" class="btn btn-outline-info">Sign in</button>
-            </li>
-            <li class="nav-item navbar-nav__nav-item--btn">
-                <button type="button" class="btn btn-outline-primary">Sign up</button>                    
-            </li>
-        </ul>
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div id="collapseNavbar" class="collapse navbar-collapse"> <!---navbar--collapse-on--->
+            <form class="form-inline ml-auto">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+            </form>
+            <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
+        </div>
 
     </nav>
-
+    
     <div class="sidenav">
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-        <a class="sidebar-brand" href="#"><image class="img img-logo" src="../image/youlate_logo_sm.png" style="padding: 0; height: 4rem; width: auto;"></a>
-        <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-        <div class="container">
-            <a class="link" href="#"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-            <button class="dropdown-btn"><i class="fas fa-th-list"></i> Links 
-                <i class="fa fa-caret-down"></i>
-            </button>
-            <div class="dropdown-container">
+        <a class="sidenav-brand" href="#"><image class="img img-logo" src="../image/youlate_logo_sm.png" style="padding: 0; height: 4rem; width: auto;"></a>
+        <div class="container d-flex flex-column justify-center">
+            <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="fas fa-2x fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </div>
+            </a>
+            <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+            
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="far fa-2x fa-calendar-alt"></i>
+                    <span>Calendar</span>
+                </div>
+            </a>
+            
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="fas fa-2x fa-id-card-alt"></i>
+                    <span>Profile</span>
+                </div>
+            </a>
+            
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="fas fa-2x fa-users"></i>
+                    <span>Students</span>
+                </div>
+            </a>
+            
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="fas fa-2x fa-book"></i>
+                    <span>Courses</span>
+                </div>
+            </a>
+            
+            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                <div class="icon-container">
+                    <i class="fas fa-2x fa-chalkboard-teacher"></i>
+                    <span>Classes</span>
+                </div>
+            </a>
+            
+            <!-- <button class="dropdown-btn"><i class="fas fa-2x fa-th-list"></i><i class="fa ml-2 fa-caret-down"></i></button> -->
+
+            <!-- <div class="dropdown-container">
                 <a href="#">Link 1</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
-            </div>
-            <a class="link" href="#"><i class="fas fa-info"></i> About</a>
+            </div> -->
         </div>
     </div>
     
-    <!-- Optional JavaScript -->
-    <script src="../js/layout.js"></script>
+    <footer class="text-center text-white fixed-bottom">
+        <!-- Grid container -->
+        <div class="container pt-4">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-facebook-f"></i></a>
+      
+            <!-- Twitter -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-twitter"></i></a>
+      
+            <!-- Google -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-google"></i></a>
+      
+            <!-- Instagram -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-instagram"></i></a>
+      
+            <!-- Linkedin -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-linkedin"></i></a>
+            <!-- Github -->
+            <a
+              class="btn btn-link btn-floating btn-lg text-dark m-1"
+              href="#!"
+              role="button"
+              data-mdb-ripple-color="dark"
+              ><i class="fab fa-github"></i
+            ></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+          © 2020 Copyright:
+          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <script src="../js/layout.js"></script>
 </body>
 </html>
