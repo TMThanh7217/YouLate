@@ -157,7 +157,8 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
 }
 
 .sidenav + * {
-    margin-left: 7rem;
+    margin-left: 7rem !important;
+    margin-bottom: 10rem !important;
 }
 
 .sidenav .link .icon-container {

@@ -1,0 +1,28 @@
+.testimonial-group > .slider {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.testimonial-group > .slider > .slider-item {
+    display: inline-block;
+    width: 20%;
+    border: 1px solid black;
+}
+.slider .slider-item * {
+    display: block;
+}
+.btn-check>i {
+    color: aquamarine;
+}
+.btn-clock>i {
+    color: yellow;
+}
+.btn-desc>i {
+    color: aqua;
+}
+.btn-late>i {
+    color: #dc3545;
+}
+.attendance-btn-group__btn + .attendance-btn-group__btn {
+    margin-left: 0.5rem;
+}
