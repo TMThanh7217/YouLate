@@ -1,8 +1,8 @@
 # YouLate
-
+```
 npm install
 sequelize init
-
+```
 modify config.json as follow:
 ```json
 {
