@@ -1,0 +1,32 @@
+.shadow-default {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form-search .form-group section div>* {
+    display: block;
+}
+
+.form-search.form-inline .form-group section div {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.form-search.form-inline .form-group section div + .form-search.form-inline .form-group section div {
+    margin-left: 5rem;
+}
+
+.container-fluid > table {
+    height: calc(100% - 10rem);
+}
+
+.container-fluid > h2.page-title {
+    margin-bottom: 3rem;
+}
+
+.container-fluid > form.form-inline.form-search {
+    margin-bottom: 1rem;
+}
+
+.pagination-navbar {
+    padding: 1rem 0;
+}
