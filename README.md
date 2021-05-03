@@ -1,8 +1,10 @@
 # YouLate
-npm install\
-sequelize init\
+
+npm install
+sequelize init
 
 modify config.json as follow:
+```json
 {
   "development": {
     "username": "postgres",
@@ -26,3 +28,4 @@ modify config.json as follow:
     "dialect": "mysql"
   }
 }
+```
