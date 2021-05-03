@@ -11,10 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Subject.belongsToMany(models.Classroom, { through: models.Classroom_Subject });
+      Subject.hasMany(models.Grade, { foreignKey: 'subjectId' });
+      Subject.belongsToMany(models.User, { through: models.User_Subject });
     }
   };
   Subject.init({
     name: DataTypes.STRING,
+    code: DataTypes.STRING,
     description: DataTypes.STRING
   }, {
     sequelize,
