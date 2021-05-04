@@ -7,11 +7,13 @@ module.exports = {
     await queryInterface.createTable('Classroom_Subjects', {
       classroomId: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        uniqueKey:false
       },
       subjectId: {
         type: Sequelize.INTEGER,
-        primaryKey: true
+        primaryKey: true,
+        uniqueKey:false
       },
       createdAt: {
         allowNull: false,

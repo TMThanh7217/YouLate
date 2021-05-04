@@ -1,0 +1,46 @@
+[{
+  "userId": 6,
+  "subjectId": 10
+}, {
+  "userId": 4,
+  "subjectId": 7
+}, {
+  "userId": 7,
+  "subjectId": 2
+}, {
+  "userId": 8,
+  "subjectId": 5
+}, {
+  "userId": 7,
+  "subjectId": 4
+}, {
+  "userId": 10,
+  "subjectId": 3
+}, {
+  "userId": 9,
+  "subjectId": 10
+}, {
+  "userId": 2,
+  "subjectId": 9
+}, {
+  "userId": 10,
+  "subjectId": 1
+}, {
+  "userId": 10,
+  "subjectId": 8
+}, {
+  "userId": 6,
+  "subjectId": 9
+}, {
+  "userId": 7,
+  "subjectId": 2
+}, {
+  "userId": 7,
+  "subjectId": 4
+}, {
+  "userId": 7,
+  "subjectId": 7
+}, {
+  "userId": 5,
+  "subjectId": 8
+}]

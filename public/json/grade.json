@@ -1,0 +1,161 @@
+[{
+  "id": 1,
+  "value": 1,
+  "userId": 10,
+  "subjectId": 2,
+  "average": 70,
+  "total": 7,
+  "year": 3
+}, {
+  "id": 2,
+  "value": 6,
+  "userId": 2,
+  "subjectId": 9,
+  "average": 50,
+  "total": 89,
+  "year": 3
+}, {
+  "id": 3,
+  "value": 1,
+  "userId": 2,
+  "subjectId": 7,
+  "average": 63,
+  "total": 67,
+  "year": 1
+}, {
+  "id": 4,
+  "value": 9,
+  "userId": 4,
+  "subjectId": 8,
+  "average": 35,
+  "total": 73,
+  "year": 4
+}, {
+  "id": 5,
+  "value": 3,
+  "userId": 6,
+  "subjectId": 8,
+  "average": 4,
+  "total": 11,
+  "year": 2
+}, {
+  "id": 6,
+  "value": 4,
+  "userId": 7,
+  "subjectId": 1,
+  "average": 86,
+  "total": 90,
+  "year": 3
+}, {
+  "id": 7,
+  "value": 6,
+  "userId": 7,
+  "subjectId": 9,
+  "average": 27,
+  "total": 72,
+  "year": 1
+}, {
+  "id": 8,
+  "value": 8,
+  "userId": 3,
+  "subjectId": 8,
+  "average": 9,
+  "total": 71,
+  "year": 2
+}, {
+  "id": 9,
+  "value": 5,
+  "userId": 7,
+  "subjectId": 1,
+  "average": 22,
+  "total": 8,
+  "year": 2
+}, {
+  "id": 10,
+  "value": 2,
+  "userId": 2,
+  "subjectId": 1,
+  "average": 17,
+  "total": 66,
+  "year": 4
+}, {
+  "id": 11,
+  "value": 7,
+  "userId": 8,
+  "subjectId": 2,
+  "average": 86,
+  "total": 92,
+  "year": 2
+}, {
+  "id": 12,
+  "value": 1,
+  "userId": 3,
+  "subjectId": 2,
+  "average": 66,
+  "total": 92,
+  "year": 4
+}, {
+  "id": 13,
+  "value": 1,
+  "userId": 2,
+  "subjectId": 4,
+  "average": 39,
+  "total": 13,
+  "year": 1
+}, {
+  "id": 14,
+  "value": 5,
+  "userId": 8,
+  "subjectId": 10,
+  "average": 76,
+  "total": 69,
+  "year": 1
+}, {
+  "id": 15,
+  "value": 0,
+  "userId": 4,
+  "subjectId": 10,
+  "average": 9,
+  "total": 22,
+  "year": 1
+}, {
+  "id": 16,
+  "value": 4,
+  "userId": 5,
+  "subjectId": 9,
+  "average": 6,
+  "total": 70,
+  "year": 4
+}, {
+  "id": 17,
+  "value": 1,
+  "userId": 3,
+  "subjectId": 10,
+  "average": 48,
+  "total": 3,
+  "year": 2
+}, {
+  "id": 18,
+  "value": 3,
+  "userId": 10,
+  "subjectId": 5,
+  "average": 4,
+  "total": 17,
+  "year": 3
+}, {
+  "id": 19,
+  "value": 8,
+  "userId": 3,
+  "subjectId": 2,
+  "average": 34,
+  "total": 40,
+  "year": 3
+}, {
+  "id": 20,
+  "value": 7,
+  "userId": 1,
+  "subjectId": 2,
+  "average": 7,
+  "total": 82,
+  "year": 4
+}]
