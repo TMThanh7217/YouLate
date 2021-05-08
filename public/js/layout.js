@@ -10,3 +10,23 @@ for (let i = 0; i < dropdown.length; i++) {
     dropdownContent.style.display = dropdownDisplayList[dropdownDisplayTrigger]
   });
 }
+$(function(){
+  $(".date-picker").datepicker();
+  $('#calendar').fullCalendar({
+    // put your options and callbacks here
+    header: {
+      left: "today prev,next",
+      center: "title",
+      right: "timelineDay,timelineThreeDays,agendaWeek,month"
+    }
+  })
+  var myCalendar = $('#calendar'); 
+  myCalendar.fullCalendar();
+  var myEvent = {
+    title:"my new event",
+    allDay: true,
+    start: new Date(),
+    end: new Date()
+  };
+  myCalendar.fullCalendar( 'renderEvent', myEvent );
+});
