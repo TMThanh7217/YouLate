@@ -27,14 +27,38 @@ Color {
     border: 1px solid black
 } */
 
-html {
+/* .col-1, .col-11, .row {
+    border: 5px solid black
+} */
+
+.row{
+    overflow: hidden; 
+}
+
+.row.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.row.no-gutters > [class^="col-"],
+.row.no-gutters > [class*=" col-"] {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+[class*="col-"]{
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+}
+
+/* html {
     height: 100vh;
     min-height: 100vh;
 }
 body {
     height: 100vh;
     min-height: 100vh;
-}
+} */
 
 .navbar-nav__nav-item--btn + .navbar-nav__nav-item--btn {
     margin-left: 0.5rem;
@@ -49,7 +73,6 @@ body {
 }
 
 nav.navbar {
-    margin-left: 7rem;
     background-color: #f8f9fa;
 }
 
@@ -80,15 +103,8 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
 }
 
 .sidenav {
-    display: flex;
-    flex-direction: column;
-    justify-content: left;
     height: 100%;
-    width: 7rem;
-    position: fixed;
     z-index: 1;
-    top: 0;
-    left: 0;
     background-color: #f8f9fa;
     overflow-x: hidden;
 }
@@ -154,11 +170,6 @@ ul.navbar-nav li.nav-item a.nav-link:hover {
     display: none;
     background-color:whitesmoke;
     padding-left: 8px;
-}
-
-.sidenav + * {
-    margin-left: 7rem !important;
-    margin-bottom: 10rem !important;
 }
 
 .sidenav .link .icon-container {
