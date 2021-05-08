@@ -14,306 +14,310 @@
     <link rel="stylesheet" href="../css/attendance.css">
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-        <div id="collapseNavbar" class="collapse navbar-collapse"> <!---navbar--collapse-on--->
-            <form class="form-inline ml-auto">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success ml-1" type="submit">Search</button>
-            </form>
-            <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
-        </div>
-    </nav>
-    
-    <div class="sidenav">
-        <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-        <a class="sidenav-brand" href="#"><image class="img img-logo" src="../image/youlate_logo_sm.png" style="padding: 0; height: 4rem; width: auto;"></a>
-        <div class="container d-flex flex-column justify-center">
+    <div class="row no-gutters">
+        <div class="sidenav col-1">
             <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="fas fa-2x fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </div>
-            </a>
-            <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-            
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="far fa-2x fa-calendar-alt"></i>
-                    <span>Calendar</span>
-                </div>
-            </a>
-            
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="fas fa-2x fa-id-card-alt"></i>
-                    <span>Profile</span>
-                </div>
-            </a>
-            
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="fas fa-2x fa-users"></i>
-                    <span>Students</span>
-                </div>
-            </a>
-            
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="fas fa-2x fa-book"></i>
-                    <span>Courses</span>
-                </div>
-            </a>
-            
-            <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                <div class="icon-container">
-                    <i class="fas fa-2x fa-chalkboard-teacher"></i>
-                    <span>Classes</span>
-                </div>
-            </a>
-            
-            <!-- <button class="dropdown-btn"><i class="fas fa-2x fa-th-list"></i><i class="fa ml-2 fa-caret-down"></i></button> -->
-
-            <!-- <div class="dropdown-container">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div> -->
-        </div>
-    </div>
-
-    <div class="container-fluid testimonial-group shadow-default">
-        <h2 class="page-title">Attendance</h2>
-        <br>
-        <h3>Date</h3>        
-        <div class="slider text-center mx-auto">
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-            <div class="slider-item">
-                <span class="date slider-item__date">
-                    XX/XY/XXYY
-                </span>
-                <span class="slider-item__number">
-                    XY
-                </span>
-            </div>
-        </div>
-        <br><br>
-        <h3>Students</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Attendance</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Trinh M L</th>
-                    <td>
-                        <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                        <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                        <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
-                    </td>
-                    <td>08081508</td>
-                    <td>Darkdark@Burd.Lmao</td>
-                </tr>
-                <tr>
-                    <th scope="row">To D T</th>
-                    <td>
-                        <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                        <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                        <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
-                    </td>
-                    <td>0Cho0ChoXinMai0Cho</td>
-                    <td>None</td>
-                </tr>
-                <tr>
-                    <th scope="row">Tran P P</th>
-                    <td>
-                        <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                        <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                        <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
-                    </td>
-                    <td>090Cho0Cho09</td>
-                    <td>Null</td>
-                </tr>
+            <a class="sidenav-brand" href="#"><image class="img img-logo" src="../image/youlate_logo_sm.png" style="padding: 0; height: 4rem; width: auto;"></a>
+            <div class="container d-flex flex-column justify-center">
+                <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
                 
-            </tbody>
-        </table>
-        <br>
-        <h3>Teachers</h3>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Attendance</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">Trinh M L</th>
-                    <td>
-                        <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                        <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                        <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                        <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
-                    </td>
-                    <td>08081508</td>
-                    <td>Darkdark@Burd.Lmao</td>
-                </tr>                
-            </tbody>
-        </table>
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="far fa-2x fa-calendar-alt"></i>
+                        <span>Calendar</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-id-card-alt"></i>
+                        <span>Profile</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-users"></i>
+                        <span>Students</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-book"></i>
+                        <span>Courses</span>
+                    </div>
+                </a>
+                
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-chalkboard-teacher"></i>
+                        <span>Classes</span>
+                    </div>
+                </a>
+                
+                <!-- <button class="dropdown-btn"><i class="fas fa-2x fa-th-list"></i><i class="fa ml-2 fa-caret-down"></i></button> -->
 
-        <div class="container d-flex justify-content-end attendance-btn-group">
-            <button class="btn btn-secondary attendance-btn-group__btn">Back</button>
-            <button class="btn btn-secondary attendance-btn-group__btn">Save</button>
-            <button class="btn btn-secondary attendance-btn-group__btn">Save & Exit</button>
+                <!-- <div class="dropdown-container">
+                    <a href="#">Link 1</a>
+                    <a href="#">Link 2</a>
+                    <a href="#">Link 3</a>
+                </div> -->
+            </div>
+        </div>
+
+        <div class="page-content col-11">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div id="collapseNavbar" class="collapse navbar-collapse"> <!---navbar--collapse-on--->
+                    <form class="form-inline ml-auto">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+                    </form>
+                    <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
+                </div>
+            </nav>
+
+            <div class="container-fluid testimonial-group p-2">
+                <h2 class="page-title">Attendance</h2>
+                <br>
+                <h3>Date</h3>        
+                <div class="slider text-center mx-auto">
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                    <div class="slider-item">
+                        <span class="date slider-item__date">
+                            XX/XY/XXYY
+                        </span>
+                        <span class="slider-item__number">
+                            XY
+                        </span>
+                    </div>
+                </div>
+                <br><br>
+                <h3>Students</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Attendance</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Trinh M L</th>
+                            <td>
+                                <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
+                                <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
+                                <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                            </td>
+                            <td>08081508</td>
+                            <td>Darkdark@Burd.Lmao</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">To D T</th>
+                            <td>
+                                <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
+                                <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
+                                <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                            </td>
+                            <td>0Cho0ChoXinMai0Cho</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Tran P P</th>
+                            <td>
+                                <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
+                                <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
+                                <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                            </td>
+                            <td>090Cho0Cho09</td>
+                            <td>Null</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+                <br>
+                <h3>Teachers</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Attendance</th>
+                            <th scope="col">Phone</th>
+                            <th scope="col">Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Trinh M L</th>
+                            <td>
+                                <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
+                                <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
+                                <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
+                                <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                            </td>
+                            <td>08081508</td>
+                            <td>Darkdark@Burd.Lmao</td>
+                        </tr>                
+                    </tbody>
+                </table>
+        
+                <div class="container d-flex justify-content-end attendance-btn-group">
+                    <button class="btn btn-secondary attendance-btn-group__btn">Back</button>
+                    <button class="btn btn-secondary attendance-btn-group__btn">Save</button>
+                    <button class="btn btn-secondary attendance-btn-group__btn">Save & Exit</button>
+                </div>
+            </div>
+            
+            <footer class="text-center text-white">
+                <!-- Grid container -->
+                <div class="container pt-4">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-facebook-f"></i></a>
+            
+                    <!-- Twitter -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-twitter"></i></a>
+            
+                    <!-- Google -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-google"></i></a>
+            
+                    <!-- Instagram -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-instagram"></i></a>
+            
+                    <!-- Linkedin -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-linkedin"></i></a>
+                    <!-- Github -->
+                    <a
+                    class="btn btn-link btn-floating btn-lg text-dark m-1"
+                    href="#!"
+                    role="button"
+                    data-mdb-ripple-color="dark"
+                    ><i class="fab fa-github"></i
+                    ></a>
+                </section>
+                <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+            
+                <!-- Copyright -->
+                <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                © 2020 Copyright:
+                <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
         </div>
     </div>
-    
-    <footer class="text-center text-white">
-        <!-- Grid container -->
-        <div class="container pt-4">
-          <!-- Section: Social media -->
-          <section class="mb-4">
-            <!-- Facebook -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-facebook-f"></i></a>
-      
-            <!-- Twitter -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-twitter"></i></a>
-      
-            <!-- Google -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-google"></i></a>
-      
-            <!-- Instagram -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-instagram"></i></a>
-      
-            <!-- Linkedin -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-linkedin"></i></a>
-            <!-- Github -->
-            <a
-              class="btn btn-link btn-floating btn-lg text-dark m-1"
-              href="#!"
-              role="button"
-              data-mdb-ripple-color="dark"
-              ><i class="fab fa-github"></i
-            ></a>
-          </section>
-          <!-- Section: Social media -->
-        </div>
-        <!-- Grid container -->
-      
-        <!-- Copyright -->
-        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-          © 2020 Copyright:
-          <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-        <!-- Copyright -->
-    </footer>
 
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
