@@ -1,14 +1,23 @@
 let express = require('express');
+const { get } = require('http');
 let app = express();
-const port = process.env.PORT || 6000;
+const port = process.env.PORT || 8000;
 const models = require('./models');
+let exprHbs = require("express-handlebars");
 
 app.use(express.static(__dirname + '/public'));
 
+let hbs = exprHbs.create({
+    extname : "hbs",
+    defaultLayout : 'layout',
+    layoutsDir : __dirname + '/views/layouts/',
+    partialsDir : __dirname + '/views/partials/',
+    helpers: {
+    }
+});
 
-
-
-
+app.engine('hbs', hbs.engine);
+app.set('view engine', 'hbs');
 
 
 // Routing here
