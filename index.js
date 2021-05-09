@@ -26,7 +26,7 @@ app.use('/classroom', require('./routes/classroomRouter'));
 
 // listen log
 app.listen(port, () => {
-    console.log(`Server running at https://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
 
 // sync database
