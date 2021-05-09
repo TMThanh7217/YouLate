@@ -13,7 +13,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Routing here
 app.use('/', require('./routes/indexRouter'));
-
+app.use('/classroom', require('./routes/classroomRouter'));
 
 // listen log
 app.listen(port, () => {
