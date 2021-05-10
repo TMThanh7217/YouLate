@@ -20,12 +20,6 @@ module.exports = {
       DoB: {
         type: Sequelize.STRING
       },
-      username: {
-        type: Sequelize.STRING
-      },
-      password: {
-        type: Sequelize.STRING
-      },
       type: {
         type: Sequelize.INTEGER
       },

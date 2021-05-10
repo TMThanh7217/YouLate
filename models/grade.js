@@ -11,17 +11,14 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Grade.belongsTo(models.Subject, { foreignKey: 'subjectId' });
+      Grade.belongsTo(models.Classroom, { foreignKey: 'classroomId' });
       Grade.belongsTo(models.User, { foreignKey: 'userId' });
     }
   };
   Grade.init({
-    value: DataTypes.FLOAT,
     userId: DataTypes.INTEGER,
-    subjectId: DataTypes.INTEGER,
-    average: DataTypes.FLOAT,
-    total: DataTypes.FLOAT,
-    year: DataTypes.INTEGER
+    classroomId: DataTypes.INTEGER,
+    total: DataTypes.FLOAT
   }, {
     sequelize,
     modelName: 'Grade',

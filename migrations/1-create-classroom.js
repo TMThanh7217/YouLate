@@ -11,14 +11,23 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      date: {
+      startDate: {
         type: Sequelize.STRING
       },
-      topic: {
+      endDate: {
+        type: Sequelize.STRING
+      },
+      course: {
         type: Sequelize.STRING
       },
       status: {
         type: Sequelize.STRING
+      },
+      hours: {
+        type: Sequelize.INTEGER
+      },
+      courseId: {
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
