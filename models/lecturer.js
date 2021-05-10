@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Lecturer.belongsTo(models.User, { foreignKey: 'id' });
     }
   };
   Lecturer.init({
