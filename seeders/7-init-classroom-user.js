@@ -9,7 +9,7 @@ module.exports = {
       data.createdAt = Sequelize.literal('NOW()');
       data.updatedAt = Sequelize.literal('NOW()');
     }
-    return queryInterface.bulkInsert('Classroom_Users', classroom_userData, {});
+    return queryInterface.bulkInsert('Classroom_Users', classroom_userData);
   },
 
   down: async (queryInterface, Sequelize) => {
