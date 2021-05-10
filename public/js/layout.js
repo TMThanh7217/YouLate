@@ -1,17 +1,41 @@
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-let dropdown = document.getElementsByClassName("dropdown-btn")
-let dropdownDisplayList = [ "none", "block"]
-let dropdownDisplayTrigger = 0;
-for (let i = 0; i < dropdown.length; i++) {
-  dropdown[i].addEventListener("click", function() {
-    this.classList.toggle("active")
-    var dropdownContent = this.nextElementSibling;
-    dropdownDisplayTrigger = (dropdownDisplayTrigger + 1) % 2
-    dropdownContent.style.display = dropdownDisplayList[dropdownDisplayTrigger]
-  });
+
+function dropdownScript() {
+  let dropdown = $("dropdown-btn")
+  let dropdownDisplayList = [ "none", "block"]
+  let dropdownDisplayTrigger = 0;
+  for (let i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active")
+      var dropdownContent = this.nextElementSibling;
+      dropdownDisplayTrigger = (dropdownDisplayTrigger + 1) % 2
+      dropdownContent.style.display = dropdownDisplayList[dropdownDisplayTrigger]
+    });
+  }
 }
-$(function(){
+
+$(function() {
+  $('.form-signin').css('display', 'block')
+  $('.form-signup').css('display', 'none')
+  
+  $('#tempOfUseLink').on('click', () => {
+    $('#tempOfUseModal').modal('show')
+  })
+  
+  $("#linkSignUp").on('click', () => {
+    $('.form-signin').css('display', 'none')
+    $('.form-signup').css('display', 'block')
+  })
+  $("#linkSignIn").on('click', () => {
+    $('.form-signin').css('display', 'block')
+    $('.form-signup').css('display', 'none')
+  })
+  $('.btn-signin').on('click', () => {
+    document.location.href="/authorization"
+  })
+  
   $(".date-picker").datepicker();
+  
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     header: {
@@ -29,4 +53,6 @@ $(function(){
     end: new Date()
   };
   myCalendar.fullCalendar( 'renderEvent', myEvent );
+
+  dropdownScript();
 });
