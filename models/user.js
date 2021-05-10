@@ -11,10 +11,11 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.hasMany(models.Grade, { foreignKey: 'userId' });
-      User.belongsToMany(models.Subject, { through: models.User_Subject, foreignKey: 'userId' });
       User.belongsToMany(models.Classroom, { through: models.Classroom_User, foreignKey: 'userId' });
-      User.hasMany(models.Attendance, { foreignKey: 'userId' });
+      User.belongsToMany(models.Attendance, { through: models.Attendance_User, foreignKey: 'userId' });
+      User.hasOne(models.Account, { foreignKey: 'userId' });
+      User.hasMany(models.Grade, { foreignKey: 'userId' });
+      User.hasMany(models.Callendar, { foreignKey: 'userId' });
     }
   };
   User.init({
@@ -22,8 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     SDT: DataTypes.STRING,
     DoB: DataTypes.STRING,
-    username: DataTypes.STRING,
-    password: DataTypes.STRING,
     type: DataTypes.INTEGER
   }, {
     sequelize,

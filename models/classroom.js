@@ -11,16 +11,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Classroom.belongsToMany(models.Subject, { through: models.Classroom_Subject, foreignKey: 'classroomId' });
       Classroom.belongsToMany(models.User, { through: models.Classroom_User, foreignKey: 'classroomId' });
-      Classroom.hasMany(models.Attendance, { foreignKey: 'classroomId' });
+      Classroom.hasMany(models.Course, { foreignKey: 'courseId' });
+      Classroom.belongsTo(models.Attendance, { foreignKey: 'classroomId' });
+      Classroom.hasMany(models.Grade, { foreignKey: 'classroomId' });
     }
   };
   Classroom.init({
     name: DataTypes.STRING,
-    date: DataTypes.STRING,
-    topic: DataTypes.STRING,
+    startDate: DataTypes.STRING,
+    endDate: DataTypes.STRING,
+    course: DataTypes.STRING,
     status: DataTypes.STRING,
+    hours: DataTypes.INTEGER,
+    courseId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Classroom',
