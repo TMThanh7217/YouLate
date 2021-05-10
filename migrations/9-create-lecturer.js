@@ -6,7 +6,11 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER/*,
+        references: {
+          model: 'Users',
+          foreignkey: 'id'
+        }*/
       },
       lecturerType: {
         type: Sequelize.INTEGER

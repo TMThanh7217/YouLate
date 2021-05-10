@@ -12,13 +12,10 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Callendar.belongsTo(models.User, { foreignKey: 'userId' });
+      Callendar.hasMany(models.Event, { foreignKey: 'callendarId' });
     }
   };
   Callendar.init({
-    date: DataTypes.STRING,
-    startTime: DataTypes.STRING,
-    endTime: DataTypes.STRING,
-    title: DataTypes.STRING,
     userId: DataTypes.INTEGER
   }, {
     sequelize,
