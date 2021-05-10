@@ -1,0 +1,61 @@
+[{
+  "attendanceId": 2,
+  "userId": 5,
+  "type": "excused"
+}, {
+  "attendanceId": 10,
+  "userId": 1,
+  "type": "absent"
+}, {
+  "attendanceId": 9,
+  "userId": 6,
+  "type": "late"
+}, {
+  "attendanceId": 10,
+  "userId": 6,
+  "type": "excused"
+}, {
+  "attendanceId": 10,
+  "userId": 7,
+  "type": "excused"
+}, {
+  "attendanceId": 8,
+  "userId": 1,
+  "type": "absent"
+}, {
+  "attendanceId": 3,
+  "userId": 9,
+  "type": "present"
+}, {
+  "attendanceId": 4,
+  "userId": 7,
+  "type": "excused"
+}, {
+  "attendanceId": 6,
+  "userId": 5,
+  "type": "present"
+}, {
+  "attendanceId": 3,
+  "userId": 9,
+  "type": "present"
+}, {
+  "attendanceId": 2,
+  "userId": 2,
+  "type": "excused"
+}, {
+  "attendanceId": 2,
+  "userId": 7,
+  "type": "absent"
+}, {
+  "attendanceId": 3,
+  "userId": 6,
+  "type": "excused"
+}, {
+  "attendanceId": 7,
+  "userId": 8,
+  "type": "late"
+}, {
+  "attendanceId": 3,
+  "userId": 9,
+  "type": "late"
+}]
