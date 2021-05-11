@@ -1,11 +1,11 @@
 var controller = {};
 var models = require('../models');
-var Course = models.Course;
+var Grade = models.Grade;
 const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
     let option = {
-        sql: 'SELECT * FROM  "Courses"',
+        sql: 'SELECT * FROM  "Grades"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -20,7 +20,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT * FROM  "Courses" where id = :id',
+        sql: 'SELECT * FROM  "Grades" where id = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         replacement: {id: id},
