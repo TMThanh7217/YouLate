@@ -17,6 +17,15 @@ module.exports = {
       description: {
         type: Sequelize.STRING
       },
+      topic: {
+        type: Sequelize.STRING
+      },
+      status: {
+        type: Sequelize.STRING
+      },
+      courseLine: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
