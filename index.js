@@ -25,6 +25,7 @@ app.use('/', require('./routes/indexRouter'));
 app.use('/classrooms', require('./routes/classroomRouter'));
 app.use('/calendar', require('./routes/calendarRouter'))
 app.use('/authorization', require('./routes/authorizationRouter'))
+app.use('/courses', require('./routes/courseRouter'))
 // listen log
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

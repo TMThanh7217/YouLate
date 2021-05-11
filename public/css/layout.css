@@ -189,3 +189,7 @@ footer {
     background-color: #f8f9fa;
     height: 10rem;
 }
+
+.sidenav>.container>a.link.sidenav-link.sidenav-link-active {
+    color:#28a745;
+}
