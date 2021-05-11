@@ -10,12 +10,14 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css">
-        <link rel="stylesheet" href="../css/layout.css">
+        <link rel="stylesheet" href="css/layout.css">
+        <link rel="stylesheet" href="css/courses.css">
+        <link rel="stylesheet" href="css/attendance.css">
         <link rel="stylesheet prefetch" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css">
     </head>
     <body>
         <div class="row no-gutters">
-            {{> sidenav}}
+            {{> sidenav active=this.active}}
 
             <div class="page-content col-11">
                 {{> header}}
