@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/courses.css">
+</head>
+
+<body>
+    <div class="row no-gutters">
+        <div class="sidenav col-1">
+            <div class="line-container d-flex justify-content-center">
+                <div class="line"></div>
+            </div>
+            <a class="sidenav-brand" href="#">
+                <image class="img img-logo" src="../image/youlate_logo_sm.png"
+                    style="padding: 0; height: 4rem; width: auto;">
+            </a>
+            <div class="container d-flex flex-column justify-center">
+                <div class="line-container d-flex justify-content-center">
+                    <div class="line"></div>
+                </div>
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <div class="line-container d-flex justify-content-center">
+                    <div class="line"></div>
+                </div>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="far fa-2x fa-calendar-alt"></i>
+                        <span>Calendar</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-id-card-alt"></i>
+                        <span>Profile</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-users"></i>
+                        <span>Students</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-book"></i>
+                        <span>Courses</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-chalkboard-teacher"></i>
+                        <span>Classes</span>
+                    </div>
+                </a>
+
+                <!-- <button class="dropdown-btn"><i class="fas fa-2x fa-th-list"></i><i class="fa ml-2 fa-caret-down"></i></button> -->
+
+                <!-- <div class="dropdown-container">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div> -->
+            </div>
+        </div>
+
+        <div class="page-content col-11">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div id="collapseNavbar" class="collapse navbar-collapse">
+                    <!---navbar--collapse-on--->
+                    <form class="form-inline ml-auto">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+                    </form>
+                    <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
+                </div>
+            </nav>
+
+            <div class="container-fluid shadow-default">
+                <h2 class="page-title">Admin Manage Course</h2>
+
+                <form action="#" class="form-inline form-search w-100">
+                    <div class="form-group w-100">
+                        <section>
+                            <div>
+                                <label for="selectStatus" class="text-center">Year</label>
+                                <select class="custom-select" id="selectStatus">
+                                    <option value="1" selected>2018</option>
+                                    <option value="2">2019</option>
+                                    <option value="3">2020</option>
+                                    <option value="4">2021</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="selectCourseLine" class="text-center">Semester</label>
+                                <select class="custom-select" id="selectCourseLine">
+                                    <option selected>Select Semester</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                </select>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="button" name="btnReset" id="btnReset" class="btn btn-secondary"><i
+                                        class="fas fa-redo"></i> Redo</button>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i
+                                        class="fas fa-times"></i> Cancel</button>
+                            </div>
+                            <div>
+                                <br>
+                                <button type="button" data-toggle="modal" data-target="#exampleModal"
+                                    class="btn btn-secondary">
+                                    <i class="fas fa-plus"></i> Add Course</button>
+                            </div>
+                        </section>
+                    </div>
+                </form>
+
+                <table class="table text-center">
+                    <thead>
+                        <tr>
+                            <th scope="col">Course Name</th>
+                            <th scope="col">Topic</th>
+                            <th scope="col">Class</th>
+                            <th scope="col">Beginning</th>
+                            <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="text-decoration-none">Requirement Engineering</a></td>
+                            <td>Computer Science</td>
+                            <td>B203</td>
+                            <td>11/04/2021</td>
+                            <td><button type="button" class="btn btn-outline-secondary"><i
+                                        class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                    data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+
+                                <!-- Modal Delete -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="text-decoration-none">Hoc Lam Nguoi</a></td>
+                            <td>Information System</td>
+                            <td>B203</td>
+                            <td>18/04/2021</td>
+                            <td><button type="button" class="btn btn-outline-secondary"><i
+                                        class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                    data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+
+                                <!-- Modal Delete -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="text-decoration-none">Hoc Lam Nguoi</a></td>
+                            <td>Information System</td>
+                            <td>B203</td>
+                            <td>23/04/2021</td>
+                            <td><button type="button" class="btn btn-outline-secondary"><i
+                                        class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                    data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+
+                                <!-- Modal Delete -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="text-decoration-none">Hoc Lam Nguoi</a></td>
+                            <td>Information System</td>
+                            <td>B203</td>
+                            <td>30/04/2021</td>
+                            <td><button type="button" class="btn btn-outline-secondary"><i
+                                        class="far fa-edit"></i></button>
+                                <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                                    data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+
+                                <!-- Modal Delete -->
+                                <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete?</p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-dismiss="modal">Close</button>
+                                                <button type="button" class="btn btn-danger">Delete</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <nav class="pagination-navbar" aria-label="Page">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <footer class="text-center text-white">
+                <!-- Grid container -->
+                <div class="container pt-4">
+                    <!-- Section: Social media -->
+                    <section class="mb-4">
+                        <!-- Facebook -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                        <!-- Twitter -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                        <!-- Google -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                        <!-- Linkedin -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                        <!-- Github -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+                    </section>
+                    <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2020 Copyright:
+                    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="">Course Name</span>
+                                            </div>
+                                            <input type="text" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" id="">NoS</span>
+                                            </div>
+                                            <input type="number" min="30" step="5" max="200" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="">Status</label>
+                                            </div>
+                                            <select class="custom-select" id="">
+                                                <option selected>Choose...</option>
+                                                <option value="1">2021</option>
+                                                <option value="2">2022</option>
+                                                <option value="3">2023</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                                <label class="input-group-text" for="">Topic</label>
+                                            </div>
+                                            <select class="custom-select" id="">
+                                                <option selected>Choose...</option>
+                                                <option value="1">2021</option>
+                                                <option value="2">2022</option>
+                                                <option value="3">2023</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <script src="../js/layout.js"></script>
+</body>
+
+</html>
