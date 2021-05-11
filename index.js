@@ -1,8 +1,9 @@
-let express = require('express');
+var express = require('express');
 const { get } = require('http');
-let app = express();
+var app = express();
 const port = process.env.PORT || 8000;
-let exprHbs = require("express-handlebars");
+var exprHbs = require("express-handlebars");
+var models = require('./models');
 
 app.use(express.static(__dirname + '/public'));
 
