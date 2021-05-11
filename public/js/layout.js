@@ -15,13 +15,11 @@ function dropdownScript() {
 }
 
 $(function() {
+  // Setup signin, signup form switch Links
   $('.form-signin').css('display', 'block')
   $('.form-signup').css('display', 'none')
   
-  $('#tempOfUseLink').on('click', () => {
-    $('#tempOfUseModal').modal('show')
-  })
-  
+  // signin, signup form link clicked events
   $("#linkSignUp").on('click', () => {
     $('.form-signin').css('display', 'none')
     $('.form-signup').css('display', 'block')
@@ -30,12 +28,28 @@ $(function() {
     $('.form-signin').css('display', 'block')
     $('.form-signup').css('display', 'none')
   })
+
+  // Temp of Use clicked event
+  $('#tempOfUseLink').on('click', () => {
+    // Show temp
+    $('#tempOfUseModal').modal('show')
+  })
+ 
+  // Accept ToU checkbox click event
+  $('#checkSignUpToU').on('click', () => {
+    // Button disabled = true if checked ToU and yeah you knew it
+    $('#btnFormSignUp').prop('disabled', !$('#checkSignUpToU').is(':checked'))
+  })
+  
+  // button signin on header navbar
   $('.btn-signin').on('click', () => {
     document.location.href="/authorization"
   })
-  
+   
+  // Create Datepicker input
   $(".date-picker").datepicker();
   
+  // Create fullCalendar UI
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     header: {

@@ -1,5 +1,5 @@
 <div class="container-fluid d-flex justify-content-center align-items-center p-5">
-    <form action="/signin" class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
+    <form action="/authorization/signin" class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
         <h2 class="page-title">Sign-in</h2>
         <label for="inputSignInUsername">UserName</label>
         <div class="input-group">
@@ -22,7 +22,7 @@
         </div>
         <br>
         <div class="form-end__button-group w-100 d-flex justify-content-center">
-            <button class="btn btn-primary">Sign in</button>
+            <button id="btnFormSignIn" class="btn btn-primary">Sign in</button>
         </div>
         <br>
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
@@ -32,7 +32,7 @@
         </div>
     </form>
     
-    <form action="/signup" class="form-signup shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
+    <form action="/authorization/signup" class="form-signup shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
         <h2 class="page-title">Sign-up</h2>
         <label for="inputSignUpUsername">UserName</label>
         <div class="input-group">
@@ -57,8 +57,8 @@
         </div>
         <br>
         <div class="form-check mb-2 mr-sm-2">
-            <input class="form-check-input" type="checkbox" id="checkSignUpTou">
-            <label class="form-check-label" for="checkSignUpTou">By checking this box you accept our <a id='tempOfUseLink' href="#">Temp Of Use</a></label>
+            <input class="form-check-input" type="checkbox" name='checkSignUpToU' id="checkSignUpToU">
+            <label class="form-check-label" for="checkSignUpToU">By checking this box you accept our <a id='tempOfUseLink' href="#">Temp Of Use</a></label>
 
             <!-- The Modal -->
             <div class="modal" id="tempOfUseModal">
@@ -95,7 +95,7 @@
         </div>
         <br>
         <div class="form-end__button-group w-100 d-flex justify-content-center">
-            <button class="btn btn-primary">Sign up</button>
+            <button id='btnFormSignUp' class="btn btn-primary" disabled>Sign up</button>
         </div>
         <br>
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
