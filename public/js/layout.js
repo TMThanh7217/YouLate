@@ -45,7 +45,7 @@ $(function() {
   $('.btn-signin').on('click', () => {
     document.location.href="/authorization"
   })
-   
+
   // Create Datepicker input
   $(".date-picker").datepicker();
   

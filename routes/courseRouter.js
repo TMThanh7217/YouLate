@@ -3,10 +3,10 @@ var router = express.Router();
 
 router.get('/', (req, res) => {
     // do something here
-    res.render('calendar', {
-        pageTitle: 'Calendar',
+    res.render('courses', {
+        pageTitle: 'Courses',
         active: {
-            calendar:true
+            courses:true
         }
     })
  })
