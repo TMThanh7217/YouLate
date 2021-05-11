@@ -7,9 +7,12 @@ router.get('/', (req, res) => {
     classroomController
         .getAll()
         .then(data => {
-            res.locals.classrooms = data;
             res.render('classroom', {
-                pageTitle: 'Classrooms'
+                pageTitle: 'Classrooms',
+                classrooms: data,
+                active: {
+                    classrooms:true
+                }
             })
         })
         .catch(err => res.send("Error: " + err));

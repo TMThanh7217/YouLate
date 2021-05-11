@@ -74,50 +74,16 @@
             </tr>
         </thead>
         <tbody>
+            {{#each classrooms}}
             <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
+                <th scope="row">{{this.name}}</th>
+                <td>{{this.course}}</td>
+                <td>{{this.status}}</td>
+                <td>{{this.startDate}}</td>
+                <td>{{this.endDate}}</td>
+                <td>{{this.hours}}</td>
             </tr>
-            <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
-            </tr>                    <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
-            </tr>                    <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
-            </tr>                    <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
-            </tr>                    <tr>
-                <th scope="row">HHN001</th>
-                <td>Hi, Huh Nei. Who I Knee</td>
-                <td>preparing</td>
-                <td>19/12/2022</td>
-                <td>13/5/2022</td>
-                <td>49</td>
-            </tr>
+            {{/each}}
         </tbody>
     </table>
     

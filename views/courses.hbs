@@ -51,54 +51,24 @@
         <thead>
             <tr>
                 <th scope="col">Name</th>
-                <th scope="col">Short</th>
+                <th scope="col">Code</th>
+                <th scope="col">Description</th>
                 <th scope="col">Course Line</th>
                 <th scope="col">Course Topic</th>
                 <th scope="col">Status</th>
-                <th scope="col">CA <i class="fas fa-long-arrow-alt-down"></i></th>
             </tr>
         </thead>
         <tbody>
+            {{#each courses}}
             <tr>
-                <th scope="row">Hoc Lam Nguoi</th>
-                <td>HLN</td>
-                <td>0+</td>
+                <th scope="row">{{this.name}}</th>
+                <td>{{this.code}}</td>
+                <td>{{this.description}}</td>
+                <td>69+</td>
                 <td>Social</td>
                 <td>Free To Play</td>
-                <td>13/4/2021</td>
             </tr>
-            <tr>
-                <th scope="row">Hoc Lam Nguoi</th>
-                <td>HLN</td>
-                <td>0+</td>
-                <td>Social</td>
-                <td>Free To Play</td>
-                <td>13/4/2021</td>
-            </tr>
-            <tr>
-                <th scope="row">Hoc Lam Nguoi</th>
-                <td>HLN</td>
-                <td>0+</td>
-                <td>Social</td>
-                <td>Free To Play</td>
-                <td>13/4/2021</td>
-            </tr>
-            <tr>
-                <th scope="row">Hoc Lam Nguoi</th>
-                <td>HLN</td>
-                <td>0+</td>
-                <td>Social</td>
-                <td>Free To Play</td>
-                <td>13/4/2021</td>
-            </tr>
-            <tr>
-                <th scope="row">Hoc Lam Nguoi</th>
-                <td>HLN</td>
-                <td>0+</td>
-                <td>Social</td>
-                <td>Free To Play</td>
-                <td>13/4/2021</td>
-            </tr> 
+            {{/each}}
         </tbody>
     </table>
 
