@@ -40,7 +40,7 @@ router.post('/sign-up', async (req, res) => {
         email: "Unknown@Host",
         SDT: "Unknown",
         DoB: "Unknown",
-        type: 0
+        type: 4
     };
 
     try {
