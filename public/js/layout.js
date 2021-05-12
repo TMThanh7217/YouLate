@@ -71,7 +71,7 @@ $(function() {
         else if(result.code == 200) {// Success
           if (!signInAlert.hasClass('alert-success')) signInAlert.addClass('alert-success')
           signInAlert.removeClass('alert-danger')
-
+          this.location.href = "/";
         }
         messageElement.text(result.message)
       }
@@ -120,6 +120,9 @@ $(function() {
     })
   })
 
+  $('.btn-logout').on('click', () => {
+    document.location.href = "/authorization/logout";
+  });
   // Create Datepicker input
   $(".date-picker").datepicker();
   

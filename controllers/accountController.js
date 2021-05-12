@@ -4,6 +4,7 @@ const saltRound = 10;
 var models = require('../models');
 var Account = models.Account;
 const { QueryTypes } = require('sequelize');
+var userController = require('./userController');
 
 controller.getAll = async (query) => {
     let option = {
@@ -23,7 +24,7 @@ controller.getAll = async (query) => {
 controller.findById = async (id) => {
     let option = {
         sql: 'SELECT * FROM "Accounts" WHERE "id" = :id',
-        plain: false, // return all records if false, else return the 1st record
+        plain: true, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
     }
@@ -36,7 +37,7 @@ controller.findById = async (id) => {
     });
 };
 
-controller.findByUsername = async username => {
+controller.findByUsername = username => {
     let option = {
         sql: 'SELECT * FROM "Accounts" WHERE "username" = :username',
         plain: true, // return all records if false, else return the 1st record
@@ -44,10 +45,10 @@ controller.findByUsername = async username => {
         type: QueryTypes.SELECT
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacements: { username: username },
+        replacements: { username: username.toLowerCase() },
         type: option.type
     });
 }
@@ -62,12 +63,12 @@ controller.createAccount = account => {
 	})
 }
 
-controller.comparePassword = async (pwd, accountPwd) => {
-    bcrypt.compare(pwd, accountPwd, function(err, result) {
-        // result == true
-        return result
-    });
-    return false;
+controller.comparePassword = (pwd, accountPwd) => {
+    return bcrypt.compareSync(pwd, accountPwd)
 }
+
+controller.findOwnUserByUserId = userId => {
+    return userController.findById(userId);
+};
 
 module.exports = controller;

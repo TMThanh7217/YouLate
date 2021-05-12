@@ -30,13 +30,9 @@ let hbs = exprHbs.create({
 });
 
 app.use((req, res, next) => {
-    console.log("Hey");
-    console.log(req.locals.username);
-    req.locals.username = req.session.user ? req.session.user.username : "";
-    req.locals.isLoggedIn = req.session.user ? true : false;
-    console.log(req.locals.username);
-    console.log(req.locals.isLoggedIn);
-    console.log(req.session.user);
+    res.locals.username = req.session.user ? req.session.user.username : "";
+    res.locals.isLoggedIn = req.session.user ? true : false;
+    console.log("username: " + res.locals.username);
     next();
 });
 

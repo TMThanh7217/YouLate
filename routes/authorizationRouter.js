@@ -66,7 +66,7 @@ router.post('/sign-in', async (req, res) => {
     let remember = req.body.remember;
     let accountInstance = await accountController.findByUsername(account.username);
 
-    console.log(accountInstance);
+    //console.log(accountInstance);
     if (!accountInstance) 
         return res.json({
             code: 400,
@@ -74,9 +74,11 @@ router.post('/sign-in', async (req, res) => {
         });
 
     let isMatch = await accountController.comparePassword(account.password, accountInstance.password)
-    
+    //console.log("isMatch: " + isMatch);
     if (isMatch) {
-        req.session.user = user;
+        req.session.user = await accountController.findOwnUserByUserId(accountInstance.userId);
+        req.session.user.username = accountInstance.username;
+        //console.log(req.session.user);
         return res.json({
             code: 200,
             message: 'Log in successfully!'
@@ -99,5 +101,14 @@ router.post('/sign-in', async (req, res) => {
         })
         .catch(err => res.json(err));*/
 })
+
+router.get('/logout', (req, res, next) => {
+    req.session.destroy(error => {
+        if (error) {
+            return next(error);
+        }
+        return res.redirect('/');
+    })    
+});
 
 module.exports = router;

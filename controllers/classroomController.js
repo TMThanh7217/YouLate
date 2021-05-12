@@ -38,7 +38,7 @@ controller.getAll = async (query) => {
 controller.findById = async (id) => {
     let option = {
         sql: 'SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" where "id" = :id',
-        plain: false, // return all records if false, else return the 1st record
+        plain: true, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
     }

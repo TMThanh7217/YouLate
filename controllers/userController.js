@@ -19,15 +19,15 @@ controller.getAll = async (query) => {
     });
 };
 
-controller.findById = async (id) => {
+controller.findById = (id) => {
     let option = {
         sql: 'SELECT * FROM "Users" WHERE id = :id',
-        plain: false, // return all records if false, else return the 1st record
+        plain: true, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
         replacements: {id: id},
