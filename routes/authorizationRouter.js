@@ -57,29 +57,47 @@ router.post('/sign-up', async (req, res) => {
     }
 })
 
-router.post('/sign-in', (req, res) => {
-    let username = req.body.username;
-    accountController
-        .findByUsername(username)
-        .then(accountInstance => {
-            if (!accountInstance) 
+router.post('/sign-in', async (req, res) => {
+    let account = {
+        username: req.body.username,
+        password:  req.body.password
+    };
+
+    let remember = req.body.remember;
+    let accountInstance = await accountController.findByUsername(account.username);
+
+    console.log(accountInstance);
+    if (!accountInstance) 
+        return res.json({
+            code: 400,
+            message: 'Invalid login, please try again'
+        });
+
+    let isMatch = await accountController.comparePassword(account.password, accountInstance.password)
+    
+    if (isMatch) {
+        req.session.user = user;
+        return res.json({
+            code: 200,
+            message: 'Log in successfully!'
+        });
+    }
+    else {
+        return res.json({
+            code: 400,
+            message: 'Invalid login, please try again!'
+        });
+    }
+    /*accountController
+        .findOwnUserByUserId(accountInstance.userID)
+        .then(userInstance => {
+            if (!userInstance) 
                 return res.json({
                     code: 400,
-                    message: 'USERNAME or PASSWORD are wrong!'
+                    message: 'Unknown ERROR'
                 })
-
-            accountController
-                .findOwnUserByUserId(accountInstance.userID)
-                .then(userInstance => {
-                    if (!userInstance) 
-                        return res.json({
-                            code: 400,
-                            message: 'Unknown ERROR'
-                        })
-                })
-                .catch(err => res.json(err));
         })
-        .catch(err => res.json(err));
+        .catch(err => res.json(err));*/
 })
 
 module.exports = router;

@@ -18,7 +18,7 @@ app.use(session({
     secret: "S3cret",
     resave: false,
     saveUninitialized: false
-  }));
+}));
 
 let hbs = exprHbs.create({
     extname : "hbs",
@@ -27,6 +27,17 @@ let hbs = exprHbs.create({
     partialsDir : __dirname + '/views/partials/',
     helpers: {
     }
+});
+
+app.use((req, res, next) => {
+    console.log("Hey");
+    console.log(req.locals.username);
+    req.locals.username = req.session.user ? req.session.user.username : "";
+    req.locals.isLoggedIn = req.session.user ? true : false;
+    console.log(req.locals.username);
+    console.log(req.locals.isLoggedIn);
+    console.log(req.session.user);
+    next();
 });
 
 app.engine('hbs', hbs.engine);

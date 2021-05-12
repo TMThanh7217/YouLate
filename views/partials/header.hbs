@@ -5,6 +5,10 @@
             <input class="form-control" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success ml-1" type="submit">Search</button>
         </form>
-        <button type="button" class="btn btn-outline-info ml-auto btn-signin">Sign in</button>
+        {{if !isLoggedIn}}
+            <button type="button" class="btn btn-outline-info ml-auto btn-signin">Sign in</button>
+        {{else}}
+            <button type="button" class="btn btn-outline-danger ml-auto btn-logout">Log out</button>
+        {{/if}}
     </div>
 </nav>

@@ -46,7 +46,39 @@ $(function() {
     document.location.href="/authorization"
   })
 
-  //
+  // button signin in log in page
+  $('#btnFormSignIn').on('click', () => {
+    let account = {
+      username: $('#inputSignInUsername').val(),
+      password: $('#inputSignInPwd').val(),
+      remember: $('checkSignInRemember').val()
+    };
+
+    console.log(account);
+    let url = "/authorization/sign-in";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: account,
+      success: result => {
+        let signInAlert = $('#signInAlert')
+        let messageElement = $('#signInMessage')
+        signInAlert.css('display', 'block')
+        if(result.code == 400) { // Error
+          if (!signInAlert.hasClass('alert-danger')) signInAlert.addClass('alert-danger')
+          signInAlert.removeClass('alert-success')
+        }
+        else if(result.code == 200) {// Success
+          if (!signInAlert.hasClass('alert-success')) signInAlert.addClass('alert-success')
+          signInAlert.removeClass('alert-danger')
+
+        }
+        messageElement.text(result.message)
+      }
+    })
+  })
+
+  // button signup in log in page
   $('#btnFormSignUp').on('click', () => {
     // let newAccount = {
     //   username: $('#inputSignUpUsername').val(),

@@ -62,15 +62,12 @@ controller.createAccount = account => {
 	})
 }
 
-controller.compareAccount = account => {
-    let instance = controller.findByUsername(account.username)
-    if(instance) {
-        bcrypt.compare(account.password, hash, function(err, result) {
-            // result == true
-            return true
-        });
-        return false
-    }
+controller.comparePassword = async (pwd, accountPwd) => {
+    bcrypt.compare(pwd, accountPwd, function(err, result) {
+        // result == true
+        return result
+    });
+    return false;
 }
 
 module.exports = controller;

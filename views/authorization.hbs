@@ -1,7 +1,7 @@
 <div class="container-fluid d-flex justify-content-center align-items-center p-5">
-    <form action="/authorization/sign-in" id='formSignIn' class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
+    <form action="#" id='formSignIn' class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
         <h2 id="formSignInTitle" class="page-title">Sign-in</h2>
-
+        <div id='signInAlert' class='alert' style="display: none;"><strong>Success!</strong> <p id="signInMessage"></p></div>
         <label for="inputSignInUsername">UserName</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -23,7 +23,7 @@
         </div>
         <br>
         <div class="form-end__button-group w-100 d-flex justify-content-center">
-            <button id="btnFormSignIn" class="btn btn-primary">Sign in</button>
+            <button type="button" id="btnFormSignIn" class="btn btn-primary">Sign in</button>
         </div>
         <br>
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
@@ -36,7 +36,6 @@
     <form action="#" id="formSignUp" class="form-signup shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
         <h2 id="formSignUpTitle" class="page-title">Sign-up</h2>
         <div id='signUpAlert' class='alert' style="display: none;"><strong>Success!</strong> <p id="signUpMessage"></p> </div>
-        
         <label for="inputSignUpUsername">UserName</label>
         <div class="input-group">
             <div class="input-group-prepend">
