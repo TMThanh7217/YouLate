@@ -10,33 +10,30 @@ router.get('/', (req, res) => {
     })
 })
 
-router.post('/sign-up', (req, res) => {
+router.post('/sign-up', async (req, res) => {
     let newAccount = {
         username: req.body.username,
         password: req.body.pwd
-    }
+    };
 
-    let confirmPassword = req.body.confirmpwd
+    let confirmPassword = req.body.confirmpwd;
 
-    console.log(newAccount)
-    console.log(confirmPassword)
+    console.log(newAccount);
+    console.log("confirmPassword: " + confirmPassword);
 
     if (newAccount.password != confirmPassword)
         return res.json({
             code: 400,
             message: 'Password & Confirm password not match!'
-        })
+        });
     
-    accountController
-        .findByUsername(newAccount.username)
-        .then(accountInstance => {
-            if(accountInstance)
-                return res.json({
-                    code: 400,
-                    message: 'Username already exist!'
-                })
+    let accountInstance = await accountController.findByUsername(newAccount.username);
+    console.log(accountInstance);
+    if(accountInstance)
+        return res.json({
+            code: 400,
+            message: 'Username already exist!'
         })
-        .catch(err => res.json(err))
 
     let newUser = {
         name: "Unknown",
@@ -44,23 +41,24 @@ router.post('/sign-up', (req, res) => {
         SDT: "Unknown",
         DoB: "Unknown",
         type: 0
-    }
+    };
+
     try {
-        let userInstance = userController.createUser(newUser)
-        console.log(userInstance.id)    
-        newAccount.userId = userInstance.id
-        accountController.createAccount(newAccount)
+        let userInstance = await userController.createUser(newUser);
+        console.log("userId: " + userInstance.id);
+        newAccount.userId = userInstance.id;
+        accountController.createAccount(newAccount);
         return res.json({
             code:200,
             message: 'Account created successfully!'
-        })    
+        });
     } catch(e) {
-        res.json(e)
+        res.json(e);
     }
 })
 
 router.post('/sign-in', (req, res) => {
-    let username = req.body.username
+    let username = req.body.username;
     accountController
         .findByUsername(username)
         .then(accountInstance => {
@@ -78,11 +76,10 @@ router.post('/sign-in', (req, res) => {
                             code: 400,
                             message: 'Unknown ERROR'
                         })
-                    
                 })
+                .catch(err => res.json(err));
         })
-        .catch(err => res.json(err))
-        
+        .catch(err => res.json(err));
 })
 
 module.exports = router;

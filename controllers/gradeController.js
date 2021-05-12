@@ -5,7 +5,7 @@ const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
     let option = {
-        sql: 'SELECT * FROM  "Grades"',
+        sql: 'SELECT * FROM "Grades"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -20,7 +20,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT * FROM  "Grades" where id = :id',
+        sql: 'SELECT * FROM "Grades" WHERE id = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -29,9 +29,13 @@ controller.findById = async (id) => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: {id: id},
+        replacements: {id: id},
         type: option.type
     });
 };
+
+controller.createGrade = async (grade) => {
+    return await Grade.create(evegradent);
+}
 
 module.exports = controller;

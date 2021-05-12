@@ -3,6 +3,10 @@ var models = require('../models');
 var Classroom = models.Classroom;
 const { QueryTypes } = require('sequelize');
 
+controller.createClassroom = async (classroom) => {
+    return await Classroom.create(classroom);
+}
+
 controller.getAll = async (query) => {
     /*return new Promise((resolve, reject) => {
         let option = {
@@ -18,7 +22,7 @@ controller.getAll = async (query) => {
     });*/
     // example sql: SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" AS "Classroom";
     let option = {
-        sql: 'SELECT * FROM  "Classrooms"',
+        sql: 'SELECT * FROM "Classrooms"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -33,7 +37,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM  "Classrooms" where id = :id',
+        sql: 'SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" where "id" = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -42,9 +46,13 @@ controller.findById = async (id) => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: {id: id},
+        replacements: {id: id},
         type: option.type
     });
 };
+
+controller.createClassroom = async (classrom) => {
+    return await Classroom.create(classrom);
+}
 
 module.exports = controller;

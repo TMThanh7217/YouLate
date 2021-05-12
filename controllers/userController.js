@@ -6,7 +6,7 @@ const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
     let option = {
-        sql: 'SELECT * FROM  "Users"',
+        sql: 'SELECT * FROM "Users"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -21,7 +21,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT * FROM  "Users" where id = :id',
+        sql: 'SELECT * FROM "Users" WHERE id = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -30,20 +30,13 @@ controller.findById = async (id) => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: {id: id},
+        replacements: {id: id},
         type: option.type
     });
 };
 
-controller.createUser = async user => {
-    try {
-        let userInstance = await User.create(user)
-        console.log("a:" + userInstance)    
-        return userInstance
-    }
-    catch (e) {
-        console.log(e.toString())
-    }
+controller.createUser = user => {
+    return User.create(user);
 }
 
 module.exports = controller;

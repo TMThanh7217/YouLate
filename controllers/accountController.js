@@ -7,7 +7,7 @@ const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
     let option = {
-        sql: 'SELECT * FROM  "Accounts"',
+        sql: 'SELECT * FROM "Accounts"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -22,7 +22,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT * FROM  "Accounts" where id = :id',
+        sql: 'SELECT * FROM "Accounts" WHERE "id" = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -31,15 +31,15 @@ controller.findById = async (id) => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: { id: id },
+        replacements: { id: id },
         type: option.type
     });
 };
 
-controller.findByUsername = async userName => {
+controller.findByUsername = async username => {
     let option = {
-        sql: 'SELECT * FROM  "Accounts" where username = :username',
-        plain: false, // return all records if false, else return the 1st record
+        sql: 'SELECT * FROM "Accounts" WHERE "username" = :username',
+        plain: true, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
     }
@@ -47,7 +47,7 @@ controller.findByUsername = async userName => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: { username: username },
+        replacements: { username: username },
         type: option.type
     });
 }

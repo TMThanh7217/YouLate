@@ -1,103 +1,88 @@
 [{
-  "id": 1,
   "name": "Mirabella Vassel",
   "email": "mvassel0@admin.ch",
   "SDT": "138-657-2723",
   "DoB": "21/05/2020",
   "type": 2
 }, {
-  "id": 2,
   "name": "Allard Ablitt",
   "email": "aablitt1@purevolume.com",
   "SDT": "714-821-5528",
   "DoB": "02/08/2020",
   "type": 1
 }, {
-  "id": 3,
   "name": "Michel Bunton",
   "email": "mbunton2@webs.com",
   "SDT": "354-983-8009",
   "DoB": "23/12/2020",
   "type": 2
 }, {
-  "id": 4,
   "name": "Delilah Redpath",
   "email": "dredpath3@alexa.com",
   "SDT": "978-957-1179",
   "DoB": "03/05/2021",
   "type": 2
 }, {
-  "id": 5,
   "name": "Raina Padgett",
   "email": "rpadgett4@bigcartel.com",
   "SDT": "861-617-4645",
   "DoB": "09/12/2020",
   "type": 1
 }, {
-  "id": 6,
   "name": "Isidro Armes",
   "email": "iarmes5@ted.com",
   "SDT": "502-845-9226",
   "DoB": "27/03/2021",
   "type": 1
 }, {
-  "id": 7,
   "name": "Darb Januszewski",
   "email": "djanuszewski6@sohu.com",
   "SDT": "239-947-1934",
   "DoB": "13/06/2020",
   "type": 2
 }, {
-  "id": 8,
   "name": "Thain Skottle",
   "email": "tskottle7@ibm.com",
   "SDT": "758-337-1545",
   "DoB": "23/01/2021",
   "type": 2
 }, {
-  "id": 9,
   "name": "Elane Cradick",
   "email": "ecradick8@symantec.com",
   "SDT": "643-768-8816",
   "DoB": "21/04/2021",
   "type": 1
 }, {
-  "id": 10,
   "name": "Casie Spatari",
   "email": "cspatari9@java.com",
   "SDT": "584-622-8792",
   "DoB": "20/03/2021",
   "type": 1
 }, {
-  "id": 11,
   "name": "Jo-ann Trulock",
   "email": "jtrulocka@vistaprint.com",
   "SDT": "143-877-3213",
   "DoB": "20/12/2020",
   "type": 0
 }, {
-  "id": 12,
   "name": "Darryl Legerton",
   "email": "dlegertonb@icq.com",
   "SDT": "921-159-4605",
   "DoB": "21/09/2020",
   "type": 0
 }, {
-  "id": 13,
   "name": "Tory Willars",
   "email": "twillarsc@meetup.com",
   "SDT": "108-521-3469",
   "DoB": "28/08/2020",
   "type": 1
 }, {
-  "id": 14,
   "name": "Lovell Clappison",
   "email": "lclappisond@g.co",
   "SDT": "192-572-7245",
   "DoB": "28/10/2020",
   "type": 1
 }, {
-  "id": 15,
   "name": "Honey Caplis",
   "email": "hcaplise@shutterfly.com",
   "SDT": "172-783-4219",

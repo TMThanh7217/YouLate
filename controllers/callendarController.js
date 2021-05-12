@@ -5,7 +5,7 @@ const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
     let option = {
-        sql: 'SELECT * FROM  "Callendars"',
+        sql: 'SELECT * FROM "Callendars"',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -20,7 +20,7 @@ controller.getAll = async (query) => {
 
 controller.findById = async (id) => {
     let option = {
-        sql: 'SELECT * FROM  "Callendars" where id = :id',
+        sql: 'SELECT * FROM "Callendars" WHERE "id" = :id',
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -29,9 +29,13 @@ controller.findById = async (id) => {
     return await models.sequelize.query(option.sql, {
         plain: option.plain,
         raw: option.raw,
-        replacement: {id: id},
+        replacements: {id: id},
         type: option.type
     });
 };
+
+controller.createCallendar = async (callendar) => {
+    return await Callendar.create(callendar);
+}
 
 module.exports = controller;

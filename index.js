@@ -5,10 +5,20 @@ const port = process.env.PORT || 8000;
 var exprHbs = require("express-handlebars");
 var models = require('./models');
 const bodyParser = require("body-parser")
+const cookieParser = require('cookie-parser');
+let session = require('express-session');
 
+// App Use
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(session({
+    cookie: { httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 },
+    secret: "S3cret",
+    resave: false,
+    saveUninitialized: false
+  }));
 
 let hbs = exprHbs.create({
     extname : "hbs",
@@ -29,6 +39,7 @@ app.use('/classrooms', require('./routes/classroomRouter'));
 app.use('/calendar', require('./routes/calendarRouter'))
 app.use('/authorization', require('./routes/authorizationRouter'))
 app.use('/courses', require('./routes/courseRouter'))
+
 // listen log
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

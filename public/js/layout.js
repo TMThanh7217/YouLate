@@ -29,10 +29,10 @@ $(function() {
     $('.form-signup').css('display', 'none')
   })
 
-  // Temp of Use clicked event
-  $('#tempOfUseLink').on('click', () => {
-    // Show temp
-    $('#tempOfUseModal').modal('show')
+  // Term of Use clicked event
+  $('#termOfUseLink').on('click', () => {
+    // Show term
+    $('#termOfUseModal').modal('show')
   })
  
   // Accept ToU checkbox click event

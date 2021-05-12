@@ -1,100 +1,80 @@
 [{
-  "id": 1,
   "userId": 6,
   "classroomId": 10,
   "total": 6.78
 }, {
-  "id": 2,
   "userId": 3,
   "classroomId": 10,
   "total": 4.23
 }, {
-  "id": 3,
   "userId": 6,
   "classroomId": 4,
   "total": 2.9
 }, {
-  "id": 4,
   "userId": 1,
   "classroomId": 4,
   "total": 5.25
 }, {
-  "id": 5,
   "userId": 8,
   "classroomId": 1,
   "total": 1.07
 }, {
-  "id": 6,
   "userId": 8,
   "classroomId": 3,
   "total": 7.71
 }, {
-  "id": 7,
   "userId": 9,
   "classroomId": 8,
   "total": 8.12
 }, {
-  "id": 8,
   "userId": 8,
   "classroomId": 4,
   "total": 1.68
 }, {
-  "id": 9,
   "userId": 5,
   "classroomId": 9,
   "total": 9.43
 }, {
-  "id": 10,
   "userId": 2,
   "classroomId": 7,
   "total": 9.84
 }, {
-  "id": 11,
   "userId": 4,
   "classroomId": 5,
   "total": 9.12
 }, {
-  "id": 12,
   "userId": 6,
   "classroomId": 8,
   "total": 6.88
 }, {
-  "id": 13,
   "userId": 8,
   "classroomId": 4,
   "total": 7.9
 }, {
-  "id": 14,
   "userId": 1,
   "classroomId": 2,
   "total": 4.77
 }, {
-  "id": 15,
   "userId": 3,
   "classroomId": 5,
   "total": 6.28
 }, {
-  "id": 16,
   "userId": 10,
   "classroomId": 4,
   "total": 2.99
 }, {
-  "id": 17,
   "userId": 1,
   "classroomId": 4,
   "total": 5.05
 }, {
-  "id": 18,
   "userId": 1,
   "classroomId": 4,
   "total": 8.42
 }, {
-  "id": 19,
   "userId": 3,
   "classroomId": 8,
   "total": 7.84
 }, {
-  "id": 20,
   "userId": 9,
   "classroomId": 8,
   "total": 4.08
