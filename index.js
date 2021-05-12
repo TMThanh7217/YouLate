@@ -4,8 +4,11 @@ var app = express();
 const port = process.env.PORT || 8000;
 var exprHbs = require("express-handlebars");
 var models = require('./models');
+const bodyParser = require("body-parser")
 
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 let hbs = exprHbs.create({
     extname : "hbs",

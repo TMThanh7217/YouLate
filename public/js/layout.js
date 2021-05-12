@@ -46,6 +46,48 @@ $(function() {
     document.location.href="/authorization"
   })
 
+  //
+  $('#btnFormSignUp').on('click', () => {
+    // let newAccount = {
+    //   username: $('#inputSignUpUsername').val(),
+    //   password: $('#inputSignUpPwd').val(),
+    //   confirmPwd: $('#inputSignUpConfirmPwd').val()
+    // }
+    let newAccount = {}
+    $.each($('#formSignUp').serializeArray(), function(_, kv) {
+      if (newAccount.hasOwnProperty(kv.name.replace('inputSignUp','').toLowerCase())) {
+        newAccount[kv.name.replace('inputSignUp','').toLowerCase()] = $.makeArray(newAccount[kv.name]);
+        newAccount[kv.name.replace('inputSignUp','').toLowerCase()].push(kv.value);
+      }
+      else {
+        newAccount[kv.name.replace('inputSignUp','').toLowerCase()] = kv.value;
+      }
+    });
+    // console.log(newAccount)
+    let signUpUrl = window.location.href.toString().replace('#','') + '/sign-up'
+    console.log(newAccount)
+    $.ajax({
+      url: signUpUrl,
+      type: 'POST',
+      data: newAccount,
+      success: result => {
+        let signUpAlert = $('#signUpAlert')
+        let messageElement = $('#signUpMessage')
+        signUpAlert.css('display', 'block')
+        if(result.code == 400) { // Error
+          if (!signUpAlert.hasClass('alert-danger')) signUpAlert.addClass('alert-danger')
+          signUpAlert.removeClass('alert-success')
+        }
+        else if(result.code == 200) {// Success
+          if (!signUpAlert.hasClass('alert-success')) signUpAlert.addClass('alert-success')
+          signUpAlert.removeClass('alert-danger')
+
+        }
+        messageElement.text(result.message)
+      }
+    })
+  })
+
   // Create Datepicker input
   $(".date-picker").datepicker();
   

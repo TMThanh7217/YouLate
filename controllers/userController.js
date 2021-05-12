@@ -35,4 +35,15 @@ controller.findById = async (id) => {
     });
 };
 
+controller.createUser = async user => {
+    try {
+        let userInstance = await User.create(user)
+        console.log("a:" + userInstance)    
+        return userInstance
+    }
+    catch (e) {
+        console.log(e.toString())
+    }
+}
+
 module.exports = controller;

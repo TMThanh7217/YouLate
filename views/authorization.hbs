@@ -1,6 +1,7 @@
 <div class="container-fluid d-flex justify-content-center align-items-center p-5">
-    <form action="/authorization/signin" class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
-        <h2 class="page-title">Sign-in</h2>
+    <form action="/authorization/sign-in" id='formSignIn' class="form-signin shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
+        <h2 id="formSignInTitle" class="page-title">Sign-in</h2>
+
         <label for="inputSignInUsername">UserName</label>
         <div class="input-group">
             <div class="input-group-prepend">
@@ -32,28 +33,30 @@
         </div>
     </form>
     
-    <form action="/authorization/signup" class="form-signup shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
-        <h2 class="page-title">Sign-up</h2>
+    <form action="#" id="formSignUp" class="form-signup shadow-default radius-sm p-5 w-lg-25 w-md-25 w-sm-50 w-xs-50">
+        <h2 id="formSignUpTitle" class="page-title">Sign-up</h2>
+        <div id='signUpAlert' class='alert' style="display: none;"><strong>Success!</strong> <p id="signUpMessage"></p> </div>
+        
         <label for="inputSignUpUsername">UserName</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-user-circle"></i></div>
             </div>
-            <input type="text" name="" id="inputUsername" class="form-control">
+            <input type="text" name="inputSignUpUsername" id="inputSignUpUsername" class="form-control">
         </div>
         <label for="inputSignUpPwd">Password</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-key"></i></div>
             </div>
-            <input type="password" name="" id="inputSignUpPwd" class="form-control">
+            <input type="password" name="inputSignUpPwd" id="inputSignUpPwd" class="form-control">
         </div>
-        <label for="inputSignUpReEnterPwd">Re-Enter Password</label>
+        <label for="inputSignUpConfirmPwd">Re-Enter Password</label>
         <div class="input-group">
             <div class="input-group-prepend">
                 <div class="input-group-text"><i class="fas fa-redo"></i></i></div>
             </div>
-            <input type="password" name="" id="inputSignUpReEnterPwd" class="form-control">
+            <input type="password" name="inputSignUpConfirmPwd" id="inputSignUpConfirmPwd" class="form-control">
         </div>
         <br>
         <div class="form-check mb-2 mr-sm-2">
@@ -95,7 +98,7 @@
         </div>
         <br>
         <div class="form-end__button-group w-100 d-flex justify-content-center">
-            <button id='btnFormSignUp' class="btn btn-primary" disabled>Sign up</button>
+            <button type="button" id='btnFormSignUp' class="btn btn-primary" disabled>Sign up</button>
         </div>
         <br>
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
