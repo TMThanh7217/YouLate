@@ -7,7 +7,6 @@ router.get('/', (req, res) => {
     coursesController
         .getAll()
         .then(data => {
-            console.log(data)
             res.render('courses', {
                 pageTitle: 'Courses',
                 courses: data,
