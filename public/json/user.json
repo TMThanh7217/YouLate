@@ -3,13 +3,13 @@
   "email": "mvassel0@admin.ch",
   "SDT": "138-657-2723",
   "DoB": "21/05/2020",
-  "type": 2
+  "type": 0
 }, {
   "name": "Allard Ablitt",
   "email": "aablitt1@purevolume.com",
   "SDT": "714-821-5528",
   "DoB": "02/08/2020",
-  "type": 1
+  "type": 3
 }, {
   "name": "Michel Bunton",
   "email": "mbunton2@webs.com",
@@ -21,19 +21,19 @@
   "email": "dredpath3@alexa.com",
   "SDT": "978-957-1179",
   "DoB": "03/05/2021",
-  "type": 2
+  "type": 3
 }, {
   "name": "Raina Padgett",
   "email": "rpadgett4@bigcartel.com",
   "SDT": "861-617-4645",
   "DoB": "09/12/2020",
-  "type": 1
+  "type": 3
 }, {
   "name": "Isidro Armes",
   "email": "iarmes5@ted.com",
   "SDT": "502-845-9226",
   "DoB": "27/03/2021",
-  "type": 1
+  "type": 3
 }, {
   "name": "Darb Januszewski",
   "email": "djanuszewski6@sohu.com",
@@ -45,13 +45,13 @@
   "email": "tskottle7@ibm.com",
   "SDT": "758-337-1545",
   "DoB": "23/01/2021",
-  "type": 2
+  "type": 3
 }, {
   "name": "Elane Cradick",
   "email": "ecradick8@symantec.com",
   "SDT": "643-768-8816",
   "DoB": "21/04/2021",
-  "type": 1
+  "type": 3
 }, {
   "name": "Casie Spatari",
   "email": "cspatari9@java.com",
@@ -63,19 +63,19 @@
   "email": "jtrulocka@vistaprint.com",
   "SDT": "143-877-3213",
   "DoB": "20/12/2020",
-  "type": 0
+  "type": 2
 }, {
   "name": "Darryl Legerton",
   "email": "dlegertonb@icq.com",
   "SDT": "921-159-4605",
   "DoB": "21/09/2020",
-  "type": 0
+  "type": 4
 }, {
   "name": "Tory Willars",
   "email": "twillarsc@meetup.com",
   "SDT": "108-521-3469",
   "DoB": "28/08/2020",
-  "type": 1
+  "type": 2
 }, {
   "name": "Lovell Clappison",
   "email": "lclappisond@g.co",

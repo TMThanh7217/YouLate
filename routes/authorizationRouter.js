@@ -74,7 +74,7 @@ router.post('/sign-in', async (req, res) => {
         });
 
     let isMatch = await accountController.comparePassword(account.password, accountInstance.password)
-    //console.log("isMatch: " + isMatch);
+    console.log("isMatch: " + isMatch);
     if (isMatch) {
         req.session.user = await accountController.findOwnUserByUserId(accountInstance.userId);
         req.session.user.username = accountInstance.username;
