@@ -13,13 +13,11 @@ router.get('/', (req, res) => {
 router.post('/sign-up', async (req, res) => {
     let newAccount = {
         username: req.body.username,
-        password: req.body.pwd
+        password: req.body.pwd,
     };
 
     let confirmPassword = req.body.confirmpwd;
 
-    console.log(newAccount);
-    console.log("confirmPassword: " + confirmPassword);
 
     if (newAccount.password != confirmPassword)
         return res.json({
@@ -28,30 +26,31 @@ router.post('/sign-up', async (req, res) => {
         });
     
     let accountInstance = await accountController.findByUsername(newAccount.username);
-    console.log(accountInstance);
     if(accountInstance)
         return res.json({
             code: 400,
             message: 'Username already exist!'
         })
-
-    let newUser = {
-        name: "Unknown",
-        email: "Unknown@Host",
-        SDT: "Unknown",
-        DoB: "Unknown",
-        type: 4
-    };
-
+    
+    newAccount.type = 4
     try {
+        accountInstance = await accountController.createAccount(newAccount)
+        
+
+        let newUser = {
+            name: "Unknown",
+            email: "Unknown@Host",
+            SDT: "Unknown",
+            DoB: "Unknown",
+            accountId: accountInstance.id
+        };
+
         let userInstance = await userController.createUser(newUser);
-        console.log("userId: " + userInstance.id);
-        newAccount.userId = userInstance.id;
-        accountController.createAccount(newAccount);
         return res.json({
             code:200,
             message: 'Account created successfully!'
         });
+
     } catch(e) {
         res.json(e);
     }
@@ -63,21 +62,23 @@ router.post('/sign-in', async (req, res) => {
         password:  req.body.password
     };
 
-    let remember = req.body.remember;
+    let remember = req.body.remember === 'true';
     let accountInstance = await accountController.findByUsername(account.username);
 
-    //console.log(accountInstance);
     if (!accountInstance) 
         return res.json({
             code: 400,
             message: 'Invalid login, please try again'
         });
 
-    let isMatch = await accountController.comparePassword(account.password, accountInstance.password)
-    console.log("isMatch: " + isMatch);
+    let isMatch = accountController.comparePassword(account.password, accountInstance.password)
+    
     if (isMatch) {
-        req.session.user = await accountController.findOwnUserByUserId(accountInstance.userId);
+        req.session.cookie.maxAge = remember ? 30 * 24 * 60 * 60 * 1000 : null
+        console.log('cookie age: ' +  req.session.cookie.maxAge)
+        req.session.user = await userController.findByAccountId(accountInstance.id);
         req.session.user.username = accountInstance.username;
+
         //console.log(req.session.user);
         return res.json({
             code: 200,

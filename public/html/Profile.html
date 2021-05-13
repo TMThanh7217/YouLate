@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+        integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/courses.css">
+
+    <!-- Bootstrap DatePicker -->
+    <title>Bootstrap 4 DatePicker</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+    <div class="row no-gutters">
+        <div class="sidenav col-1">
+            <div class="line-container d-flex justify-content-center">
+                <div class="line"></div>
+            </div>
+            <a class="sidenav-brand" href="#">
+                <image class="img img-logo" src="../image/youlate_logo_sm.png"
+                    style="padding: 0; height: 4rem; width: auto;">
+            </a>
+            <div class="container d-flex flex-column justify-center">
+                <div class="line-container d-flex justify-content-center">
+                    <div class="line"></div>
+                </div>
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </div>
+                </a>
+                <div class="line-container d-flex justify-content-center">
+                    <div class="line"></div>
+                </div>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="far fa-2x fa-calendar-alt"></i>
+                        <span>Calendar</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-id-card-alt"></i>
+                        <span>Profile</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-users"></i>
+                        <span>Students</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-book"></i>
+                        <span>Courses</span>
+                    </div>
+                </a>
+
+                <a href="#" class="link" data-toggle="tooltip" data-placement="right" title="Dashboard">
+                    <div class="icon-container">
+                        <i class="fas fa-2x fa-chalkboard-teacher"></i>
+                        <span>Classes</span>
+                    </div>
+                </a>
+
+                <!-- <button class="dropdown-btn"><i class="fas fa-2x fa-th-list"></i><i class="fa ml-2 fa-caret-down"></i></button> -->
+
+                <!-- <div class="dropdown-container">
+                        <a href="#">Link 1</a>
+                        <a href="#">Link 2</a>
+                        <a href="#">Link 3</a>
+                    </div> -->
+            </div>
+        </div>
+
+        <div class="page-content col-11">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse"
+                    data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false"
+                    aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div id="collapseNavbar" class="collapse navbar-collapse">
+                    <!---navbar--collapse-on--->
+                    <form class="form-inline ml-auto">
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+                    </form>
+                    <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
+                </div>
+            </nav>
+
+            <div class="container-fluid shadow-default">
+                <h2 class="page-title">Profile</h2>
+
+                <form action="">
+                    <div class="container">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="username" class="form-label d-flex p-2">Username</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="username" disabled value="18127077">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <p for="password" class="d-flex p-2">Password</p>
+                                </div>
+                                <div class="col-8">
+                                    <a href="#" class="text-decoration-none">Change Password</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="name" class="form-label d-flex p-2">Your Name</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="name">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="email" class="form-label d-flex p-2">Email</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="email" class="form-control" id="email">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="phonenumber" class="form-label d-flex p-2">Phone Number</label>
+                                </div>
+                                <div class="col-8">
+                                    <input type="text" class="form-control" id="phonenumber">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="name" class="form-label d-flex p-2">Date Of Birth</label>
+                                </div>
+                                <div class="col-8">
+                                    <input id="datepicker" width="276" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="col-2">
+                                    <label for="name" class="form-label d-flex p-2">Type</label>
+                                </div>
+                                <div class="col-8">
+                                    <div class="form-check form-check-inline p-2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio1" value="option1" checked>
+                                        <label class="form-check-label" for="inlineRadio1">Student</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio2" value="option2" disabled>
+                                        <label class="form-check-label" for="inlineRadio2">Lecturer</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio3" value="option3" disabled>
+                                        <label class="form-check-label" for="inlineRadio3">TA</label>
+                                    </div>
+                                    <div class="form-check form-check-inline p-2">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="inlineRadio3" value="option3" disabled>
+                                        <label class="form-check-label" for="inlineRadio3">Admin</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary mb-3">Save</button>
+                    </div>
+                </form>
+
+            </div>
+
+            <footer class="text-center text-white">
+                <!-- Grid container -->
+                <div class="container pt-4">
+                    <!-- Section: Social media -->
+                    <section class="mb-4">
+                        <!-- Facebook -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-facebook-f"></i></a>
+
+                        <!-- Twitter -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-twitter"></i></a>
+
+                        <!-- Google -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-google"></i></a>
+
+                        <!-- Instagram -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-instagram"></i></a>
+
+                        <!-- Linkedin -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-linkedin"></i></a>
+                        <!-- Github -->
+                        <a class="btn btn-link btn-floating btn-lg text-dark m-1" href="#!" role="button"
+                            data-mdb-ripple-color="dark"><i class="fab fa-github"></i></a>
+                    </section>
+                    <!-- Section: Social media -->
+                </div>
+                <!-- Grid container -->
+
+                <!-- Copyright -->
+                <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2020 Copyright:
+                    <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4'
+        });
+    </script>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <!-- Optional JavaScript -->
+    <script src="../js/layout.js"></script>
+
+
+
+
+</body>
+
+</html>

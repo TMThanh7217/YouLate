@@ -1,10 +1,9 @@
 var controller = {};
 var bcrypt = require('bcrypt');
-const saltRound = 10;
+const saltRounds = 10;
 var models = require('../models');
 var Account = models.Account;
 const { QueryTypes } = require('sequelize');
-var userController = require('./userController');
 
 controller.getAll = async (query) => {
     let option = {
@@ -54,13 +53,10 @@ controller.findByUsername = username => {
 }
 
 controller.createAccount = account => {
-    bcrypt.genSalt(saltRound, (err, salt) => {
-		bcrypt.hash(account.password, salt, async function(err, hash) {
-			account.username = account.username.toLowerCase();
-			account.password = hash;
-			return await Account.create(account);
-		})
-	})
+    let salt = bcrypt.genSaltSync(saltRounds);
+    let hash = bcrypt.hashSync(account.password, salt);
+    account.password = hash
+    return Account.create(account)
 }
 
 controller.comparePassword = (pwd, accountPwd) => {
