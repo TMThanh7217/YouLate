@@ -4,12 +4,16 @@
     <div class="container d-flex flex-column justify-center">
         
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+        {{#if sidenav.dashboard}}
         <a href="/dashboard" class="link sidenav-link {{#if active.dashboard}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </div>
         </a>
+        {{/if}}
+
+        {{#if sidenav.calendar}}
         <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
         
         <a href="/calendar" class="link sidenav-link {{#if active.calendar}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
@@ -18,33 +22,42 @@
                 <span>Calendar</span>
             </div>
         </a>
-        
+        {{/if}}
+
+        {{#if sidenav.profile}}
         <a href="/profile" class="link sidenav-link {{#if active.profile}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-id-card-alt"></i>
                 <span>Profile</span>
             </div>
         </a>
+        {{/if}}
         
+        {{#if sidenav.students}}
         <a href="/students" class="link sidenav-link {{#if active.students}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-users"></i>
                 <span>Students</span>
             </div>
         </a>
-        
+        {{/if}}
+
+        {{#if sidenav.courses}}
         <a href="/courses" class="link sidenav-link {{#if active.courses}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-book"></i>
                 <span>Courses</span>
             </div>
         </a>
-        
+        {{/if}}
+
+        {{#if sidenav.classrooms}}
         <a href="/classrooms" class="link sidenav-link {{#if active.classrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-chalkboard-teacher"></i>
                 <span>Classrooms</span>
             </div>
-        </a>        
+        </a>
+        {{/if}}        
     </div>
 </div>

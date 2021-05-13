@@ -7,6 +7,8 @@ var models = require('./models');
 const bodyParser = require("body-parser")
 const cookieParser = require('cookie-parser');
 let session = require('express-session');
+let sidenavController = require('./controllers/sidenavController')
+
 
 // App Use
 app.use(express.static(__dirname + '/public'));
@@ -30,6 +32,7 @@ let hbs = exprHbs.create({
 });
 
 app.use((req, res, next) => {
+    res.locals.sidenav = req.session.user ? sidenavController.getSideNav(req.session.user.type) : {}
     res.locals.username = req.session.user ? req.session.user.username : "";
     res.locals.isLoggedIn = req.session.user ? true : false;
     console.log("username: " + res.locals.username);
