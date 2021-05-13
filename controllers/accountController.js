@@ -67,8 +67,4 @@ controller.comparePassword = (pwd, accountPwd) => {
     return bcrypt.compareSync(pwd, accountPwd)
 }
 
-controller.findOwnUserByUserId = userId => {
-    return userController.findById(userId);
-};
-
 module.exports = controller;

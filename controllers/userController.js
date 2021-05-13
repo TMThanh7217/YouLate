@@ -1,6 +1,7 @@
 var controller = {};
 var models = require('../models');
 var User = models.User;
+var accountController = require('./accountController');
 
 const { QueryTypes } = require('sequelize');
 
@@ -38,5 +39,9 @@ controller.findById = (id) => {
 controller.createUser = user => {
     return User.create(user);
 }
+
+controller.findOwnAccountByAccountId = accountId => {
+    return accountController.findById(accountId);
+};
 
 module.exports = controller;

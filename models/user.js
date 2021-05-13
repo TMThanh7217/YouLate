@@ -13,7 +13,7 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       User.belongsToMany(models.Classroom, { through: models.Classroom_User, foreignKey: 'userId' });
       User.belongsToMany(models.Attendance, { through: models.Attendance_User, foreignKey: 'userId' });
-      //User.hasOne(models.Account, { foreignKey: 'userId' });
+      User.belongsTo(models.Account, { foreignKey: 'accountId' });
       User.hasMany(models.Grade, { foreignKey: 'userId' });
       User.hasMany(models.Callendar, { foreignKey: 'userId' });
     }
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     email: DataTypes.STRING,
     SDT: DataTypes.STRING,
     DoB: DataTypes.STRING,
-    type: DataTypes.INTEGER
+    accountId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'User',
