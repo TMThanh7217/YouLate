@@ -46,9 +46,10 @@ app.set('view engine', 'hbs');
 // Routing here
 app.use('/', require('./routes/indexRouter'));
 app.use('/classrooms', require('./routes/classroomRouter'));
-app.use('/calendar', require('./routes/calendarRouter'))
-app.use('/authorization', require('./routes/authorizationRouter'))
-app.use('/courses', require('./routes/courseRouter'))
+app.use('/calendar', require('./routes/calendarRouter'));
+app.use('/authorization', require('./routes/authorizationRouter'));
+app.use('/courses', require('./routes/courseRouter'));
+app.use('/student', require('./routes/studentRouter'));
 
 // listen log
 app.listen(port, () => {

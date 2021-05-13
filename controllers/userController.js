@@ -22,7 +22,7 @@ controller.getAll = async (query) => {
 
 controller.findById = (id) => {
     let option = {
-        sql: 'SELECT * FROM "Users" WHERE id = :id',
+        sql: 'SELECT * FROM "Users" WHERE "id" = :id',
         plain: true, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -43,5 +43,30 @@ controller.createUser = user => {
 controller.findOwnAccountByAccountId = accountId => {
     return accountController.findById(accountId);
 };
+
+controller.findAllStudentBelongToLecturerId = lecturerId => {
+    let userJoinCondition = '"Users"."id" = "Classroom_Users"."userId"';
+    let classroomJoinCondition = '"Classrooms"."id" = "Classroom_Users"."classroomId"';
+    let accountJoinCondition = '"Users"."accountId" = "Accounts"."id"';
+
+    let option = {
+        sql: `SELECT * FROM "Users" JOIN "Classroom_Users" ON ${userJoinCondition}
+        JOIN "Classrooms" ON ${classroomJoinCondition} 
+        JOIN "Accounts" ON ${accountJoinCondition} 
+        WHERE "Accounts"."type" = 3 AND "Classrooms"."id" 
+        IN (SELECT "Classroom_Users"."classroomId" FROM "Classroom_Users"
+            WHERE "Classroom_Users"."userId" = :lecturerId )`,
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(option.sql, {
+        plain: option.plain,
+        raw: option.raw,
+        replacements: {lecturerId: lecturerId},
+        type: option.type
+    });
+}
 
 module.exports = controller;
