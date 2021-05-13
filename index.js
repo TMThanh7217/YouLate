@@ -16,7 +16,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(session({
-    cookie: { httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 },
+    cookie: { httpOnly: true, maxAge: null },
     secret: "S3cret",
     resave: false,
     saveUninitialized: false
@@ -35,7 +35,6 @@ app.use((req, res, next) => {
     res.locals.sidenav = req.session.user ? sidenavController.getSideNav(req.session.user.type) : {}
     res.locals.username = req.session.user ? req.session.user.username : "";
     res.locals.isLoggedIn = req.session.user ? true : false;
-    console.log("username: " + res.locals.username);
     next();
 });
 

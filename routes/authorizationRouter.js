@@ -63,10 +63,11 @@ router.post('/sign-in', async (req, res) => {
         password:  req.body.password
     };
 
-    let remember = req.body.remember;
+    let remember = req.body.remember === 'true';
     let accountInstance = await accountController.findByUsername(account.username);
 
-    //console.log(accountInstance);
+    console.log("body.remember: " + req.body.remember)
+    console.log(remember)
     if (!accountInstance) 
         return res.json({
             code: 400,
@@ -76,6 +77,8 @@ router.post('/sign-in', async (req, res) => {
     let isMatch = await accountController.comparePassword(account.password, accountInstance.password)
     console.log("isMatch: " + isMatch);
     if (isMatch) {
+        req.session.cookie.maxAge = remember ? 30 * 24 * 60 * 60 * 1000 : null
+        console.log('cookie age: ' +  req.session.cookie.maxAge)
         req.session.user = await accountController.findOwnUserByUserId(accountInstance.userId);
         req.session.user.username = accountInstance.username;
         //console.log(req.session.user);

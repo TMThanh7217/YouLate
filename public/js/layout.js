@@ -48,18 +48,18 @@ $(function() {
 
   // button signin in log in page
   $('#btnFormSignIn').on('click', () => {
-    let account = {
+    let data = {
       username: $('#inputSignInUsername').val(),
       password: $('#inputSignInPwd').val(),
-      remember: $('checkSignInRemember').val()
+      remember: $('#checkSignInRemember').is(':checked') 
     };
 
-    console.log(account);
+    console.log(data);
     let url = "/authorization/sign-in";
     $.ajax({
       url: url,
       type: 'POST',
-      data: account,
+      data: data,
       success: result => {
         let signInAlert = $('#signInAlert')
         let messageElement = $('#signInMessage')
