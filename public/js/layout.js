@@ -1,20 +1,19 @@
 /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
 
-function dropdownScript() {
-  let dropdown = $("dropdown-btn")
+$(function() {
+  // Setup dropdown
   let dropdownDisplayList = [ "none", "block"]
   let dropdownDisplayTrigger = 0;
-  for (let i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
-      this.classList.toggle("active")
-      var dropdownContent = this.nextElementSibling;
+  let dropdown = $(".dropdown-btn")
+  dropdown.each(() => {
+    $(this).on('click', () => {
+      $(this).toggleClass("sidenav-link-active")
+      var dropdownContent = $(this).next();
       dropdownDisplayTrigger = (dropdownDisplayTrigger + 1) % 2
-      dropdownContent.style.display = dropdownDisplayList[dropdownDisplayTrigger]
-    });
-  }
-}
+      dropdownContent.css('display', dropdownDisplayList[dropdownDisplayTrigger])
+    })
+  })
 
-$(function() {
   // Setup signin, signup form switch Links
   $('.form-signin').css('display', 'block')
   $('.form-signup').css('display', 'none')
@@ -145,5 +144,4 @@ $(function() {
   };
   myCalendar.fullCalendar( 'renderEvent', myEvent );
 
-  dropdownScript();
 });

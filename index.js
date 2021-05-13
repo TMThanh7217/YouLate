@@ -32,6 +32,7 @@ let hbs = exprHbs.create({
 });
 
 app.use((req, res, next) => {
+    console.log(req.session.user)
     res.locals.sidenav = req.session.user ? sidenavController.getSideNav(req.session.user.type) : {}
     res.locals.username = req.session.user ? req.session.user.username : "";
     res.locals.isLoggedIn = req.session.user ? true : false;

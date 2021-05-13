@@ -5,9 +5,7 @@ module.exports = {
            case 0: {//ADMIN
               sidenav.dashboard = true
               sidenav.profile = true
-              sidenav.courses = true
-              sidenav.classrooms = true
-              sidenav.students = true
+              sidenav.manage = true
               break
            }
            case 1: case 2: {// MAIN LECTURE, SUB LECTURE

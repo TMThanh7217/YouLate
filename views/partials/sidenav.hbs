@@ -11,6 +11,7 @@
                 <span>Dashboard</span>
             </div>
         </a>
+        <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
         {{/if}}
 
         {{#if sidenav.calendar}}
@@ -58,6 +59,39 @@
                 <span>Classrooms</span>
             </div>
         </a>
-        {{/if}}        
+        {{/if}}
+
+        {{#if sidenav.manage}}
+        <br>
+        <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+        <p class="w-100 text-center">Management</p>
+        
+        <a href="/manage/classrooms" class="link sidenav-link {{#if active.classrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <div class="icon-container">
+                <i class="fas fa-2x fa-chalkboard-teacher"></i>
+                <span>Classrooms</span>
+            </div>
+        </a>
+        <a href="/manage/courses" class="link sidenav-link {{#if active.classrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <div class="icon-container">
+                <i class="fas fa-2x fa-book"></i>
+                <span>Courses</span>
+            </div>
+        </a>
+
+        <a href="/manage/calendars" class="link sidenav-link {{#if active.classrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <div class="icon-container">
+                <i class="fas fa-2x fa-calendar-alt"></i>
+                <span>Calendars</span>
+            </div>
+        </a>
+        
+        <a href="/manage/users" class="link sidenav-link {{#if active.classrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <div class="icon-container">
+                <i class="fas fa-2x fa-users"></i>
+                <span>Users</span>
+            </div>
+        </a>
+        {{/if}}
     </div>
 </div>

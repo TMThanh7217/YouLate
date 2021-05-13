@@ -78,6 +78,7 @@ router.post('/sign-in', async (req, res) => {
         console.log('cookie age: ' +  req.session.cookie.maxAge)
         req.session.user = await userController.findByAccountId(accountInstance.id);
         req.session.user.username = accountInstance.username;
+        req.session.user.type = accountInstance.type
 
         //console.log(req.session.user);
         return res.json({
