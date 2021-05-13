@@ -12,8 +12,8 @@ module.exports = {
       let salt = bcrypt.genSaltSync(saltRound);
       let hash = bcrypt.hashSync(data.password, salt);
       data.password = hash;
-      console.log(data.username);
-      console.log(data.password);
+      /*console.log(data.username);
+      console.log(data.password);*/
       data.createdAt = Sequelize.literal('NOW()');
       data.updatedAt = Sequelize.literal('NOW()');
     }
