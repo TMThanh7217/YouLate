@@ -53,7 +53,6 @@ $(function() {
       remember: $('#checkSignInRemember').is(':checked') 
     };
 
-    console.log(data);
     let url = "/authorization/sign-in";
     $.ajax({
       url: url,
