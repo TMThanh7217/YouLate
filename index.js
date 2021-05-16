@@ -32,7 +32,7 @@ let hbs = exprHbs.create({
 });
 
 app.use((req, res, next) => {
-    console.log(req.session.user)
+    res.locals.user = req.session.user ? req.session.user : {}
     res.locals.sidenav = req.session.user ? sidenavController.getSideNav(req.session.user.type) : {}
     res.locals.username = req.session.user ? req.session.user.username : "";
     res.locals.isLoggedIn = req.session.user ? true : false;
@@ -50,6 +50,7 @@ app.use('/calendar', require('./routes/calendarRouter'));
 app.use('/authorization', require('./routes/authorizationRouter'));
 app.use('/courses', require('./routes/courseRouter'));
 app.use('/student', require('./routes/studentRouter'));
+app.use('/manage', require('./routes/manageRouter'))
 
 // listen log
 app.listen(port, () => {

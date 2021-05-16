@@ -53,7 +53,7 @@ Color {
   padding-left: 0;
 }
 
-[class*="col-"]{
+.row.no-gutters > [class*="col-"]{
     margin-bottom: -99999px;
     padding-bottom: 99999px;
 }
@@ -192,4 +192,20 @@ footer {
 
 .sidenav>.container>a.link.sidenav-link.sidenav-link-active {
     color:#28a745;
+}
+
+.btn-edit {
+    color: #17a2b8;
+}
+
+.btn-handle:hover {
+    color: tan;
+}
+
+.btn-remove {
+    color: #dc3545;
+}
+
+.btn-handle + .btn-handle {
+    margin-left: 0.2rem;
 }
