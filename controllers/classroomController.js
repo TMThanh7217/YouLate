@@ -81,4 +81,32 @@ controller.createClassroom = async (classrom) => {
     return await Classroom.create(classrom);
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeClassroom = async (classroom) => {
+    let option = {
+        sql: `Update "Classrooms" 
+                SET name = ${classroom.name}, startDate = ${classroom.startDate}, endDate = ${classroom.endDate},
+                course = ${classroom.course}, status = ${classroom.status}, hours = ${classroom.hours}
+                WHERE "id" = ${classroom.id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeClassroom = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Classrooms" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;

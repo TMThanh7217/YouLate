@@ -38,4 +38,32 @@ controller.createGrade = async (grade) => {
     return await Grade.create(evegradent);
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeGrade = async (grade) => {
+    let option = {
+        sql: `Update "Grades" 
+                SET "total" = ${grade.total}
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: grade.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeGrade = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Grades" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;
