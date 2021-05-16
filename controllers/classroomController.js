@@ -42,7 +42,7 @@ controller.getAll = async (query) => {
     });
 };
 
-controller.findById = async (id) => {
+controller.getById = async (id) => {
     let option = {
         sql: 'SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" where "id" = :id',
         plain: true, // return all records if false, else return the 1st record
