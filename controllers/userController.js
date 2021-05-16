@@ -8,8 +8,15 @@ const { QueryTypes } = require('sequelize');
 const { Sequelize } = require('../models');
 
 controller.getAll = async (query) => {
+    let limit;
+    let offset;
+    if (query.limit > 0){
+        limit = query.limit;
+        offset = query.limit * (query.page - 1);
+    }
+
     let option = {
-        sql: 'SELECT * FROM "Users"',
+        sql: `SELECT * FROM "Users" LIMIT ${limit} OFFSET ${offset}`,
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -110,6 +117,18 @@ controller.findAllStudentBelongToLecturerId = lecturerId => {
         plain: option.plain,
         raw: option.raw,
         replacements: {lecturerId: lecturerId},
+        type: option.type
+    });
+}
+
+controller.deleteUserById = id => {
+    let option = {
+        sql: `DELETE FROM "Users" WHERE "id" = :id`,
+        type: QueryTypes.DELETE
+    }
+
+    return models.sequelize.query(option.sql, {
+        replacements: id,
         type: option.type
     });
 }

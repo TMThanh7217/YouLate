@@ -36,6 +36,22 @@ controller.findById = (id) => {
     });
 };
 
+controller.findAttributeById = (id, attribute) => {
+    let option = {
+        sql: `SELECT ${attribute} FROM "Accounts" WHERE "id" = :id`,
+        plain: true, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(option.sql, {
+        plain: option.plain,
+        raw: option.raw,
+        replacements: { id: id },
+        type: option.type
+    });
+};
+
 controller.findByUsername = username => {
     let option = {
         sql: 'SELECT * FROM "Accounts" WHERE "username" = :username',
