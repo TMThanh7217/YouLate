@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var classroomController = require('../controllers/classroomController')
 let authorizationAPI = require('../API/authorization-api')
+let userController = require('../controllers/userController')
 
 router.get('/', (req, res) => {
     if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
@@ -24,6 +25,21 @@ router.get('/', (req, res) => {
             })
         })
         .catch(err => res.send("Error: " + err));
- })
+})
+
+router.get('/:classroomId/attendances', async (req, res) => {
+    let classroomId = req.params.classroomId
+    let students = await userController.getStudentsByClassroomId(classroomId)
+    let lectures = await userController.getLecturesByClassroomId(classroomId)
+    res.render('attendance', {
+        pageTitle: "Attendances",
+        active: {
+            classrooms: true
+        },
+        students: students,
+        lectures: lectures,
+        classroomId: classroomId
+    })
+})
 
 module.exports = router;

@@ -60,7 +60,7 @@ controller.getById = async (id) => {
 
 controller.getByLectureId = id => {
     let sql = ''
-    sql += 'SELECT "Classrooms"."name", "Classrooms"."startDate", "Classrooms"."endDate", "Classrooms"."course", "Classrooms"."status", "Classrooms"."hours"'
+    sql += 'SELECT "Classrooms"."id", "Classrooms"."name", "Classrooms"."startDate", "Classrooms"."endDate", "Classrooms"."course", "Classrooms"."status", "Classrooms"."hours"'
     sql += 'FROM "Classrooms" JOIN "Classroom_Users" ON ("Classrooms"."id" = "Classroom_Users"."classroomId")'
     sql += `WHERE "Classroom_Users"."userId" = ${id}`
     let option = {
