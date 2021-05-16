@@ -133,6 +133,85 @@ $(function() {
       right: "timelineDay,timelineThreeDays,agendaWeek,month"
     }
   })
+
+  // back
+  $('.btn-back').on('click', ()=>{
+    window.history.back()
+  })
+
+  // 
+  $('#btnSaveAttendances').on('click', event =>{
+    let target = $(event.target)
+    let prevText = target.text()
+    target.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>')
+    let attendanceRows = $('.attendance-row')
+    let rowsNeedCheck = attendanceRows.length
+    let attendances = attendanceRows.find('.btn-attendance-active')
+    let rowsChecked = attendances.length
+    if (rowsChecked == rowsNeedCheck) {
+      attendancesData = {list:[]}
+      attendanceRows.each((_, row) => {
+        row = $(row)
+        attendancesData.list.push({
+          userId: row.data('userId'),
+          attendanceType: row.find('.btn-attendance-active').data('attendanceType') 
+        })
+      })
+      $.ajax({
+        url: window.location.pathname,
+        type: 'POST',
+        data: attendancesData,
+        success: result => {
+          alert(result.message)
+          target.html(prevText)
+        }
+      })
+    }
+    else alert(`Need check all members includes both lectures & students. Remaining ${rowsNeedCheck - rowsChecked}`)
+  })
+
+  $('#btnSaveAndBackAttendances').on('click', event =>{
+    let target = $(event.target)
+    target.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>')
+    let attendanceRows = $('.attendance-row')
+    let rowsNeedCheck = attendanceRows.length
+    let attendances = attendanceRows.find('.btn-attendance-active')
+    let rowsChecked = attendances.length
+    if (rowsChecked == rowsNeedCheck) {
+      attendancesData = {list:[]}
+      attendanceRows.each((_, row) => {
+        row = $(row)
+        attendancesData.list.push({
+          userId: row.data('userId'),
+          attendanceType: row.find('.btn-attendance-active').data('attendanceType') 
+        })
+      })
+      $.ajax({
+        url: window.location.pathname,
+        type: 'POST',
+        data: attendancesData,
+        success: (result) => {
+          alert(result.message)
+          window.history.back()
+        }
+      })
+    }
+    else alert(`Need check all members includes both lectures & students. Remaining ${rowsNeedCheck - rowsChecked}`)
+  })
+
+  //
+  $('.btn-attendance').on('click', event => {
+    // clicked icon not a element so ...
+    let targetParent = $(event.target).parent()    
+    
+    // add + remove class active
+    if(!targetParent.hasClass('btn-attendance-active')) targetParent.addClass('btn-attendance-active')
+    else targetParent.removeClass('btn-attendance-active')
+    targetParent.siblings().each((_, sib) => {
+      if($(sib).hasClass('btn-attendance-active')) $(sib).removeClass('btn-attendance-active')
+    })
+  })
+
   var myCalendar = $('#calendar'); 
   myCalendar.fullCalendar();
   var myEvent = {

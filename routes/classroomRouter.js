@@ -42,4 +42,13 @@ router.get('/:classroomId/attendances', async (req, res) => {
     })
 })
 
+router.post('/:classroomId/attendances', async (req, res) => {
+    let classroomId = req.params.classroomId
+    let data = req.body.list
+    console.log(data)
+    res.json({
+        message:'Checking attendances Successfully!!!'
+    })
+})
+
 module.exports = router;

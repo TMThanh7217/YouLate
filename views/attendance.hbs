@@ -97,13 +97,13 @@
         </thead>
         <tbody>
             {{#each students}}
-            <tr>
+            <tr class='attendance-row' data-user-id={{this.id}}>
                 <th scope="row">{{this.name}}</th>
                 <td>
-                    <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                    <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                    <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
                 </td>
                 <td>{{this.SDT}}</td>
                 <td>{{this.email}}</td>
@@ -124,13 +124,13 @@
         </thead>
         <tbody>
             {{#each lectures}}
-            <tr>
+            <tr class='attendance-row' data-user-id={{this.id}}>
                 <th scope="row">{{this.name}}</th>
                 <td>
-                    <button class="btn btn-sm btn-check"><i class="fas fa-check"></i></button>
-                    <button class="btn btn-sm btn-clock"><i class="far fa-clock"></i></button>
-                    <button class="btn btn-sm btn-desc"><i class="fas fa-file-alt"></i></button>
-                    <button class="btn btn-sm btn-late"><i class="fas fa-ban"></i></button>
+                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
                 </td>
                 <td>{{this.SDT}}</td>
                 <td>{{this.email}}</td>
@@ -140,8 +140,8 @@
     </table>
 
     <div class="container d-flex justify-content-end attendance-btn-group">
-        <button class="btn btn-secondary attendance-btn-group__btn">Back</button>
-        <button class="btn btn-secondary attendance-btn-group__btn">Save</button>
-        <button class="btn btn-secondary attendance-btn-group__btn">Save & Exit</button>
+        <button class="btn btn-secondary btn-back attendance-btn-group__btn">Back</button>
+        <button id='btnSaveAttendances' class="btn btn-secondary attendance-btn-group__btn">Save</button>
+        <button id= 'btnSaveAndBackAttendances' class="btn btn-secondary attendance-btn-group__btn">Save & Back</button>
     </div>
 </div>
