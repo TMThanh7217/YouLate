@@ -4,15 +4,22 @@ var Course = models.Course;
 const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
+    let limit;
+    let offset;
+    if (query.limit > 0){
+        limit = query.limit;
+        offset = query.limit * (query.page - 1);
+    }
+
     let option = {
-        sql: 'SELECT * FROM "Courses"',
+        sql: `SELECT * FROM "Courses" LIMIT ${limit} OFFSET ${offset}`,
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
     }
 
     return await models.sequelize.query(option.sql, {
-        plain: option.plain,
+        plain: option.plain,    
         raw: option.raw,
         type: option.type
     });

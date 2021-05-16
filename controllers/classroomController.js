@@ -21,8 +21,15 @@ controller.getAll = async (query) => {
             .catch(err => reject(new Error(err)));
     });*/
     // example sql: SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" AS "Classroom";
+    let limit;
+    let offset;
+    if (query.limit > 0){
+        limit = query.limit;
+        offset = query.limit * (query.page - 1);
+    }
+
     let option = {
-        sql: 'SELECT * FROM "Classrooms"',
+        sql: `SELECT * FROM "Classrooms" LIMIT ${limit} OFFSET ${offset}`,
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
