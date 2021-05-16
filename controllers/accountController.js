@@ -79,4 +79,32 @@ controller.comparePassword = (pwd, accountPwd) => {
     return bcrypt.compareSync(pwd, accountPwd)
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeAccount = async (account) => {
+    let option = {
+        sql: `Update "Accounts" 
+                SET username = ${account.username}, password = ${account.password}, type = ${account.account} 
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: account.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeAccount = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Accounts" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;

@@ -133,4 +133,31 @@ controller.deleteUserById = id => {
     });
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeUser = async (user) => {
+    let option = {
+        sql: `Update "Users" 
+                SET "name" = ${user.name}, "email" = ${user.email}, "SDT" = ${user.SDT}, "DoB" = ${user.DoB},
+                WHERE "id" = ${user.id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeUser = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Users" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;
