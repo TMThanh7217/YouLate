@@ -58,6 +58,25 @@ controller.getById = async (id) => {
     });
 };
 
+controller.getByLectureId = id => {
+    let sql = ''
+    sql += 'SELECT "Classrooms"."name", "Classrooms"."startDate", "Classrooms"."endDate", "Classrooms"."course", "Classrooms"."status", "Classrooms"."hours"'
+    sql += 'FROM "Classrooms" JOIN "Classroom_Users" ON ("Classrooms"."id" = "Classroom_Users"."classroomId")'
+    sql += `WHERE "Classroom_Users"."userId" = ${id}`
+    let option = {
+        sql: sql,
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(option.sql, {
+        plain: option.plain,
+        raw: option.raw,
+        type: option.type
+    });
+}
+
 controller.createClassroom = async (classrom) => {
     return await Classroom.create(classrom);
 }

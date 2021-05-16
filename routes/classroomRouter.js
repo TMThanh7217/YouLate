@@ -1,8 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var classroomController = require('../controllers/classroomController');
+var classroomController = require('../controllers/classroomController')
+let authorizationAPI = require('../API/authorization-api')
 
 router.get('/', (req, res) => {
+    if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
+
     if (req.query.limit == null || isNaN(req.query.limit))
         req.query.limit = 5;
 
@@ -10,7 +13,7 @@ router.get('/', (req, res) => {
         req.query.page = 1;
 
     classroomController
-        .getAll(req.query)
+        .getByLectureId(res.locals.user.id)
         .then(data => {
             res.render('classroom', {
                 pageTitle: 'Classrooms',
