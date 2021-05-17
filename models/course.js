@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Course.belongsTo(models.Classroom, { foreignKey: 'courseId' });
+      Course.belongsTo(models.Classroom, { foreignKey: 'courseId' }, { onDelete: 'CASCADE' });
     }
   };
   Course.init({
