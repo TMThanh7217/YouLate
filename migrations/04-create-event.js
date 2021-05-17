@@ -20,6 +20,9 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
+      classroomId: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

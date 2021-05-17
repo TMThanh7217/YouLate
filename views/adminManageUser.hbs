@@ -55,13 +55,16 @@
             {{#each users}}
             <tr>
                 <td><a class="text-decoration-none">{{this.id}}</a></td>
-                <td>{{this.name}}</td>
-                <td>{{this.email}}</td>
-                <td>{{this.SDT}}</td>
-                <td>{{this.DoB}}</td>
-                <td>{{this.type}}</td>
+                <td name='editName'>{{this.name}}</td>
+                <td name='editEmail'>{{this.email}}</td>
+                <td name='editSDT'>{{this.SDT}}</td>
+                <td name='editDoB'>{{this.DoB}}</td>
+                <td name='editType'>{{this.type}}</td>
     
-                <td><button type="button" class="btn btn-outline-secondary"><i class="far fa-edit"></i></button>
+                <td>
+                    <button id="btn-edit-user" type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#editUserModal">
+                    
+                    <i class="far fa-edit"></i></button>
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal"
                         data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
 
@@ -175,3 +178,68 @@
     </div>
 </div>
 
+{{!-- modal edit user --}}
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="name">Name</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputEditUserName" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="email">Email</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputEditUserEmail" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for = "phoneNum">PhoneNumber</span>
+                                </div>
+                                <input type="email" class="form-control" id="inputEditUserPhoneNumber" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="dob">Date Of Birth</span>
+                                </div>
+                                <input type="text" class="form-control" id="inputEditUserDoB" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
