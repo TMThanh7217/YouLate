@@ -42,13 +42,16 @@ controller.createGrade = async (grade) => {
 controller.updateAllAttributeGrade = async (grade) => {
     let option = {
         sql: `Update "Grades" 
-                SET "total" = ${grade.total}
+                SET "total" = :total
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
-        replacements: {id: grade.id},
+        replacements: {
+            id: grade.id,
+            total: grade.total
+        },
         type: option.type
     });
 }
@@ -56,12 +59,13 @@ controller.updateAllAttributeGrade = async (grade) => {
 controller.updateOneAttributeGrade = async (id, attribute, value) => {
     let option = {
         sql: `Update "Grades" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: { value: value},
         type: option.type
     });
 }

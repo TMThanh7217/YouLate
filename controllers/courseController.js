@@ -49,13 +49,18 @@ controller.createCourse = async (course) => {
 controller.updateAllAttributeCourse = async (course) => {
     let option = {
         sql: `Update "Courses" 
-                SET "name" = ${course.name}, "code" = ${course.code}, "description" = ${course.description} 
+                SET "name" = :name, "code" = :code, "description" = :description
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
-        replacements: {id: course.id},
+        replacements: {
+            id: course.id,
+            name: course.name,
+            code: course.code,
+            description: course.description
+        },
         type: option.type
     });
 }
@@ -63,12 +68,13 @@ controller.updateAllAttributeCourse = async (course) => {
 controller.updateOneAttributeCourse = async (id, attribute, value) => {
     let option = {
         sql: `Update "Courses" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: { value: value},
         type: option.type
     });
 }

@@ -42,13 +42,16 @@ controller.createAttendance = async (attendance) => {
 controller.updateAllAttributeAttendance = async (attendance) => {
     let option = {
         sql: `Update "Attendances" 
-                SET "date" = ${attendance.date}
+                SET "date" = :date
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
-        replacements: {id: attendance.id},
+        replacements: {
+            id: attendance.id,
+            date: attendance.date
+        },
         type: option.type
     });
 }
@@ -56,12 +59,13 @@ controller.updateAllAttributeAttendance = async (attendance) => {
 controller.updateOneAttributeAttendance = async (id, attribute, value) => {
     let option = {
         sql: `Update "Attendances" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: { value: value },
         type: option.type
     });
 }

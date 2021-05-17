@@ -1,61 +1,46 @@
 [{
   "classroomId": 5,
-  "userId": 2,
-  "studentQuantity": 1
+  "userId": 2
 }, {
   "classroomId": 9,
-  "userId": 7,
-  "studentQuantity": 11
+  "userId": 7
 }, {
   "classroomId": 5,
-  "userId": 6,
-  "studentQuantity": 1
+  "userId": 6
 }, {
   "classroomId": 5,
-  "userId": 4,
-  "studentQuantity": 7
+  "userId": 4
 }, {
   "classroomId": 3,
-  "userId": 3,
-  "studentQuantity": 23
+  "userId": 3
 }, {
   "classroomId": 5,
-  "userId": 3,
-  "studentQuantity": 15
+  "userId": 3
 }, {
   "classroomId": 6,
-  "userId": 4,
-  "studentQuantity": 17
+  "userId": 4
 }, {
   "classroomId": 4,
-  "userId": 4,
-  "studentQuantity": 9
+  "userId": 4
 }, {
   "classroomId": 3,
-  "userId": 5,
-  "studentQuantity": 17
+  "userId": 5
 }, {
   "classroomId": 5,
-  "userId": 9,
-  "studentQuantity": 17
+  "userId": 9
 }, {
   "classroomId": 5,
-  "userId": 7,
-  "studentQuantity": 24
+  "userId": 7
 }, {
   "classroomId": 10,
-  "userId": 9,
-  "studentQuantity": 10
+  "userId": 9
 }, {
   "classroomId": 9,
-  "userId": 4,
-  "studentQuantity": 12
+  "userId": 4
 }, {
   "classroomId": 6,
-  "userId": 3,
-  "studentQuantity": 27
+  "userId": 3
 }, {
   "classroomId": 5,
-  "userId": 1,
-  "studentQuantity": 22
+  "userId": 1
 }]

@@ -20,7 +20,8 @@ module.exports = (sequelize, DataTypes) => {
     startTime: DataTypes.STRING,
     endTime: DataTypes.STRING,
     title: DataTypes.STRING,
-    classroomId: DataTypes.INTEGER
+    classroomId: DataTypes.INTEGER,
+    edit: DataTypes.BOOLEAN
   }, {
     sequelize,
     modelName: 'Event',
