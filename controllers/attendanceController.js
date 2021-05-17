@@ -56,6 +56,19 @@ controller.updateAllAttributeAttendance = async (attendance) => {
     });
 }
 
+controller.getAttendanceTypeByEventIdAndUserId = (eventId, userId) => {
+    let sql = ''
+    sql += ' SELECT "Event_Users"."type"'
+    sql += ' FROM "Event_Users"'
+    sql += `WHERE "Event_Users"."eventId" = ${eventId} AND "Event_Users"."userId" = ${userId}`
+    let option = {
+        plain: true, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+    return models.sequelize.query(sql, option)
+}
+
 controller.updateOneAttributeAttendance = async (id, attribute, value) => {
     let option = {
         sql: `Update "Attendances" 

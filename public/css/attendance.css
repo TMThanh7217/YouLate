@@ -2,11 +2,15 @@
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    height: 5rem;
 }
 .testimonial-group > .slider > .slider-item {
+    transition:.3s;
     display: inline-block;
     width: 20%;
-    border: 1px solid black;
+    color: white;
+    font-weight: bold;
+    background-color: green;
 }
 .slider .slider-item * {
     display: block;
@@ -44,4 +48,16 @@
 
 .btn-attendance + .btn-attendance {
     margin-left: 0.4rem;
+}
+
+.testimonial-group > .slider > .slider-item:hover {
+    cursor: pointer;
+    font-size: x-large;
+    box-shadow: 0 0 11px rgba(33,33,33,1); 
+}
+
+.testimonial-group > .slider > .slider-item.slider-item-active {
+    cursor: pointer;
+    font-size: x-large;
+    box-shadow: 0 0 11px rgba(33,33,33,1); 
 }
