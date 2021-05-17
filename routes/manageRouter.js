@@ -18,7 +18,7 @@ router.get('/courses', (req, res) => {
         authorizationAPI.renderAuthorizationError(res)
 
     coursesController
-        .getAll()
+        .getAll(req.query)
         .then(data => {
             res.render('courses', {
                 pageTitle: 'Manage - Courses',
