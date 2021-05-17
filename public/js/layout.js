@@ -251,7 +251,30 @@ $(function() {
 
   })
 
-
+  $('.item-event').on('click', e => {
+    let target = $(e.target)
+    let eventDataEl = target.parentsUntil('#eventsSlider')
+    let eventId = eventDataEl.data('eventId')
+    console.log('cc')
+    $.ajax({
+      url: '/data/attendances',
+      method: 'POST',
+      data: {
+        eventId: eventId
+      },
+      success: result => {
+        let data = result.data
+        for(let user of data) {
+          let attendanceRow = $(`tr[data-user-id=${user.id}].attendance-row`)
+          let btnAttendance = attendanceRow.find('td>a.btn-attendance').each((_,btn) => {
+            btn = $(btn)
+            if(btn.hasClass('btn-attendance-active')) btn.removeClass('btn-attendance-active')
+            if(btn.data('attendanceType') == user.attendanceType) btn.addClass('btn-attendance-active')
+          })
+        }
+      }
+    })
+  })
 
   var myCalendar = $('#calendar'); 
   myCalendar.fullCalendar();

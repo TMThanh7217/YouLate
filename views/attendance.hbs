@@ -2,13 +2,13 @@
     <h2 class="page-title">Class {{classroomId}}'s Attendances</h2>
     <br>
     <h3>Date</h3>        
-    <div id='eventDatesSlider' class="slider text-center mx-auto">
+    <div id='eventsSlider' class="slider text-center mx-auto" data-classroom-id={{classroomId}}>
         {{#each events}}
-        <div class="slider-item {{#if this.active}}slider-item-active{{/if}}">
-            <span class="date slider-item__date">
+        <div class="item-event slider-item {{#if this.active}}slider-item-active{{/if}}" data-event-id={{this.id}}>
+            <span class="date event-date slider-item__date">
                 {{this.date}}
             </span>
-            <span class="slider-item__number">
+            <span class="event-id slider-item__number">
                 ({{this.id}})
             </span>
         </div>
