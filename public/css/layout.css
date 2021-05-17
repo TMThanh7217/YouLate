@@ -209,3 +209,43 @@ footer {
 .btn-handle + .btn-handle {
     margin-left: 0.2rem;
 }
+
+/* enable absolute positioning */
+.inner-addon { 
+    position: relative; 
+}
+
+/* style icon */
+.inner-addon i {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+/* align icon */
+.left-addon i  { left:  0px;}
+.right-addon i { right: 0px;}
+
+/* add padding  */
+.left-addon input  { padding-left:  30px; }
+.right-addon input { padding-right: 30px; }
+
+.btn-manage {
+    opacity: 0.4;
+}
+
+.btn-manage:hover {
+    opacity: 1;
+}
+
+.btn-manage + .btn-manage {
+    margin-left: 0.2rem;
+}
+
+.btn-manage-edit {
+    color:#28a745
+}
+
+.btn-manage-remove {
+    color:#dc3545
+}
