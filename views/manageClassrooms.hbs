@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 <div class="page-content col-11">
+=======
+<div class="page-content">
+>>>>>>> feature/my_update
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div id="collapseNavbar" class="collapse navbar-collapse"> <!---navbar--collapse-on--->
@@ -86,6 +90,7 @@
                 </tr>
             </thead>
             <tbody>
+<<<<<<< HEAD
                 <tr>
                     <th scope="row">HHN001</th>
                     <td>Hi, Huh Nei. Who I Knee</td>
@@ -140,6 +145,25 @@
                     <td>13/5/2022</td>
                     <td>49</td>
                 </tr> --}}
+=======
+                {{!-- name: DataTypes.STRING,
+                    startDate: DataTypes.STRING,
+                    endDate: DataTypes.STRING,
+                    course: DataTypes.STRING,
+                    status: DataTypes.STRING,
+                    hours: DataTypes.INTEGER,
+                    courseId: DataTypes.INTEGER --}}
+                {{#each class}}
+                <tr>
+                    <th scope="row">{{this.name}}</th>
+                    <td>{{this.course}}</td>
+                    <td>{{this.status}}</td>
+                    <td>{{this.startDate}}</td>
+                    <td>{{this.endDate}}</td>
+                    <td>{{this.hours}}</td>
+                </tr>
+                {{/each}}
+>>>>>>> feature/my_update
             </tbody>
             </table>
         
@@ -230,4 +254,8 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 <!-- Optional JavaScript -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<<<<<<< HEAD
 <script src="../js/layout.js"></script>
+=======
+<script src="../js/layout.js"></script>
+>>>>>>> feature/my_update

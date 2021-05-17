@@ -78,18 +78,29 @@ router.get('/classrooms', (req, res) => {
     classController
         .getAll(req.query)
         .then(data => {
+<<<<<<< HEAD
             console.log(data);
             res.render('manageClassrooms', {
                 pageTitle: 'Manage - Classrooms',
                 classes: data,
                 active: {
                     manageClassrooms:true
+=======
+            res.render('manageClassrooms', {
+                pageTitle: 'Manage - Classroom',
+                class: data,
+                active: {
+                    manageClasses:true
+>>>>>>> feature/my_update
                 },
                 manageRight: true
             })
         })
         .catch(err => res.send(err))
+<<<<<<< HEAD
 
+=======
+>>>>>>> feature/my_update
 })
 
 module.exports = router;
