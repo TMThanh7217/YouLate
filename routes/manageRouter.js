@@ -14,11 +14,11 @@ router.get('/courses', (req, res) => {
     if (req.query.page == null || isNaN(req.query.page))
         req.query.page = 1;
 
-    if (res.locals.user.type != authorizationAPI.ADMIN) 
-        authorizationAPI.renderAuthorizationError(res)
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res)
 
     coursesController
-        .getAll()
+        .getAll(req.query)
         .then(data => {
             res.render('courses', {
                 pageTitle: 'Manage - Courses',
@@ -78,7 +78,7 @@ router.get('/classrooms', (req, res) => {
     classController
         .getAll(req.query)
         .then(data => {
-            res.render('manageClassrooms', {
+            res.render('classrooms', {
                 pageTitle: 'Manage - Classroom',
                 class: data,
                 active: {

@@ -217,6 +217,26 @@ $(function() {
     })
   })
 
+  $('.btn-edit-course').on('click', event =>{
+    let target = $(event.target)
+    let idRow = target.parentsUntil('tbody', 'tr')
+    let data = {}
+    let dataRows = target.parentsUntil('tr', 'td,th').siblings().each((_,sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    data.id = Number(idRow.data('id'))
+
+    $('#inputEditCourseName').attr("placeholder", data.courseName)
+    $('#inputEditCourseCode').attr("placeholder", data.courseCode)
+    $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
+    $('#inputEditCourseLine').attr("placeholder", data.courseLine)
+  
+  })
+
+
+
   var myCalendar = $('#calendar'); 
   myCalendar.fullCalendar();
   var myEvent = {
