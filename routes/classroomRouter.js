@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:classroomId/attendances', async (req, res) => {
-    if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
+    if(!res.locals.sidenav.classrooms && !res.locals.sidenav.manage) return authorizationAPI.renderAuthorizationError(res)
 
     let classroomId = req.params.classroomId
     let students = await userController.getStudentsByClassroomId(classroomId)
@@ -57,7 +57,7 @@ router.get('/:classroomId/attendances', async (req, res) => {
         lectures: lectures,
         classroomId: classroomId,
         events: events,
-        edit: lastEvent.edit
+        edit: res.locals.sidenav.manage ? true : lastEvent.edit
     })
 })
 

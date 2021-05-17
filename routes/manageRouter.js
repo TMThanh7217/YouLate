@@ -80,7 +80,7 @@ router.get('/classrooms', (req, res) => {
         .then(data => {
             res.render('classrooms', {
                 pageTitle: 'Manage - Classroom',
-                class: data,
+                classrooms: data,
                 active: {
                     manageClasses:true
                 },
