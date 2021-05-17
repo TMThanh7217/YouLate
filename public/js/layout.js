@@ -221,7 +221,7 @@ $(function() {
     let target = $(event.target)
     let idRow = target.parentsUntil('tbody', 'tr')
     let data = {}
-    let dataRows = target.parentsUntil('tr', 'td,th').siblings().each((_,sib)=>{
+    target.parentsUntil('tr', 'td,th').siblings().each((_,sib)=>{
       sib = $(sib)
       data[sib.attr('name')] = sib.text()
     })
@@ -233,6 +233,22 @@ $(function() {
     $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
     $('#inputEditCourseLine').attr("placeholder", data.courseLine)
   
+  })
+
+  $('#btn-edit-user').on('click', event =>{
+    let target = $(event.target)
+    let data = {}
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    $('#inputEditUserName').attr('placeholder', data.editName)
+    $('#inputEditUserEmail').attr('placeholder', data.editEmail)
+    $('#inputEditUserPhoneNumber').attr('placeholder', data.editSDT)
+    $('#inputEditUserDoB').attr('placeholder', data.editDoB)
+
   })
 
 

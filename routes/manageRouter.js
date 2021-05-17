@@ -40,8 +40,8 @@ router.get('/users', (req, res) => {
     if (req.query.page == null || isNaN(req.query.page))
         req.query.page = 1;
 
-    if (res.locals.user.type != authorizationAPI.ADMIN) 
-        authorizationAPI.renderAuthorizationError(res);
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res);
 
     userController.getAll(req.query)
         .then(async data =>  {
