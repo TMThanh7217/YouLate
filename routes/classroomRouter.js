@@ -3,6 +3,7 @@ var router = express.Router();
 var classroomController = require('../controllers/classroomController')
 let authorizationAPI = require('../API/authorization-api')
 let userController = require('../controllers/userController')
+let eventController = require('../controllers/eventController')
 
 router.get('/', (req, res) => {
     if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
@@ -39,6 +40,14 @@ router.get('/:classroomId/attendances', async (req, res) => {
         students: students,
         lectures: lectures,
         classroomId: classroomId
+    })
+})
+
+router.post('/:classroomId/events', async (req, res) => {
+    let events = await eventController.getByClassroomId(classroomId)
+    res.json({
+        message: 'Got it',
+        data: events
     })
 })
 
