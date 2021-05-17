@@ -312,4 +312,30 @@ $(function() {
       }
     })
   })
+
+  $('#btnSubmitAddCourse').on('click', () => {
+    let newCourse = {
+      name: $('#inputCourseName').val(),
+      code: $('#inputCourseCode').val(),
+      description: $('#textAreaCourseDescription').val(),
+      topic: $('#inputCourseTopic').val(),
+      //status: $('#selectCourseStatus').val(),
+      courseLine: $('#inputCourseLine').val()
+    };
+    
+    let url = "/manage/courses/editCourse";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: newCourse,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/courses";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/courses";
+        }
+      }
+    })
+  })
 });

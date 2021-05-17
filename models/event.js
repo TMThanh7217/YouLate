@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Event.hasMany(models.Classroom, { foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
+      Event.belongsTo(models.Classroom, { foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
       Event.belongsToMany(models.User, { through: models.Event_User, foreignKey: 'eventId' }, { onDelete: 'CASCADE' });
     }
   };

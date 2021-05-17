@@ -1,5 +1,11 @@
 <div class="container-fluid shadow-default">
-    <h2 class="page-title">Courses</h2>
+    {{#if manageRight}}
+        <h2 class="page-title">Admin Manage Courses</h2>
+    {{/if}}
+
+    {{#unless manageRight}}
+        <h2 class="page-title">Courses</h2>
+    {{/unless}}
     
     <form action="#" class="form-inline form-search w-100">
         <div class="form-group w-100">
@@ -107,7 +113,7 @@
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id='btnSummitAddCourse' type="button" class="btn btn-primary">Submit</button>
+                        <button id='btnSubmitAddCourse' type="button" class="btn btn-primary">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -212,6 +218,7 @@
             <li class="page-item"><a class="page-link" href="?limit=5&page=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?limit=5&page=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?limit=5&page=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="?limit=5&page=4">4</a></li>
             <li class="page-item">
                 <a class="page-link" href="#">Next</a>
             </li>
