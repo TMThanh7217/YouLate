@@ -141,7 +141,7 @@ controller.deleteUserById = id => {
     }
 
     return models.sequelize.query(option.sql, {
-        replacements: id,
+        replacements: {id: id},
         type: option.type
     });
 }
