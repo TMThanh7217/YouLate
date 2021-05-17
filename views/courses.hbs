@@ -171,7 +171,7 @@
             </div>
         </div>
     {{/if}}
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th scope="col">Name</th>
@@ -194,9 +194,9 @@
                 <td name="courseStatus">{{this.status}}</td>
                 {{#if ../manageRight}}
                 <td class='btn-handle-group'>
-                    <a id='btnEditCourse' href="#" class='btn-handle btn-edit-course'><i class="fas fa-2x fa-edit" data-toggle="modal" data-target="#modalEditCourse"></i></a>
+                    <a id='btnEditCourse' href="#" class='btn btn-handle btn-edit-course btn-outline-secondary'><i class="fas fa-edit" data-toggle="modal" data-target="#modalEditCourse"></i></a>
                     
-                    <a id="btnRemoveCourses" href="#" class='btn-handle btn-remove-course'><i class="fas fa-2x fa-times"></i></a>                        
+                    <a id="btnRemoveCourses" href="#" class='btn btn-handle btn-remove-course btn-outline-danger'><i class="fas fa-times"></i></a>                        
                 </td>
                 {{/if}}
             </tr>
