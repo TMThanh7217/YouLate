@@ -96,6 +96,19 @@ controller.getStudentsByClassroomId = classroomId => {
     return controller.getUsersByUserTypesAndClassroomId(userTypes, classroomId)
 }
 
+controller.getUserWithAttendanceByEventId = eventId => {
+    let sql = ''
+    sql += ' SELECT "Users"."id", "Users"."name", "Users"."email", "Users"."SDT", "Users"."DoB", "Accounts"."type" AS accountType, "Event_Users"."type" AS "attendanceType"'
+    sql += ' FROM "Users" JOIN "Event_Users" ON ("Users"."id" = "Event_Users"."userId") JOIN "Accounts" ON ("Account"."id" = "User"."accountId")'
+    sql += ` WHERE "Event_Users"."eventId" = ${eventId}`
+    let option = {
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+    return models.query(sql, option)
+}
+
 controller.findAllStudentBelongToLecturerId = lecturerId => {
     let userJoinCondition = '"Users"."id" = "Classroom_Users"."userId"';
     let classroomJoinCondition = '"Classrooms"."id" = "Classroom_Users"."classroomId"';

@@ -4,6 +4,7 @@ var classroomController = require('../controllers/classroomController')
 let authorizationAPI = require('../API/authorization-api')
 let userController = require('../controllers/userController')
 let eventController = require('../controllers/eventController')
+let attendanceController = require('../controllers/attendanceController')
 
 router.get('/', (req, res) => {
     if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
@@ -32,6 +33,20 @@ router.get('/:classroomId/attendances', async (req, res) => {
     let classroomId = req.params.classroomId
     let students = await userController.getStudentsByClassroomId(classroomId)
     let lectures = await userController.getLecturesByClassroomId(classroomId)
+    let events = await eventController.getByClassroomId(classroomId)
+    if (events.length > 0) events[events.length - 1].active = true
+    let lastEvent = events[events.length - 1]
+    for (let student of students) {
+        let attendance = await attendanceController.getAttendanceTypeByEventIdAndUserId(lastEvent.id, student.id)
+        student.attendance = {}
+        student.attendance[attendance.type] = true
+    }
+    for (let lecture of lectures) {
+        let attendance = await attendanceController.getAttendanceTypeByEventIdAndUserId(lastEvent.id, lecture.id)
+        lecture.attendance = {}
+        lecture.attendance[attendance.type] = true
+    }
+    console.log(students)
     res.render('attendance', {
         pageTitle: "Attendances",
         active: {
@@ -39,15 +54,8 @@ router.get('/:classroomId/attendances', async (req, res) => {
         },
         students: students,
         lectures: lectures,
-        classroomId: classroomId
-    })
-})
-
-router.post('/:classroomId/events', async (req, res) => {
-    let events = await eventController.getByClassroomId(classroomId)
-    res.json({
-        message: 'Got it',
-        data: events
+        classroomId: classroomId,
+        events: events
     })
 })
 

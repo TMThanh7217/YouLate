@@ -216,15 +216,21 @@ $(function() {
       if($(sib).hasClass('btn-attendance-active')) $(sib).removeClass('btn-attendance-active')
     })
   })
-
-  var myCalendar = $('#calendar'); 
-  myCalendar.fullCalendar();
-  var myEvent = {
-    title:"my new event",
-    allDay: true,
-    start: new Date(),
-    end: new Date()
-  };
-  myCalendar.fullCalendar( 'renderEvent', myEvent );
-
-});
+  
+  var calendarEl = $('#calendar');
+  var myEvents = []
+  // if(calendarEl) {
+  //   $.ajax({
+  //     url: window.location.pathname.replace('attendances', 'events'),
+  //     type: 'POST',
+  //     success: result => {
+  //       myEvents = result.data
+  //       console.log(myEvents)
+  //       // var calendar = new FullCalendar.Calendar(calendarEl, {
+  //       //   initialView: 'listWeek',
+  //       //   events: myEvents
+  //       // })
+  //     }
+  //   })
+  // }
+})

@@ -53,7 +53,7 @@ app.use('/students', require('./routes/studentRouter'));
 app.use('/manage', require('./routes/manageRouter'))
 app.use('/profile', require('./routes/profileRouter'))
 app.use('/change-password', require('./routes/changePasswordRouter'))
-
+app.use('/data', require('./routes/getDataRouter'))
 // listen log
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

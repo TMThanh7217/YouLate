@@ -2,87 +2,17 @@
     <h2 class="page-title">Class {{classroomId}}'s Attendances</h2>
     <br>
     <h3>Date</h3>        
-    <div class="slider text-center mx-auto">
-        <div class="slider-item">
+    <div id='eventDatesSlider' class="slider text-center mx-auto">
+        {{#each events}}
+        <div class="slider-item {{#if this.active}}slider-item-active{{/if}}">
             <span class="date slider-item__date">
-                XX/XY/XXYY
+                {{this.date}}
             </span>
             <span class="slider-item__number">
-                XY
+                ({{this.id}})
             </span>
         </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
-        <div class="slider-item">
-            <span class="date slider-item__date">
-                XX/XY/XXYY
-            </span>
-            <span class="slider-item__number">
-                XY
-            </span>
-        </div>
+        {{/each}}
     </div>
     <br><br>
     <h3>Students</h3>
@@ -100,10 +30,10 @@
             <tr class='attendance-row' data-user-id={{this.id}}>
                 <th scope="row">{{this.name}}</th>
                 <td>
-                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
-                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
-                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
-                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
+                    <a class="btn-attendance btn-check {{#if this.attendance.present}}btn-attendance-active{{/if}}" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock {{#if this.attendance.late}}btn-attendance-active{{/if}}" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc {{#if this.attendance.excused}}btn-attendance-active{{/if}}" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times {{#if this.attendance.absent}}btn-attendance-active{{/if}}" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
                 </td>
                 <td>{{this.SDT}}</td>
                 <td>{{this.email}}</td>
@@ -127,10 +57,10 @@
             <tr class='attendance-row' data-user-id={{this.id}}>
                 <th scope="row">{{this.name}}</th>
                 <td>
-                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
-                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
-                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
-                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
+                    <a class="btn-attendance btn-check {{#if this.attendance.present}}btn-attendance-active{{/if}}" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock {{#if this.attendance.late}}btn-attendance-active{{/if}}" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc {{#if this.attendance.excused}}btn-attendance-active{{/if}}" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times {{#if this.attendance.absent}}btn-attendance-active{{/if}}" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
                 </td>
                 <td>{{this.SDT}}</td>
                 <td>{{this.email}}</td>
