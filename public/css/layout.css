@@ -239,7 +239,7 @@ footer {
 }
 
 .btn-manage + .btn-manage {
-    margin-left: 0.2rem;
+    margin-left: 0.5rem;
 }
 
 .btn-manage-edit {

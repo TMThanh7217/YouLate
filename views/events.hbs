@@ -1,0 +1,198 @@
+<div class="container-fluid shadow-default p-4">
+    <h2 class="page-title">Events</h2>
+    
+    <form action="#" class="form-search">
+        <div class="form-row">
+            <div class="form-group col-3">
+            <label for="classSearchInput">Search</label>
+            <input id="classSearchInput" name="classSearchInput" type="text" class="form-control" placeholder="Name">
+        </div>
+            <div class="form-group col-3">
+                <label for="selectCourseTopic">Course Topic</label>
+                <select class="custom-select" id="selectCourseTopic">
+                    <option selected>Course Topic</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
+                <label for="datePickerStart">Start Date</label>
+                <input type="text" id="datePickerStart" name="datePickerStart" class="date-picker form-control">
+            </div>
+            <div class="form-group col-3">
+                <label for="datePickerEnd">End Date</label>
+                <input type="text" id="datePickerEnd" name="datePickerEnd" class="date-picker form-control">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-3">
+                <label for="selectStatus">Status</label>
+                <select class="custom-select" id="selectStatus">
+                    <option selected>Status</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
+                <label for="selectStatus">Attendance Status</label>
+                <select class="custom-select" id="selectAttendanceStatus">
+                    <option selected>Attendance Status</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
+                <label for="selectCheckAttendance">Check Attendance</label>
+                <select class="custom-select" id="selectCheckAttendance">
+                    <option selected>Check Attendance</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="form-group col-3">
+                <div class="mb-2"><br></div>
+                <button type="button" name="btnReset" id="btnReset" class="btn btn-secondary"><i class="fas fa-redo"></i> Redo</button>
+                <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</button>
+                <button type="button" data-toggle="modal" data-target="#addEventModal" class="btn btn-secondary"><i class="fas fa-plus"></i> Add Event</button>
+            </div>
+        </div>
+    </form>
+
+    <!-- The Modal -->
+    <div class="modal" id="addEventModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Add Event</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <form action="#">
+                    <div class="form-row">
+                        <div class="col-6 form-group">
+                            <label for="inputTitleAddEventModal">Title</label>
+                            <input id='inputTitleAddEventModal' type="text" class="form-control" placeholder=""/>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="inputDatePickerAddEventModal">Date</label>
+                            <input id='inputDatePickerAddEventModal' type="text" class="form-control date-picker" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="inputTimePickerStartAddEventModal"></label>
+                            <input id='inputTimePickerStartAddEventModal' type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="inputTimePickerEndAddEventModal"></label>
+                            <input id='inputTimePickerEndAddEventModal' type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-6">
+                            <label for="inputClassroomIdAddEventModal">Classroom</label>
+                            <input type="number" name="" id="inputClassroomIdAddEventModal" class="form-control  " placeholder="{{this.classroomId}}">
+                        </div>
+                        <div class="form-group col-6">
+                            <label for="selectEditAddEventModal">Editable</label>
+                            <select class="form-control" id="selectEditAddEventModal">
+                                <option>editable</option>
+                                <option>un-editable</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Title</th>
+                <th scope="col">Date</th>
+                <th scope="col">Start time</th>
+                <th scope="col">End Time</th>
+                <th scope="col">Classroom Id</th>
+                <th scope="col">Editable</th>
+                <th scope="col">Manage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each events}}
+            <tr>
+                <th scope="row">
+                    <div class="inner-addon right-addon">
+                        <i class="fas fa-heading"></i>
+                        <input type="text" class="form-control" placeholder="{{this.title}}"/>
+                    </div>
+                </th>
+                <td>
+                    <div class="inner-addon right-addon">
+                        <i class="fas fa-calendar-day"></i>
+                        <input type="text" class="form-control date-picker" placeholder="{{this.date}}"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="inner-addon right-addon">
+                        <i class="far fa-clock"></i>
+                        <input type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
+                    </div>
+                </td>
+                <td>
+                    <div class="inner-addon right-addon">
+                        <i class="fas fa-clock"></i>
+                        <input type="text" class="form-control time-picker time-end" placeholder="{{this.startTime}}"/>
+                    </div>
+                </td>
+                <td><input type="number" name="" id="" class="form-control  " placeholder="{{this.classroomId}}"></td>
+                <td>
+                    <select class="form-control" id="sel1">
+                        {{#if this.edit}}
+                        <option>yes</option>
+                        <option>no</option>
+                        {{else}}
+                        <option>no</option>
+                        <option>yes</option>
+                        {{/if}}
+                    </select>
+                </td>
+                <td class='d-flex'>
+                    <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
+                    <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+        </table>
+    
+        <nav class="pagination-navbar" aria-label="Page">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+</div>
