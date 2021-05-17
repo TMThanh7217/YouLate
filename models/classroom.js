@@ -12,8 +12,8 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Classroom.belongsToMany(models.User, { through: models.Classroom_User, foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
-      Classroom.belongsTo(models.Event, { foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
-      Classroom.hasMany(models.Course, { foreignKey: 'courseId' }, { onDelete: 'CASCADE' });
+      Classroom.hasMany(models.Event, { foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
+      Classroom.belongsTo(models.Course, { foreignKey: 'courseId' }, { onDelete: 'CASCADE' });
       Classroom.hasMany(models.Grade, { foreignKey: 'classroomId' }, { onDelete: 'CASCADE' });
     }
   };

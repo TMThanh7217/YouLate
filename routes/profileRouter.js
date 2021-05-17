@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 
 router.post('/edit', async (req, res) => {
     let data = req.body;
-    console.log(data);
+    //console.log(data);
     let account = await accountController.findByUsername(data.username);
     //console.log(req.session.user);
     if (account == null) {
@@ -35,7 +35,7 @@ router.post('/edit', async (req, res) => {
             await userController.updateOneAttributeUser(user.id, "name", data.name)
 
         if (data.email != "")
-         await userController.updateOneAttributeUser(user.id, "email", data.email)
+            await userController.updateOneAttributeUser(user.id, "email", data.email)
 
         if (data.phoneNum != "")
             await userController.updateOneAttributeUser(user.id, "SDT", data.phoneNum)

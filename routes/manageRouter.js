@@ -32,6 +32,26 @@ router.get('/courses', (req, res) => {
         .catch(err => res.send(err))
 })
 
+router.post('/courses/editCourse', (req, res) => {
+    let newCourse = req.body;
+    console.log(newCourse);
+    coursesController
+        .createCourse(newCourse)
+        .then(data => {
+            //console.log(data);
+            return res.json({
+                code: 200,
+                message: 'Course added!'
+            });
+        })
+        .catch(err => res.send(err))
+    /*await coursesController.createCourse(newCourse)
+    return res.json({
+        code: 200,
+        message: 'Course added!'
+    });*/
+});
+
 router.get('/users', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))
