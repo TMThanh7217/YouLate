@@ -313,6 +313,43 @@ $(function() {
     })
   })
 
+  $('.time-picker:not(.time-start,.time-end)').timepicker({
+    timeFormat: 'hh:mm p',
+    interval: 60,
+    minTime: '8',
+    maxTime: '22',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: true,
+    dropdown: true,
+    scrollbar: true
+  })
+
+  $('.time-picker.time-start').timepicker({
+    timeFormat: 'HH:mm',
+    interval: 15,
+    step: '15',
+    minTime: '18',
+    maxTime: '20',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: true,
+    dropdown: true,
+    scrollbar: true
+  });
+  $('.time-picker.time-end').timepicker({
+    timeFormat: 'HH:mm',
+    interval: 15,
+    step: '15',
+    minTime: '19',
+    maxTime: '22',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true
+  });
+
   $('#btnSubmitAddCourse').on('click', () => {
     let newCourse = {
       name: $('#inputCourseName').val(),
@@ -423,4 +460,46 @@ $(function() {
     })
   });
 
+  $('#btnAddEvent').on('click', () => {
+    console.log($('tbody').find('tr[id="newEvent"]').length)
+    if($('tbody').find('tr[id="newEvent"]').length) return
+    let rowEl = $(`<tr id='newEvent' style='background-color: rgba(60, 179, 113,0.3)'>
+                    <th scope="row">
+                        <div class="inner-addon right-addon">
+                            <i class="fas fa-heading"></i>
+                            <input type="text" class="form-control"/>
+                        </div>
+                    </th>
+                    <td>
+                        <div class="inner-addon right-addon">
+                            <i class="fas fa-calendar-day"></i>
+                            <input type="text" class="form-control date-picker"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="inner-addon right-addon">
+                            <i class="far fa-clock"></i>
+                            <input type="text" class="form-control time-picker time-start"/>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="inner-addon right-addon">
+                            <i class="fas fa-clock"></i>
+                            <input type="text" class="form-control time-picker time-end"/>
+                        </div>
+                    </td>
+                    <td><input type="number" name="" id="" class="form-control"></td>
+                    <td>
+                        <select class="form-control" id="sel1">
+                            <option>yes</option>
+                            <option>no</option>
+                        </select>
+                    </td>
+                    <td class='d-flex'>
+                        <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
+                        <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
+                    </td>
+                </tr>`)
+    $('#eventsTable').prepend(rowEl)  
+  })
 });

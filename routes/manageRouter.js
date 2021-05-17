@@ -7,6 +7,7 @@ let accountController = require('../controllers/accountController');
 let classController = require('../controllers/classroomController');
 let deleteCourse = {};
 let deleteUser = {};
+let eventController = require('../controllers/eventController')
 
 router.get('/courses', (req, res) => {
     
@@ -142,6 +143,34 @@ router.get('/classrooms', (req, res) => {
             })
         })
         .catch(err => res.send(err))
+})
+
+router.get('/events', async (request, response) => {
+    if (request.query.limit == null || isNaN(request.query.limit))
+        request.query.limit = 5;
+
+    if (request.query.page == null || isNaN(request.query.page))
+        request.query.page = 1;
+
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res)
+
+    try {
+        let events = await eventController.getAll(request.query)
+        response.render('events', {
+            pageTitle: 'Manage - Event',
+            active: {
+                manageEvents: true
+            },
+            events: events
+        })
+    } catch (err) { 
+        response.render('error', {
+            pageTitle: 'Error',
+            errTitle: "QUERY Error",
+            errMess: err.toString()
+        })
+    }
 })
 
 module.exports = router;
