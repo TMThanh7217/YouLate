@@ -1,11 +1,11 @@
 [{
     "eventId": 5,
     "userId": 1,
-    "type": "excused"
+    "type": "present"
   }, {
     "eventId": 3,
     "userId": 9,
-    "type": "excused"
+    "type": "present"
   }, {
     "eventId": 1,
     "userId": 6,
@@ -13,11 +13,11 @@
   }, {
     "eventId": 9,
     "userId": 2,
-    "type": "excused"
+    "type": "absent"
   }, {
     "eventId": 5,
     "userId": 10,
-    "type": "excused"
+    "type": "present"
   }, {
     "eventId": 8,
     "userId": 2,
@@ -25,11 +25,11 @@
   }, {
     "eventId": 6,
     "userId": 10,
-    "type": "excused"
+    "type": "present"
   }, {
     "eventId": 5,
     "userId": 2,
-    "type": "excused"
+    "type": "present"
   }, {
     "eventId": 1,
     "userId": 2,
@@ -41,7 +41,7 @@
   }, {
     "eventId": 2,
     "userId": 10,
-    "type": "excused"
+    "type": "late"
   }, {
     "eventId": 10,
     "userId": 10,
@@ -53,9 +53,9 @@
   }, {
     "eventId": 10,
     "userId": 3,
-    "type": "excused"
+    "type": "absent"
   }, {
     "eventId": 2,
     "userId": 9,
-    "type": "excused"
+    "type": "late"
   }]
