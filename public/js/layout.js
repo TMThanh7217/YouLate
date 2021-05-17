@@ -217,6 +217,42 @@ $(function() {
     })
   })
 
+  $('.btn-edit-course').on('click', event =>{
+    let target = $(event.target)
+    let idRow = target.parentsUntil('tbody', 'tr')
+    let data = {}
+    target.parentsUntil('tr', 'td,th').siblings().each((_,sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    data.id = Number(idRow.data('id'))
+
+    $('#inputEditCourseName').attr("placeholder", data.courseName)
+    $('#inputEditCourseCode').attr("placeholder", data.courseCode)
+    $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
+    $('#inputEditCourseLine').attr("placeholder", data.courseLine)
+  
+  })
+
+  $('#btn-edit-user').on('click', event =>{
+    let target = $(event.target)
+    let data = {}
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    $('#inputEditUserName').attr('placeholder', data.editName)
+    $('#inputEditUserEmail').attr('placeholder', data.editEmail)
+    $('#inputEditUserPhoneNumber').attr('placeholder', data.editSDT)
+    $('#inputEditUserDoB').attr('placeholder', data.editDoB)
+
+  })
+
+
+
   var myCalendar = $('#calendar'); 
   myCalendar.fullCalendar();
   var myEvent = {
