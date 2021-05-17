@@ -85,13 +85,21 @@ controller.createClassroom = async (classrom) => {
 controller.updateAllAttributeClassroom = async (classroom) => {
     let option = {
         sql: `Update "Classrooms" 
-                SET name = ${classroom.name}, startDate = ${classroom.startDate}, endDate = ${classroom.endDate},
-                course = ${classroom.course}, status = ${classroom.status}, hours = ${classroom.hours}
+                SET name = :name, startDate = :startDate, endDate = :endDate,
+                course = :course, status = :status, hours = :hours
                 WHERE "id" = ${classroom.id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: {
+            name: classroom.name,
+            startDate: classroom.startDate,
+            endDate: classroom.endDate,
+            course: classroom.course,
+            status: classroom.status,
+            hours: classroom.hours
+        },
         type: option.type
     });
 }
@@ -99,12 +107,13 @@ controller.updateAllAttributeClassroom = async (classroom) => {
 controller.updateOneAttributeClassroom = async (id, attribute, value) => {
     let option = {
         sql: `Update "Classrooms" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: { value: value },
         type: option.type
     });
 }

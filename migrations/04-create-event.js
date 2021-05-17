@@ -23,6 +23,9 @@ module.exports = {
       classroomId: {
         type: Sequelize.INTEGER
       },
+      edit: {
+        type: Sequelize.BOOLEAN
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

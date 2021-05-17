@@ -3,59 +3,69 @@
   "startTime": "15:30",
   "endTime": "17:30",
   "title": "zebuvu",
-  "classroomId": 1
+  "classroomId": 1,
+  "edit": true
 }, {
   "date": "5/2/2021",
   "startTime": "13:30",
   "endTime": "17:30",
   "title": "nnpxcr",
-  "classroomId": 2
+  "classroomId": 2,
+  "edit": true
 }, {
   "date": "8/14/2020",
   "startTime": "7:30",
   "endTime": "17:30",
   "title": "nxunor",
-  "classroomId": 3
+  "classroomId": 3,
+  "edit": true
 }, {
   "date": "5/31/2020",
   "startTime": "15:30",
   "endTime": "17:30",
   "title": "ngobmb",
-  "classroomId": 4
+  "classroomId": 4,
+  "edit": false
 }, {
   "date": "3/23/2021",
   "startTime": "9:30",
   "endTime": "17:30",
   "title": "webuqt",
-  "classroomId": 5
+  "classroomId": 5,
+  "edit": false
 }, {
   "date": "12/27/2020",
   "startTime": "15:30",
   "endTime": "17:30",
   "title": "yjwfur",
-  "classroomId": 6
+  "classroomId": 6,
+  "edit": true
 }, {
   "date": "5/4/2021",
   "startTime": "13:30",
   "endTime": "17:30",
   "title": "hpjkqr",
-  "classroomId": 7
+  "classroomId": 7,
+  "edit": true
 }, {
   "date": "1/21/2021",
   "startTime": "13:30",
   "endTime": "17:30",
   "title": "ypwyxw",
-  "classroomId": 8
+  "classroomId": 8,
+  "edit": true
 }, {
   "date": "3/13/2021",
   "startTime": "15:30",
   "endTime": "17:30",
   "title": "mmwkdm",
-  "classroomId": 9
+  "classroomId": 9,
+  "edit": false
 }, {
   "date": "8/10/2020",
   "startTime": "13:30",
   "endTime": "17:30",
   "title": "esnipg",
-  "classroomId": 10
+  "classroomId": 10,
+  "edit": true
 }]

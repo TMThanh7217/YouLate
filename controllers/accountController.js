@@ -83,13 +83,18 @@ controller.comparePassword = (pwd, accountPwd) => {
 controller.updateAllAttributeAccount = async (account) => {
     let option = {
         sql: `Update "Accounts" 
-                SET username = ${account.username}, password = ${account.password}, type = ${account.account} 
+                SET username = :username, password = :password, type = :type
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
-        replacements: {id: account.id},
+        replacements: {
+            id: account.id,
+            username: account.username,
+            password: account.password,
+            type: account.type
+        },
         type: option.type
     });
 }
@@ -97,12 +102,13 @@ controller.updateAllAttributeAccount = async (account) => {
 controller.updateOneAttributeAccount = async (id, attribute, value) => {
     let option = {
         sql: `Update "Accounts" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: { value: value },
         type: option.type
     });
 }

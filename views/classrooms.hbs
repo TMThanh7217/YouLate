@@ -1,3 +1,4 @@
+
 <div class="container-fluid">
     <h2 class="page-title">Classes</h2>
     
@@ -71,11 +72,17 @@
                 <th scope="col">Start</th>
                 <th scope="col">End</th>
                 <th scope="col">Hours</th>
-                <th scope="col">Check</th>
             </tr>
         </thead>
         <tbody>
-            {{#each classrooms}}
+            {{!-- name: DataTypes.STRING,
+                startDate: DataTypes.STRING,
+                endDate: DataTypes.STRING,
+                course: DataTypes.STRING,
+                status: DataTypes.STRING,
+                hours: DataTypes.INTEGER,
+                courseId: DataTypes.INTEGER --}}
+            {{#each class}}
             <tr>
                 <th scope="row">{{this.name}}</th>
                 <td>{{this.course}}</td>
@@ -83,23 +90,22 @@
                 <td>{{this.startDate}}</td>
                 <td>{{this.endDate}}</td>
                 <td>{{this.hours}}</td>
-                <td><a href="/classrooms/{{this.id}}/attendances"><i class="fas fa-2x fa-tasks"></i></a></td>
             </tr>
             {{/each}}
         </tbody>
-    </table>
+        </table>
     
-    <nav class="pagination-navbar w-100" aria-label="Page">
-        <ul class="pagination justify-content-center">
-            <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-            </li>
-            <li class="page-item"><a class="page-link" href="?limit=5&page=1">1</a></li>
-            <li class="page-item"><a class="page-link" href="?limit=5&page=2">2</a></li>
-            <li class="page-item"><a class="page-link" href="?limit=5&page=3">3</a></li>
-            <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-            </li>
-        </ul>
-    </nav>
+        <nav class="pagination-navbar w-100" aria-label="Page">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="?limit=5&page=1">1</a></li>
+                <li class="page-item"><a class="page-link" href="?limit=5&page=2">2</a></li>
+                <li class="page-item"><a class="page-link" href="?limit=5&page=3">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
 </div>

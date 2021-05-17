@@ -216,21 +216,77 @@ $(function() {
       if($(sib).hasClass('btn-attendance-active')) $(sib).removeClass('btn-attendance-active')
     })
   })
+
+  $('.btn-edit-course').on('click', event =>{
+    let target = $(event.target)
+    let idRow = target.parentsUntil('tbody', 'tr')
+    let data = {}
+    target.parentsUntil('tr', 'td,th').siblings().each((_,sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    data.id = Number(idRow.data('id'))
+
+    $('#inputEditCourseName').attr("placeholder", data.courseName)
+    $('#inputEditCourseCode').attr("placeholder", data.courseCode)
+    $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
+    $('#inputEditCourseLine').attr("placeholder", data.courseLine)
   
-  var calendarEl = $('#calendar');
-  var myEvents = []
-  // if(calendarEl) {
-  //   $.ajax({
-  //     url: window.location.pathname.replace('attendances', 'events'),
-  //     type: 'POST',
-  //     success: result => {
-  //       myEvents = result.data
-  //       console.log(myEvents)
-  //       // var calendar = new FullCalendar.Calendar(calendarEl, {
-  //       //   initialView: 'listWeek',
-  //       //   events: myEvents
-  //       // })
-  //     }
-  //   })
-  // }
-})
+  })
+
+  $('#btn-edit-user').on('click', event =>{
+    let target = $(event.target)
+    let data = {}
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+    // console.log(data)
+    $('#inputEditUserName').attr('placeholder', data.editName)
+    $('#inputEditUserEmail').attr('placeholder', data.editEmail)
+    $('#inputEditUserPhoneNumber').attr('placeholder', data.editSDT)
+    $('#inputEditUserDoB').attr('placeholder', data.editDoB)
+
+  })
+
+
+
+  var myCalendar = $('#calendar'); 
+  myCalendar.fullCalendar();
+  var myEvent = {
+    title:"my new event",
+    allDay: true,
+    start: new Date(),
+    end: new Date()
+  };
+  myCalendar.fullCalendar( 'renderEvent', myEvent );
+
+  $('#btnSaveProfile').on('click', () => {
+    let profileData = {
+      username: $('#profileUsername').val(),
+      name: $('#profileName').val(),
+      email: $('#profileEmail').val(),
+      phoneNum: $('#profilePhonenum').val(),
+      DoB: $('#profileDoB').val()
+      //,type: $('#smthing').val()
+    };
+    //console.log(profileData)
+    
+    let url = "/profile/edit";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: profileData,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/profile";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/profile";
+        }
+      }
+    })
+  })
+});

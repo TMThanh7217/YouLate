@@ -41,26 +41,33 @@ controller.createEvent = async (event) => {
 controller.updateAllAttributeEvent = async (event) => {
     let option = {
         sql: `Update "Events" 
-                SET "date" = ${event.date}, "startTime" = ${event.startTime}, "endTime" = ${event.endTime}, "title" = ${event.title}
+                SET "date" = :date, "startTime" = :startTime, "endTime" = :endTime, "title" = :title
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
-        replacements: {id: event.id},
+        replacements: {
+            id: event.id,
+            date: event.date,
+            startTime: event.startTime,
+            endTime: event.endTime,
+            title: event.title
+        },
         type: option.type
     });
 }
 
-controller.updateOneAttributeEvent = async (id, attribute, value) => {
+controller.updateOneAttributeEvent = (id, attribute, value) => {
     let option = {
         sql: `Update "Events" 
-                SET "${attribute}" = ${value}
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
+        replacements: { value: value },
         type: option.type
     });
 }

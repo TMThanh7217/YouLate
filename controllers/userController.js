@@ -150,25 +150,32 @@ controller.deleteUserById = id => {
 controller.updateAllAttributeUser = async (user) => {
     let option = {
         sql: `Update "Users" 
-                SET "name" = ${user.name}, "email" = ${user.email}, "SDT" = ${user.SDT}, "DoB" = ${user.DoB},
+                SET "name" = :name, "email" = :email, "SDT" = :SDT, "DoB" = :DoB,
                 WHERE "id" = ${user.id}`,
         type: QueryTypes.UPDATE
     }
 
     return await models.sequelize.query(option.sql, {
+        replacements: {
+            name: user.name,
+            email: user.email,
+            SDT: user.SDT,
+            DoB: user.DoB
+        },
         type: option.type
     });
 }
 
-controller.updateOneAttributeUser = async (id, attribute, value) => {
+controller.updateOneAttributeUser = (id, attribute, value) => {
     let option = {
-        sql: `Update "Users" 
-                SET "${attribute}" = ${value}
+        sql: `UPDATE "Users" 
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
+        replacements: { value: value},
         type: option.type
     });
 }
