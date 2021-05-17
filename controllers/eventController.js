@@ -74,7 +74,7 @@ controller.updateOneAttributeEvent = (id, attribute, value) => {
 
 controller.getByClassroomId = classId => {
     let sql = ''
-    sql += 'SELECT "Events"."id", "Events"."title", "Events"."date", "Events"."startTime", "Events"."endTime"'
+    sql += 'SELECT "Events"."id", "Events"."title", "Events"."date", "Events"."startTime", "Events"."endTime", "Events"."edit"'
     sql += ' FROM "Events"'
     sql += ` WHERE "Events"."classroomId" = ${classId}`
     let option = {

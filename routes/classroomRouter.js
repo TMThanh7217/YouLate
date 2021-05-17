@@ -18,6 +18,7 @@ router.get('/', (req, res) => {
     classroomController
         .getByLectureId(res.locals.user.id)
         .then(data => {
+            console.log(data)
             res.render('classrooms', {
                 pageTitle: 'Classrooms',
                 classrooms: data,
@@ -46,7 +47,6 @@ router.get('/:classroomId/attendances', async (req, res) => {
         lecture.attendance = {}
         lecture.attendance[attendance.type] = true
     }
-    console.log(students)
     res.render('attendance', {
         pageTitle: "Attendances",
         active: {
@@ -55,7 +55,8 @@ router.get('/:classroomId/attendances', async (req, res) => {
         students: students,
         lectures: lectures,
         classroomId: classroomId,
-        events: events
+        events: events,
+        edit: lastEvent.edit
     })
 })
 
