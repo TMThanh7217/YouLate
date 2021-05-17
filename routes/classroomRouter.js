@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     classroomController
         .getByLectureId(res.locals.user.id)
         .then(data => {
-            res.render('classroom', {
+            res.render('classrooms', {
                 pageTitle: 'Classrooms',
                 classrooms: data,
                 active: {

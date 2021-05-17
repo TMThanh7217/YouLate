@@ -3,7 +3,7 @@ var router = express.Router();
 let coursesController = require('../controllers/courseController')
 
 router.get('/', (req, res) => {
-    if(!sidenav.courses) return authorizationAPI.renderAuthorizationError(res)
+    //if(!sidenav.courses) return authorizationAPI.renderAuthorizationError(res)
 
     if (req.query.limit == null || isNaN(req.query.limit))
         req.query.limit = 5;
