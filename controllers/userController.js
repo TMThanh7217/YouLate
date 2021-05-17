@@ -147,15 +147,16 @@ controller.updateAllAttributeUser = async (user) => {
     });
 }
 
-controller.updateOneAttributeUser = async (id, attribute, value) => {
+controller.updateOneAttributeUser = (id, attribute, value) => {
     let option = {
-        sql: `Update "Users" 
-                SET "${attribute}" = ${value}
+        sql: `UPDATE "Users" 
+                SET "${attribute}" = :value
                 WHERE "id" = ${id}`,
         type: QueryTypes.UPDATE
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
+        replacements: { value: value},
         type: option.type
     });
 }

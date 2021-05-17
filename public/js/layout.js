@@ -227,4 +227,30 @@ $(function() {
   };
   myCalendar.fullCalendar( 'renderEvent', myEvent );
 
+  $('#btnSaveProfile').on('click', () => {
+    let profileData = {
+      username: $('#profileUsername').val(),
+      name: $('#profileName').val(),
+      email: $('#profileEmail').val(),
+      phoneNum: $('#profilePhonenum').val(),
+      DoB: $('#profileDoB').val()
+      //,type: $('#smthing').val()
+    };
+    //console.log(profileData)
+    
+    let url = "/profile/edit";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: profileData,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/profile";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/profile";
+        }
+      }
+    })
+  })
 });
