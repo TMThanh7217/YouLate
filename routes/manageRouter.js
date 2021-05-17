@@ -4,6 +4,7 @@ let coursesController = require('../controllers/courseController');
 let authorizationAPI = require('../API/authorization-api');
 let userController = require('../controllers/userController');
 let accountController = require('../controllers/accountController');
+let classController = require('../controllers/classroomController');
 
 router.get('/courses', (req, res) => {
     
@@ -56,6 +57,32 @@ router.get('/users', (req, res) => {
                 users: data,
                 active: {
                     manageUsers:true
+                },
+                manageRight: true
+            })
+        })
+        .catch(err => res.send(err))
+})
+
+router.get('/classrooms', (req, res) => {
+    
+    if (req.query.limit == null || isNaN(req.query.limit))
+        req.query.limit = 5;
+
+    if (req.query.page == null || isNaN(req.query.page))
+        req.query.page = 1;
+
+    if (res.locals.user.type != authorizationAPI.ADMIN) 
+        authorizationAPI.renderAuthorizationError(res)
+
+    classController
+        .getAll(req.query)
+        .then(data => {
+            res.render('manageClassrooms', {
+                pageTitle: 'Manage - Classroom',
+                class: data,
+                active: {
+                    manageClasses:true
                 },
                 manageRight: true
             })
