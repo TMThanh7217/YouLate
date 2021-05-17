@@ -38,4 +38,31 @@ controller.createEvent = async (event) => {
     return await Event.create(event);
 }
 
+controller.updateAllAttributeEvent = async (event) => {
+    let option = {
+        sql: `Update "Events" 
+                SET "date" = ${event.date}, "startTime" = ${event.startTime}, "endTime" = ${event.endTime}, "title" = ${event.title}
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: event.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeEvent = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Events" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;

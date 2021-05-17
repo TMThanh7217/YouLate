@@ -1,0 +1,147 @@
+<div class="container-fluid testimonial-group p-2">
+    <h2 class="page-title">Class {{classroomId}}'s Attendances</h2>
+    <br>
+    <h3>Date</h3>        
+    <div class="slider text-center mx-auto">
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+        <div class="slider-item">
+            <span class="date slider-item__date">
+                XX/XY/XXYY
+            </span>
+            <span class="slider-item__number">
+                XY
+            </span>
+        </div>
+    </div>
+    <br><br>
+    <h3>Students</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Attendance</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each students}}
+            <tr class='attendance-row' data-user-id={{this.id}}>
+                <th scope="row">{{this.name}}</th>
+                <td>
+                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
+                </td>
+                <td>{{this.SDT}}</td>
+                <td>{{this.email}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <br>
+    <h3>Lectures</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Attendance</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each lectures}}
+            <tr class='attendance-row' data-user-id={{this.id}}>
+                <th scope="row">{{this.name}}</th>
+                <td>
+                    <a class="btn-attendance btn-check" data-attendance-type='present'><i class="fas fa-2x fa-check"></i></a>
+                    <a class="btn-attendance btn-clock" data-attendance-type='late'><i class="far fa-2x fa-clock"></i></a>
+                    <a class="btn-attendance btn-desc" data-attendance-type='excused'><i class="fas fa-2x fa-file-alt"></i></a>
+                    <a class="btn-attendance btn-times" data-attendance-type='absent'><i class="fas fa-2x fa-ban"></i></a>
+                </td>
+                <td>{{this.SDT}}</td>
+                <td>{{this.email}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <div class="container d-flex justify-content-end attendance-btn-group">
+        <button class="btn btn-secondary btn-back attendance-btn-group__btn">Back</button>
+        <button id='btnSaveAttendances' class="btn btn-secondary attendance-btn-group__btn">Save</button>
+        <button id= 'btnSaveAndBackAttendances' class="btn btn-secondary attendance-btn-group__btn">Save & Back</button>
+    </div>
+</div>

@@ -49,7 +49,7 @@ app.use('/classrooms', require('./routes/classroomRouter'));
 app.use('/calendar', require('./routes/calendarRouter'));
 app.use('/authorization', require('./routes/authorizationRouter'));
 app.use('/courses', require('./routes/courseRouter'));
-app.use('/student', require('./routes/studentRouter'));
+app.use('/students', require('./routes/studentRouter'));
 app.use('/manage', require('./routes/manageRouter'))
 app.use('/profile', require('./routes/profileRouter'))
 app.use('/change-password', require('./routes/changePasswordRouter'))

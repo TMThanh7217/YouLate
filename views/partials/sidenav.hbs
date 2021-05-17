@@ -63,9 +63,9 @@
         {{/if}}
 
         {{#if sidenav.manage}}
-        <br>
-        <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
-        <p class="w-100 text-center">Management</p>
+        {{!-- <br> --}}
+        {{!-- <div class="line-container d-flex justify-content-center"><div class="line"></div></div>
+        <p class="w-100 text-center">Management</p> --}}
         
         <a href="/manage/classrooms" class="link sidenav-link {{#if active.manageClassrooms}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
@@ -87,7 +87,7 @@
             </div>
         </a>
         
-        <a href="/manage/users" class="link sidenav-link {{#if active.mangeUser}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
+        <a href="/manage/users" class="link sidenav-link {{#if active.manageUsers}}sidenav-link-active{{/if}}" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <div class="icon-container">
                 <i class="fas fa-2x fa-users"></i>
                 <span>Users</span>

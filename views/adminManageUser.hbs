@@ -1,0 +1,177 @@
+<div class="container-fluid shadow-default">
+    <h2 class="page-title">Admin Manage User</h2>
+
+    <form action="#" class="form-inline form-search w-100">
+        <div class="form-group w-100">
+            <section>
+                <div>
+                    <label for="inputSearch">Search</label>
+                    <input type="text" name="inputSearch" id="inputSearch" class="form-control"
+                        placeholder="Search ...">
+                </div>
+                <div>
+                    <label for="selectStatus" class="text-center">Type</label>
+                    <select class="custom-select" id="selectStatus">
+                        <option value="1" selected>Select Type</option>
+                        <option value="1">Lecturer</option>
+                        <option value="2">TA</option>
+                        <option value="3">Admin</option>
+                        <option value="4">Student</option>
+                    </select>
+                </div>
+                <div>
+                    <br>
+                    <button type="button" name="btnReset" id="btnReset" class="btn btn-secondary"><i
+                            class="fas fa-redo"></i> Redo</button>
+                </div>
+                <div>
+                    <br>
+                    <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i
+                            class="fas fa-times"></i> Cancel</button>
+                </div>
+                <div>
+                    <br>
+                    <button type="button" data-toggle="modal" data-target="#exampleModal"
+                        class="btn btn-secondary">
+                        <i class="fas fa-plus"></i> Add User</button>
+                </div>
+            </section>
+        </div>
+    </form>
+
+    <table class="table text-center">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">email</th>
+                <th scope="col">SDT</th>
+                <th scope="col">DoB</th>
+                <th scope="col">Type</th>
+                <th scope="col">Handle</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each users}}
+            <tr>
+                <td><a class="text-decoration-none">{{this.id}}</a></td>
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.SDT}}</td>
+                <td>{{this.DoB}}</td>
+                <td>{{this.type}}</td>
+    
+                <td><button type="button" class="btn btn-outline-secondary"><i class="far fa-edit"></i></button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                        data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
+
+                    <!-- Modal Delete -->
+                    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                                    <button type="button" class="close" data-dismiss="modal"
+                                        aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Are you sure you want to delete?</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+    <nav class="pagination-navbar" aria-label="Page">
+        <ul class="pagination justify-content-center">
+            <li class="page-item disabled">
+                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="?limit=5&page=1">1</a></li>
+            <li class="page-item"><a class="page-link" href="?limit=5&page=2">2</a></li>
+            <li class="page-item"><a class="page-link" href="?limit=5&page=3">3</a></li>
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="name">Name</span>
+                                </div>
+                                <input type="text" class="form-control" id="name">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="email">Email</span>
+                                </div>
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for = "phoneNum">PhoneNumber</span>
+                                </div>
+                                <input type="email" class="form-control" id="phoneNum">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" for="dob">Date Of Birth</span>
+                                </div>
+                                <input type="text" class="form-control" id="dob">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+

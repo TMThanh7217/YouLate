@@ -45,4 +45,32 @@ controller.createCourse = async (course) => {
     return await Course.create(course);
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeCourse = async (course) => {
+    let option = {
+        sql: `Update "Courses" 
+                SET "name" = ${course.name}, "code" = ${course.code}, "description" = ${course.description} 
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: course.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeCourse = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Courses" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;
