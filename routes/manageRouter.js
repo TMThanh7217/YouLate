@@ -14,8 +14,8 @@ router.get('/courses', (req, res) => {
     if (req.query.page == null || isNaN(req.query.page))
         req.query.page = 1;
 
-    // if (res.locals.user.type != authorizationAPI.ADMIN) 
-    //     authorizationAPI.renderAuthorizationError(res)
+    if (res.locals.user.type != authorizationAPI.ADMIN) 
+        authorizationAPI.renderAuthorizationError(res)
 
     coursesController
         .getAll(req.query)
@@ -88,6 +88,27 @@ router.get('/classrooms', (req, res) => {
             })
         })
         .catch(err => res.send(err))
+})
+
+router.get('/calendars', (req, res) => {
+    
+    if (req.query.limit == null || isNaN(req.query.limit))
+        req.query.limit = 5;
+
+    if (req.query.page == null || isNaN(req.query.page))
+        req.query.page = 1;
+
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res)
+
+    
+    res.render('calendar', {
+        pageTitle: 'Manage - Calender',
+        active: {
+            manageClasses:true
+        },
+        manageRight: true
+    })
 })
 
 module.exports = router;
