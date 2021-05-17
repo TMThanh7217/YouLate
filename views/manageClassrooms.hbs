@@ -1,0 +1,196 @@
+<div class="page-content">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#collapseNavbar" aria-controls="collapseNavbar" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div id="collapseNavbar" class="collapse navbar-collapse"> <!---navbar--collapse-on--->
+            <form class="form-inline ml-auto">
+                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success ml-1" type="submit">Search</button>
+            </form>
+            <button type="button" class="btn btn-outline-info ml-auto">Sign in</button>
+        </div>
+    </nav>
+    
+    <div class="container-fluid">
+        <h2 class="page-title">Classes</h2>
+        
+        <form action="#" class="form-search">
+            <div class="form-row">
+                <div class="form-group col-3">
+                <label for="classSearchInput">Search</label>
+                <input id="classSearchInput" name="classSearchInput" type="text" class="form-control" placeholder="Name">
+            </div>
+                <div class="form-group col-3">
+                    <label for="selectCourseTopic">Course Topic</label>
+                    <select class="custom-select" id="selectCourseTopic">
+                        <option selected>Course Topic</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label for="datePickerStart">Start Date</label>
+                    <input type="text" id="datePickerStart" name="datePickerStart" class="date-picker form-control">
+                </div>
+                <div class="form-group col-3">
+                    <label for="datePickerEnd">End Date</label>
+                    <input type="text" id="datePickerEnd" name="datePickerEnd" class="date-picker form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-3">
+                    <label for="selectStatus">Status</label>
+                    <select class="custom-select" id="selectStatus">
+                        <option selected>Status</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label for="selectStatus">Attendance Status</label>
+                    <select class="custom-select" id="selectAttendanceStatus">
+                        <option selected>Attendance Status</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <label for="selectCheckAttendance">Check Attendance</label>
+                    <select class="custom-select" id="selectCheckAttendance">
+                        <option selected>Check Attendance</option>
+                        <option value="1">One</option>
+                        <option value="2">Two</option>
+                        <option value="3">Three</option>
+                    </select>
+                </div>
+                <div class="form-group col-3">
+                    <div class="mb-2"><br></div>
+                    <button type="button" name="btnReset" id="btnReset" class="btn btn-secondary"><i class="fas fa-redo"></i> Redo</button>
+                    <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</button>
+                </div>
+            </div>
+
+        </form>
+        
+        <table class="table mt-4">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Courses</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Start</th>
+                    <th scope="col">End</th>
+                    <th scope="col">Hours</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{!-- name: DataTypes.STRING,
+                    startDate: DataTypes.STRING,
+                    endDate: DataTypes.STRING,
+                    course: DataTypes.STRING,
+                    status: DataTypes.STRING,
+                    hours: DataTypes.INTEGER,
+                    courseId: DataTypes.INTEGER --}}
+                {{#each class}}
+                <tr>
+                    <th scope="row">{{this.name}}</th>
+                    <td>{{this.course}}</td>
+                    <td>{{this.status}}</td>
+                    <td>{{this.startDate}}</td>
+                    <td>{{this.endDate}}</td>
+                    <td>{{this.hours}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+            </table>
+        
+            <nav class="pagination-navbar w-100" aria-label="Page">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#">Next</a>
+                    </li>
+                </ul>
+            </nav>
+    </div>
+    
+    <footer class="text-center text-white">
+        <!-- Grid container -->
+        <div class="container pt-4">
+        <!-- Section: Social media -->
+        <section class="mb-4">
+            <!-- Facebook -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-facebook-f"></i></a>
+    
+            <!-- Twitter -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-twitter"></i></a>
+    
+            <!-- Google -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-google"></i></a>
+    
+            <!-- Instagram -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-instagram"></i></a>
+    
+            <!-- Linkedin -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-linkedin"></i></a>
+            <!-- Github -->
+            <a
+            class="btn btn-link btn-floating btn-lg text-dark m-1"
+            href="#!"
+            role="button"
+            data-mdb-ripple-color="dark"
+            ><i class="fab fa-github"></i
+            ></a>
+        </section>
+        <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+    
+        <!-- Copyright -->
+        <div class="text-center text-dark p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2020 Copyright:
+        <a class="text-dark" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</div>
+
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<!-- Optional JavaScript -->
+<script src="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+<script src="../js/layout.js"></script>
