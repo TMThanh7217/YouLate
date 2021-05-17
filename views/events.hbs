@@ -57,72 +57,11 @@
                 <div class="mb-2"><br></div>
                 <button type="button" name="btnReset" id="btnReset" class="btn btn-secondary"><i class="fas fa-redo"></i> Redo</button>
                 <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</button>
-                <button type="button" data-toggle="modal" data-target="#addEventModal" class="btn btn-secondary"><i class="fas fa-plus"></i> Add Event</button>
+                <button id='btnAddEvent' type="button" class="btn btn-secondary"><i class="fas fa-plus"></i> Add Event</button>
             </div>
         </div>
     </form>
-
-    <!-- The Modal -->
-    <div class="modal" id="addEventModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <h4 class="modal-title">Add Event</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-
-            <!-- Modal body -->
-            <div class="modal-body">
-                <form action="#">
-                    <div class="form-row">
-                        <div class="col-6 form-group">
-                            <label for="inputTitleAddEventModal">Title</label>
-                            <input id='inputTitleAddEventModal' type="text" class="form-control" placeholder=""/>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="inputDatePickerAddEventModal">Date</label>
-                            <input id='inputDatePickerAddEventModal' type="text" class="form-control date-picker" placeholder=""/>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="inputTimePickerStartAddEventModal"></label>
-                            <input id='inputTimePickerStartAddEventModal' type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="inputTimePickerEndAddEventModal"></label>
-                            <input id='inputTimePickerEndAddEventModal' type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-6">
-                            <label for="inputClassroomIdAddEventModal">Classroom</label>
-                            <input type="number" name="" id="inputClassroomIdAddEventModal" class="form-control  " placeholder="{{this.classroomId}}">
-                        </div>
-                        <div class="form-group col-6">
-                            <label for="selectEditAddEventModal">Editable</label>
-                            <select class="form-control" id="selectEditAddEventModal">
-                                <option>editable</option>
-                                <option>un-editable</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-info" data-dismiss="modal">Submit</button>
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            </div>
-
-            </div>
-        </div>
-    </div>
-    
-    <table class="table">
+    <table id='eventsTable' class="table">
         <thead>
             <tr>
                 <th scope="col">Title</th>
