@@ -7,6 +7,6 @@ module.exports = {
     renderAuthorizationError: res => res.render('error', {
                                         pageTitle: 'Error',
                                         errTitle: "Authorization Error - Access Denied",
-                                        errMess: "You are not allowed to access this page. ADMIN only!!!"
+                                        errMess: "You are not allowed to access this page!!!"
                                     })
 }

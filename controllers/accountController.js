@@ -36,6 +36,22 @@ controller.findById = (id) => {
     });
 };
 
+controller.findAttributeById = (id, attribute) => {
+    let option = {
+        sql: `SELECT ${attribute} FROM "Accounts" WHERE "id" = :id`,
+        plain: true, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(option.sql, {
+        plain: option.plain,
+        raw: option.raw,
+        replacements: { id: id },
+        type: option.type
+    });
+};
+
 controller.findByUsername = username => {
     let option = {
         sql: 'SELECT * FROM "Accounts" WHERE "username" = :username',
@@ -61,6 +77,34 @@ controller.createAccount = account => {
 
 controller.comparePassword = (pwd, accountPwd) => {
     return bcrypt.compareSync(pwd, accountPwd)
+}
+
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeAccount = async (account) => {
+    let option = {
+        sql: `Update "Accounts" 
+                SET username = ${account.username}, password = ${account.password}, type = ${account.account} 
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: account.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeAccount = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Accounts" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
 }
 
 module.exports = controller;

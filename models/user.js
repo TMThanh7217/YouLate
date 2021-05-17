@@ -12,10 +12,9 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       User.belongsToMany(models.Classroom, { through: models.Classroom_User, foreignKey: 'userId' });
-      User.belongsToMany(models.Attendance, { through: models.Attendance_User, foreignKey: 'userId' });
+      User.belongsToMany(models.Event, { through: models.Event_User, foreignKey: 'userId' });
       User.belongsTo(models.Account, { foreignKey: 'accountId' });
       User.hasMany(models.Grade, { foreignKey: 'userId' });
-      User.hasMany(models.Callendar, { foreignKey: 'userId' });
     }
   };
   User.init({

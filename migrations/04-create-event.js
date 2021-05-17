@@ -20,12 +20,6 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      callendarId: {
-        type: Sequelize.INTEGER
-      },
-      classroomId: {
-        type: Sequelize.INTEGER
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

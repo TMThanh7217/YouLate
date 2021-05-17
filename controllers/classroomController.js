@@ -42,7 +42,7 @@ controller.getAll = async (query) => {
     });
 };
 
-controller.findById = async (id) => {
+controller.getById = async (id) => {
     let option = {
         sql: 'SELECT "name", "startDate", "endDate", "course", "status", "hours" FROM "Classrooms" where "id" = :id',
         plain: true, // return all records if false, else return the 1st record
@@ -58,8 +58,55 @@ controller.findById = async (id) => {
     });
 };
 
+controller.getByLectureId = id => {
+    let sql = ''
+    sql += 'SELECT "Classrooms"."id", "Classrooms"."name", "Classrooms"."startDate", "Classrooms"."endDate", "Classrooms"."course", "Classrooms"."status", "Classrooms"."hours"'
+    sql += 'FROM "Classrooms" JOIN "Classroom_Users" ON ("Classrooms"."id" = "Classroom_Users"."classroomId")'
+    sql += `WHERE "Classroom_Users"."userId" = ${id}`
+    let option = {
+        sql: sql,
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(option.sql, {
+        plain: option.plain,
+        raw: option.raw,
+        type: option.type
+    });
+}
+
 controller.createClassroom = async (classrom) => {
     return await Classroom.create(classrom);
+}
+
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeClassroom = async (classroom) => {
+    let option = {
+        sql: `Update "Classrooms" 
+                SET name = ${classroom.name}, startDate = ${classroom.startDate}, endDate = ${classroom.endDate},
+                course = ${classroom.course}, status = ${classroom.status}, hours = ${classroom.hours}
+                WHERE "id" = ${classroom.id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeClassroom = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Classrooms" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
 }
 
 module.exports = controller;

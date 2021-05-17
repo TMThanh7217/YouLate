@@ -38,4 +38,32 @@ controller.createAttendance = async (attendance) => {
     return await Attendance.create(attendance);
 }
 
+// update all attribute except primary key and foreign key
+controller.updateAllAttributeAttendance = async (attendance) => {
+    let option = {
+        sql: `Update "Attendances" 
+                SET "date" = ${attendance.date}
+                WHERE "id" = :id`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        replacements: {id: attendance.id},
+        type: option.type
+    });
+}
+
+controller.updateOneAttributeAttendance = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Attendances" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;

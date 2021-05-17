@@ -38,4 +38,17 @@ controller.createCallendar = async (callendar) => {
     return await Callendar.create(callendar);
 }
 
+controller.updateOneAttributeCallendar = async (id, attribute, value) => {
+    let option = {
+        sql: `Update "Callendars" 
+                SET "${attribute}" = ${value}
+                WHERE "id" = ${id}`,
+        type: QueryTypes.UPDATE
+    }
+
+    return await models.sequelize.query(option.sql, {
+        type: option.type
+    });
+}
+
 module.exports = controller;
