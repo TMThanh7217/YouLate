@@ -202,12 +202,12 @@ $(function() {
   //
   $('.btn-attendance').on('click', event => {
     // clicked icon not a element so ...
-    let targetParent = $(event.target).parent()    
+    let targetButton = $(event.target).parent()    
     
     // add + remove class active
-    if(!targetParent.hasClass('btn-attendance-active')) targetParent.addClass('btn-attendance-active')
-    else targetParent.removeClass('btn-attendance-active')
-    targetParent.siblings().each((_, sib) => {
+    if(!targetButton.hasClass('btn-attendance-active')) targetButton.addClass('btn-attendance-active')
+    else targetButton.removeClass('btn-attendance-active')
+    targetButton.siblings().each((_, sib) => {
       if($(sib).hasClass('btn-attendance-active')) $(sib).removeClass('btn-attendance-active')
     })
   })

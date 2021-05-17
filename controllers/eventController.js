@@ -65,4 +65,18 @@ controller.updateOneAttributeEvent = async (id, attribute, value) => {
     });
 }
 
+controller.getByClassroomId = classId => {
+    let sql = ''
+    sql += 'SELECT "Events"."id", "Events"."title", "Events"."date", "Events"."startTime", "Events"."endTime"'
+    sql += ' FROM "Events" JOIN "Classroom_Events" ON ("Events"."id" = "Classroom_Events"."eventId")'
+    sql += ` WHERE "Classroom_Events"."classroomId" = ${classId}`
+}
+
+controller.getByUserId = userId => {
+    let sql = ''
+    sql += 'SELECT "Events"."id", "Events"."title", "Events"."date", "Events"."startTime", "Events"."endTime"'
+    sql += ' FROM "Events" JOIN "User_Events" ON ("Events"."id" = "Classroom_Events"."eventId")'
+    sql += ` WHERE "Classroom_Events"."classroomId" = ${classId}`
+}
+
 module.exports = controller;
