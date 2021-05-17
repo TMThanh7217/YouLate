@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Event.belongsToMany(models.Classroom, { through: models.Classroom_Event, foreignKey: 'eventId' });
+      Event.hasMany(models.Classroom, { foreignKey: 'classroomId' });
       Event.belongsToMany(models.User, { through: models.Event_User, foreignKey: 'eventId' });
     }
   };
@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     startTime: DataTypes.STRING,
     endTime: DataTypes.STRING,
     title: DataTypes.STRING,
+    classroomId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Event',
