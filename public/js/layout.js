@@ -119,6 +119,11 @@ $(function() {
     })
   })
 
+  // button change password page
+  $('#btnFormChangePassword').on('click', () => {
+    
+  })
+
   $('.btn-logout').on('click', () => {
     document.location.href = "/authorization/logout";
   });
@@ -129,7 +134,7 @@ $(function() {
   $('#calendar').fullCalendar({
     // put your options and callbacks here
     header: {
-      left: "today prev,next",
+      left: "today prev, next",
       center: "title",
       right: "timelineDay,timelineThreeDays,agendaWeek,month"
     }
