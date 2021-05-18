@@ -514,7 +514,59 @@ $(function() {
   });
 
   $('#btn-confirm-add-account').on('click', event => {
-    
+    let newUser = {
+      name: $('#input-add-account-user-name').val(),
+      email: $('#input-add-account-user-email').val(),
+      SDT: $('#input-add-account-user-SDT').val(),
+      DoB: $('#input-add-account-user-DoB').val()
+    };
+
+    let newAccount = {
+      username: $('#input-add-account-username').val(),
+      password: $('#input-add-account-password').val(),
+      type: $('#input-add-account-type').val()
+    };
+
+    data = {
+      newUser,
+      newAccount
+    }
+
+    let missingData = false;
+
+    let userData = Object.values(newUser);
+    //data.userData = userData;
+    for (let tmp of userData)
+      if (!tmp)
+        missingData = true;
+
+    let accountData = Object.values(newAccount);
+    //data.accountData = accountData;
+    for (let tmp of accountData)
+      if (!tmp)   
+        missingData = true;
+
+    if (missingData == true)
+      return alert('Please input all data before submit');
+
+    /*if (newUser.name == "" || newUser.email == "" || newUser.SDT == "" || newUser.DoB == "" || 
+        newAccount.username == "" || newAccount.password == "" || newAccount.type == "")
+      return alert('Please input all data before submit');*/
+
+    let url = "/manage/account/addAccount"
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: data,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/account";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/account";
+        }
+      }
+    })
   });
 
   $('#btn-confirm-edit-account').on('click', event => {
@@ -523,7 +575,6 @@ $(function() {
       type: $('#selectAccountEditType').val(),
       isEdited: true
     };
-
     //console.log(accountData);
     
     let url = "/manage/account/editAccount";

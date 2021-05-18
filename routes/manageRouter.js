@@ -156,8 +156,20 @@ router.get('/account', (req, res) => {
         .catch(err => res.send(err))
 });
 
-router.post('/account/addAccount', (req, res) => {
-
+router.post('/account/addAccount', async (req, res) => {
+    let data = req.body;
+    let newUser = data.newUser;
+    let newAccount = data.newAccount;
+    //console.log(data);
+    console.log(newUser);
+    console.log(newAccount);
+    let account = await accountController.createAccount(newAccount);
+    newUser.accountId = account.id;
+    await userController.createUser(newUser);
+    return res.json({
+        code: 200,
+        message: 'Account and user were added!'
+    });
 });
 
 router.post('/account/editAccount', async (req, res) => {
