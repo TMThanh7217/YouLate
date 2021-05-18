@@ -236,9 +236,8 @@ $(function() {
     $('#inputEditCourseCode').attr("placeholder", data.courseCode)
     $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
     $('#inputEditCourseLine').attr("placeholder", data.courseLine)
-    $('#inputCourseStatus').attr("placeholder", data.courseStatus)
+    $('#inputEditCourseStatus').attr("placeholder", data.courseStatus)
     $('#textAreaEditCourseDescription').attr("placeholder", data.courseDesc)
-  
   })
 
   $('.btn-edit-user').on('click', event =>{
@@ -319,6 +318,7 @@ $(function() {
     })
   })
 
+  //----------------------------------------------------------------------------------------------------------------
   // Course management stuff
   $('#btnSubmitAddCourse').on('click', () => {
     let newCourse = {
@@ -326,7 +326,7 @@ $(function() {
       code: $('#inputCourseCode').val(),
       description: $('#textAreaCourseDescription').val(),
       topic: $('#inputCourseTopic').val(),
-      //status: $('#selectCourseStatus').val(),
+      status: $('#inputCourseStatus').val(),
       courseLine: $('#inputCourseLine').val()
     };
     
@@ -375,7 +375,7 @@ $(function() {
       code: $('#inputEditCourseCode').val(),
       description: $('#textAreaEditCourseDescription').val(),
       topic: $('#inputEditCourseTopic').val(),
-      status: $('#inputCourseStatus').val(),
+      status: $('#inputEditCourseStatus').val(),
       courseLine: $('#inputEditCourseLine').val(),
       isEdited: true
     };
@@ -440,7 +440,6 @@ $(function() {
     })
   });
 
- 
   //----------------------------------------------------------------------------------------------------------------
   // Account management stuff
   $('.btn-edit-account').on('click', event => {
