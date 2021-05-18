@@ -12,6 +12,7 @@ let deleteUser = {};
 let editCourse = {};
 let editUser = {};
 
+// Course management stuff
 router.get('/courses', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))
@@ -118,6 +119,53 @@ router.post('/courses/deleteCourse', async (req, res) => {
     }
 });
 
+//------------------------------------------------------------------------------------------------------------
+// Account management stuff
+router.get('/account', (req, res) => {
+    if (req.query.limit == null || isNaN(req.query.limit))
+        req.query.limit = 5;
+
+    if (req.query.page == null || isNaN(req.query.page))
+        req.query.page = 1;
+
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res);
+
+    accountController.getAll(req.query)
+        .then(async data =>  {
+            //console.log(data);
+            //console.log(data.length);
+            /*for (let i = 0; i < data.length; i++) {
+                let type = await accountController.findAttributeById(data[i].accountId, "type");
+                data[i].type = type.type; // cai findattribute tra ve object, chiu dung hoi toi : ))
+            }*/
+            //console.log(data);
+            res.render('adminManageAccount', {
+                pageTitle: 'Manage - Account',
+                account: data,
+                active: {
+                    manageAccount:true
+                },
+                manageRight: true
+            })
+        })
+        .catch(err => res.send(err))
+});
+
+router.post('/account/addAccount', (req, res) => {
+
+});
+
+router.post('/account/editAccount', (req, res) => {
+
+});
+
+router.post('/account/deleteAccount', (req, res) => {
+
+});
+
+//------------------------------------------------------------------------------------------------------------
+// User management stuff
 router.get('/users', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))
@@ -205,6 +253,8 @@ router.post('/users/deleteUser', async (req, res) => {
     }
 });
 
+//------------------------------------------------------------------------------------------------------------
+// Classroom management stuff
 router.get('/classrooms', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))
@@ -231,6 +281,8 @@ router.get('/classrooms', (req, res) => {
         .catch(err => res.send(err))
 })
 
+//------------------------------------------------------------------------------------------------------------
+// Event management stuff
 router.get('/events', async (request, response) => {
     if (request.query.limit == null || isNaN(request.query.limit))
         request.query.limit = 5;

@@ -319,6 +319,7 @@ $(function() {
     })
   })
 
+  // Course management stuff
   $('#btnSubmitAddCourse').on('click', () => {
     let newCourse = {
       name: $('#inputCourseName').val(),
@@ -397,6 +398,72 @@ $(function() {
     })
   });
 
+  $('.btn-remove-course').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    data.isDelete = false;
+    console.log(data)
+
+    let url = '/manage/courses/deleteCourse';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+
+  $('#btn-delete-course').on('click', () => {
+    let url = '/manage/courses/deleteCourse';
+    let data = { isDelete: true };
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/courses";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/courses";
+        }
+      }
+    })
+  });
+
+ 
+  //----------------------------------------------------------------------------------------------------------------
+  // Account management stuff
+  $('.btn-edit-account').on('click', event => {
+
+  });
+
+  $('.btn-delete-account').on('click', event => {
+
+  });
+
+  $('#btn-confirm-add-account').on('click', event => {
+    
+  });
+
+  $('#btn-confirm-edit-account').on('click', event => {
+    
+  });
+
+  $('#btn-confirm-delete-account').on('click', event => {
+    
+  });
+  //----------------------------------------------------------------------------------------------------------------
+  // User management stuff
   $('.btn-edit-user').on('click', event => {
     let target = $(event.target)
     let data = {}
@@ -447,48 +514,6 @@ $(function() {
     })
   });
 
-  $('.btn-remove-course').on('click', event => {
-    let target = $(event.target)
-    let data = {}
-    let idRow = target.parentsUntil('tbody', 'tr')
-    // let idRow = target.parentsUntil('tbody')
-    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
-      sib = $(sib)
-      data[sib.attr('name')] = sib.text()
-    })
-
-    data.id = Number(idRow.data('id'))
-    data.isDelete = false;
-    console.log(data)
-
-    let url = '/manage/courses/deleteCourse';
-    $.ajax({
-      url: url,
-      data: data,
-      type: 'POST',
-      success: result => {
-      }
-    })
-  });
-
-  $('#btn-delete-course').on('click', () => {
-    let url = '/manage/courses/deleteCourse';
-    let data = { isDelete: true };
-    $.ajax({
-      url: url,
-      data: data,
-      type: 'POST',
-      success: result => {
-        if(result.code == 400) { // Error
-          document.location.href="/manage/courses";
-        }
-        else if(result.code == 200) {// Success
-          document.location.href="/manage/courses";
-        }
-      }
-    })
-  });
-
   $('.btn-remove-user').on('click', event => {
     let target = $(event.target)
     let data = {}
@@ -530,6 +555,7 @@ $(function() {
       }
     })
   });
+  //----------------------------------------------------------------------------------------------------------------
 
   $('#btnAddEvent').on('click', () => {
     console.log($('tbody').find('tr[id="newEvent"]').length)
