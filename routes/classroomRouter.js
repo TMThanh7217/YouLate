@@ -4,6 +4,7 @@ var classroomController = require('../controllers/classroomController')
 let authorizationAPI = require('../API/authorization-api')
 let userController = require('../controllers/userController')
 let eventController = require('../controllers/eventController')
+let eventUserController = require('../controllers/Event_UserController')
 
 router.get('/', (req, res) => {
     if(!res.locals.sidenav.classrooms) return authorizationAPI.renderAuthorizationError(res)
@@ -17,7 +18,6 @@ router.get('/', (req, res) => {
     classroomController
         .getByLectureId(res.locals.user.id)
         .then(data => {
-            console.log(data)
             res.render('classrooms', {
                 pageTitle: 'Classrooms',
                 classrooms: data,
@@ -64,12 +64,20 @@ router.get('/:classroomId/attendances', async (req, res) => {
 })
 
 router.post('/:classroomId/attendances', async (req, res) => {
-    let classroomId = req.params.classroomId
-    let data = req.body.list
-    console.log(data)
-    res.json({
-        message:'Checking attendances Successfully!!!'
-    })
+    try {
+        let listPromise = eventUserController.updateAttendanceTypesByListAttendancesAndEventId(req.body.eventId, req.body.list)
+        for(let promiseQuery of listPromise)
+            await promiseQuery
+        res.json({
+            code: 200,
+            message: 'Successfully'
+        })
+    } catch (error) {
+        res.json({
+            code: 400,
+            message: error.toString()
+        })
+    }
 })
 
 module.exports = router;

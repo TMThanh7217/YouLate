@@ -160,6 +160,9 @@ $(function() {
           attendanceType: row.find('.btn-attendance-active').data('attendanceType') 
         })
       })
+      let eventIdEl = $('div#eventsSlider>div.item-event.slider-item.slider-item-active')
+      let eventId = eventIdEl.data('eventId')
+      attendancesData.eventId = eventId
       $.ajax({
         url: window.location.pathname,
         type: 'POST',
@@ -175,7 +178,7 @@ $(function() {
 
   $('#btnSaveAndBackAttendances').on('click', event =>{
     let target = $(event.target)
-    target.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span><span class="sr-only">Loading...</span>')
+    target.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>')
     let attendanceRows = $('.attendance-row')
     let rowsNeedCheck = attendanceRows.length
     let attendances = attendanceRows.find('.btn-attendance-active')
@@ -189,6 +192,9 @@ $(function() {
           attendanceType: row.find('.btn-attendance-active').data('attendanceType') 
         })
       })
+      let eventIdEl = $('div#eventsSlider>div.item-event.slider-item.slider-item-active')
+      let eventId = eventIdEl.data('eventId')
+      attendancesData.eventId = eventId
       $.ajax({
         url: window.location.pathname,
         type: 'POST',
