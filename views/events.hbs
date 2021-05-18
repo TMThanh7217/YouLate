@@ -61,6 +61,35 @@
             </div>
         </div>
     </form>
+
+    <div id='removeEventConfirmModal' class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body d-flex justify-content-center">
+                <div class="container">
+                    <p><span>ID: </span><span id='removeEventId' class='remove-event-attribute' data-name="id">...</span></p>
+                    <p><span>Title: </span><span id='removeEventTitle' class='remove-event-attribute' data-name="title">...</span></p>
+                    <p><span>Date: </span><span id='removeEventDate' class='remove-event-attribute' data-name="date">...</span></p>
+                    <p><span>Start Time: </span><span id='removeEventStart' class='remove-event-attribute' data-name="startTime">...</span></p>
+                    <p><span>End Time: </span><span id='removeEventEnd' class='remove-event-attribute' data-name="endTime">...</span></p>
+                    <p><span>Classroom ID: </span><span id='removeEventClassroomId' class='remove-event-attribute' data-name="classroomId">...</span></p>
+                    <p><span>Editable: </span><span id='removeEventEdit' class='remove-event-attribute' data-name="edit">...</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id='btnSubmitRemoveEventConfirmModal' type="button" class="btn btn-danger">Remove</button>
+                <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <table id='eventsTable' class="table">
         <thead>
             <tr>

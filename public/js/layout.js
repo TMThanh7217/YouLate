@@ -526,43 +526,50 @@ $(function() {
   $('#btnAddEvent').on('click', () => {
     console.log($('tbody').find('tr[id="newEvent"]').length)
     if($('tbody').find('tr[id="newEvent"]').length) return
-    let rowEl = $(`<tr id='newEvent' style='background-color: rgba(60, 179, 113,0.3)'>
-                    <th scope="row">
-                        <div class="inner-addon right-addon">
-                            <i class="fas fa-heading"></i>
-                            <input type="text" class="form-control"/>
-                        </div>
-                    </th>
-                    <td>
-                        <div class="inner-addon right-addon">
-                            <i class="fas fa-calendar-day"></i>
-                            <input type="text" class="form-control date-picker"/>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="inner-addon right-addon">
-                            <i class="far fa-clock"></i>
-                            <input type="text" class="form-control time-picker time-start"/>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="inner-addon right-addon">
-                            <i class="fas fa-clock"></i>
-                            <input type="text" class="form-control time-picker time-end"/>
-                        </div>
-                    </td>
-                    <td><select class="form-control select-classroom-id" data-selected-id="{{this.id}}"></select></td>
-                    <td>
-                        <select class="form-control" id="sel1">
-                            <option>yes</option>
-                            <option>no</option>
-                        </select>
-                    </td>
-                    <td class='d-flex'>
-                        <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
-                        <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
-                    </td>
-                </tr>`)
+    let rowHtml = `<tr id='newEvent' data-id={{this.id}} class='event-data' style='background-color: rgba(60, 179, 113,0.3)'>
+                      <th scope="row">
+                          <div class="inner-addon right-addon">
+                              <i class="fas fa-heading"></i>
+                              <input type="text" class="form-control"/>
+                          </div>
+                      </th>
+                      <td>
+                          <div class="inner-addon right-addon">
+                              <i class="fas fa-calendar-day"></i>
+                              <input type="text" class="form-control date-picker"/>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="inner-addon right-addon">
+                              <i class="far fa-clock"></i>
+                              <input type="text" class="form-control time-picker time-start"/>
+                          </div>
+                      </td>
+                      <td>
+                          <div class="inner-addon right-addon">
+                              <i class="fas fa-clock"></i>
+                              <input type="text" class="form-control time-picker time-end"/>
+                          </div>
+                      </td>
+                      <td><select class="form-control select-classroom-id" data-selected-id="{{this.id}}"></select></td>
+                      <td>
+                          <select class="form-control" id="sel1">
+                              <option>yes</option>
+                              <option>no</option>
+                          </select>
+                      </td>
+                      <td class='d-flex mange-event-btn-group'>
+                          <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
+                          <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
+                      </td>
+                  </tr>`
+    let rowEl = $(rowHtml)
+    rowEl.find('a.btn-manage-remove').on('click', () => {
+      $('#newEvent').remove()
+    })
+    rowEl.find('a.btn-manage-edit').on('click', () => {
+      $('#newEvent').remove()
+    })
     $('#eventsTable').prepend(rowEl)
     $('.time-picker.time-start').timepicker({
       timeFormat: 'HH:mm',
@@ -639,6 +646,7 @@ $(function() {
       if(!dataObj[dataEl.data('name')].trim())
         emptyDataTrigger = true
     })
+    if(emptyDataTrigger) return alert('Please input all data of event before confirm edit!')
     $.ajax({
       url: '/manage/events',
       method: 'POST',
@@ -652,6 +660,29 @@ $(function() {
           targetSiblings.find(`input[data-name="${key}"].form-control, select[data-name="${key}"]`).val(response.data[key])
       }
     })
+  })
+
+  $('.mange-event-btn-group>.btn-manage.btn-manage-remove').on('click', e => {
+    let target = $(e.target)
+    let eventId = target.parentsUntil('tbody','tr').data('id')
+    let dataObj = { id:eventId }
+    let targetSiblings = target.parentsUntil('tr.event-data','th,td').siblings()
+    targetSiblings.each((_,sib) => {
+      sib = $(sib)
+      let dataEl = sib.find('input.form-control, select')
+      dataObj[dataEl.data('name')] = dataEl.attr('placeholder') ? dataEl.attr('placeholder') : dataEl.find('option[selected').val() 
+    })
+    let removeEventModalEl = $('#removeEventConfirmModal')
+    let modalDataEls = removeEventModalEl.find('div.modal-body>div.container>p>span.remove-event-attribute')
+    modalDataEls.each((_,el) => {
+      $(el).text(dataObj[$(el).data('name')])
+    })
+    removeEventModalEl.modal('show')
+  })
+
+  $('#btnSubmitRemoveEventConfirmModal').on('click', e => {
+    let removeEventModalEl = $('#removeEventConfirmModal')
+    removeEventModalEl.modal('hide')
   })
 
   $('.time-picker.time-start').timepicker({
