@@ -682,6 +682,20 @@ $(function() {
 
   $('#btnSubmitRemoveEventConfirmModal').on('click', e => {
     let removeEventModalEl = $('#removeEventConfirmModal')
+    let modalIdEl = removeEventModalEl.find('div.modal-body>div.container>p>span.remove-event-attribute[data-name="id"]')
+    let ajaxData = { 
+      action: 'REMOVE',
+      data: Number(modalIdEl.text())
+    }
+    $.ajax({
+      url: '/manage/events',
+      type: "POST",
+      data: ajaxData,
+      success: response => {
+        if (response.code != 200) return alert(`Remove Fail: ${response.message}`)
+        $('tbody#eventTable').find(`tr[data-id="${modalIdEl.text()}"]`).remove()
+      }
+    })
     removeEventModalEl.modal('hide')
   })
 

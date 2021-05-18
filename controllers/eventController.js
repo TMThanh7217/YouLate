@@ -113,4 +113,14 @@ controller.getByUserId = userId => {
     return models.sequelize.query(sql, option);
 }
 
+controller.removeEventById = id => {
+    let sql =  `DELETE FROM "Events" WHERE "id" = :id`
+    let option = {
+        type: QueryTypes.DELETE,
+        replacements: {id: id},
+    }
+
+    return models.sequelize.query(sql, option);
+}
+
 module.exports = controller;

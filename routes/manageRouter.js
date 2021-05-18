@@ -272,6 +272,12 @@ router.post('/events', async (req, res) => {
                     message: 'Successfully',
                     data: await eventController.updateAllAttributeEvent(req.body.data)
                 })
+            case 'REMOVE':
+                return res.json({
+                    code:200,
+                    message: 'Successfully',
+                    data: await eventController.removeEventById(req.body.data)
+                })
             default:
                 return res.json({
                     code:400,
