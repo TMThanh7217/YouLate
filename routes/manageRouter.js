@@ -150,6 +150,45 @@ router.get('/users', (req, res) => {
         .catch(err => res.send(err))
 })
 
+router.post('/users/editUser', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        editUser = data;
+    //console.log(editUser);
+    else {
+        let id = editUser.id;
+        //console.log(id);
+        let editUserData = data;
+        console.log(editUserData);
+        //console.log("Edited")
+        if (editUserData.name != '')
+            await userController.updateOneAttributeUser(id, "name", editUserData.name);
+        
+        if (editUserData.email != '')
+            await userController.updateOneAttributeUser(id, "email", editUserData.email);
+            
+        if (editUserData.SDT != '')
+            await userController.updateOneAttributeUser(id, "SDT", editUserData.SDT);
+            
+        if (editUserData.DoB != '')
+            await userController.updateOneAttributeUser(id, "DoB", editUserData.DoB);
+
+        return res.json({
+                code: 200,
+                message: 'User info edited!'
+            });
+    }
+    // deleteCourse.isDelete = data.isDelete;
+    // coursesController.updateOneAttributeCourse();
+    // console.log(deleteCourse);
+    // await coursesController.deleteCourseById(deleteCourse.id);
+    // return res.json({
+    //     code: 200,
+    //     message: 'Course edited!'
+    // });
+});
+
 router.post('/users/deleteUser', async (req, res) => {
     let data = req.body;
     //console.log(data);

@@ -81,6 +81,7 @@
             <li class="page-item"><a class="page-link" href="?limit=5&page=1">1</a></li>
             <li class="page-item"><a class="page-link" href="?limit=5&page=2">2</a></li>
             <li class="page-item"><a class="page-link" href="?limit=5&page=3">3</a></li>
+            <li class="page-item"><a class="page-link" href="?limit=5&page=4">4</a></li>
             <li class="page-item">
                 <a class="page-link" href="#">Next</a>
             </li>
@@ -177,7 +178,7 @@
     </div>
 </div>
 
-{{!-- modal edit user --}}
+{{!-- Modal edit user --}}
 <div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -229,15 +230,15 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" for="dob">Date Of Birth</span>
                                 </div>
-                                <input type="text" class="form-control" id="inputEditUserDoB" placeholder="">
+                                <input type="text" class="date-picker form-control" id="inputEditUserDoB" placeholder="">
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
+                <button id="btn-confirm-edit-user" type="button" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>
