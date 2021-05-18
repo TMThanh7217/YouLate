@@ -455,7 +455,7 @@ $(function() {
 
     data.id = Number(idRow.data('id'))
     data.isEdited = false;
-    console.log(data)
+    //console.log(data)
 
     let url = '/manage/account/editAccount';
     $.ajax({
@@ -478,9 +478,32 @@ $(function() {
     })
 
     data.id = Number(idRow.data('id'))
-    console.log(data)
+    //console.log(data)
 
     let url = '/manage/account/deleteAccount';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+  
+  $('.btn-account-reset-pwd').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    console.log(data)
+
+    let url = '/manage/account/resetAccountPwd';
     $.ajax({
       url: url,
       data: data,
@@ -522,6 +545,25 @@ $(function() {
   $('#btn-confirm-delete-account').on('click', event => {
     let url = '/manage/account/deleteAccount';
     let data = { isDelete: true };
+    console.log(data);
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/account";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/account";
+        }
+      }
+    })
+  });
+
+  $('#btn-confirm-reset-pwd').on('click', event => {
+    let url = '/manage/account/resetAccountPwd';
+    let data = { isReset: true };
     console.log(data);
     $.ajax({
       url: url,

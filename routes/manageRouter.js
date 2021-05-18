@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcrypt');
 let coursesController = require('../controllers/courseController');
 let authorizationAPI = require('../API/authorization-api');
 let userController = require('../controllers/userController');
@@ -13,6 +14,7 @@ let editCourse = {};
 let editUser = {};
 let editAccount = {};
 let deleteAccount = {};
+let resetAccount = {};
 
 // Course management stuff
 router.get('/courses', (req, res) => {
@@ -198,6 +200,29 @@ router.post('/account/deleteAccount', async (req, res) => {
     }
 });
 
+router.post('/account/resetAccountPwd', async (req, res) => {
+    let data = req.body;
+    if (data.id != null)
+        resetAccount = data;
+    //console.log(resetAccount);
+    else {
+        let id = resetAccount.id;
+        //console.log(id);
+        let userData = await userController.findByAccountId(id);
+        console.log(userData);
+        let DoB = userData.DoB;
+        DoB = DoB.split("/").join(""); // pretty neat trick
+        console.log(DoB);
+        let saltRounds = 10;
+        let salt = bcrypt.genSaltSync(saltRounds);
+        let hash = bcrypt.hashSync(DoB, salt);
+        await accountController.updateOneAttributeAccount(id, "password", hash);
+        return res.json({
+                code: 200,
+                message: 'Account info edited!'
+            });
+    }
+});
 //------------------------------------------------------------------------------------------------------------
 // User management stuff
 router.get('/users', (req, res) => {
