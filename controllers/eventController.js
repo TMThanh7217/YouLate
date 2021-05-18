@@ -4,8 +4,15 @@ var Event = models.Event;
 const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
+    let limit;
+    let offset;
+    if (query.limit > 0){
+        limit = query.limit;
+        offset = query.limit * (query.page - 1);
+    }
+
     let option = {
-        sql: 'SELECT * FROM "Events"',
+        sql: `SELECT * FROM "Events" LIMIT ${limit} OFFSET ${offset}`,
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
@@ -41,7 +48,8 @@ controller.createEvent = async (event) => {
 controller.updateAllAttributeEvent = (event) => {
     let option = {
         sql: `Update "Events" 
-                SET "date" = :date, "startTime" = :startTime, "endTime" = :endTime, "title" = :title
+                SET "date" = :date, "startTime" = :startTime, "endTime" = :endTime, "title" = :title, 
+                "classroomId" = :classroomId, "edit" = :edit
                 WHERE "id" = :id`,
         type: QueryTypes.UPDATE
     }
@@ -52,7 +60,9 @@ controller.updateAllAttributeEvent = (event) => {
             date: event.date,
             startTime: event.startTime,
             endTime: event.endTime,
-            title: event.title
+            title: event.title,
+            classroomId: event.classroomId,
+            edit: event.edit
         },
         type: option.type
     });

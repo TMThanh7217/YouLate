@@ -267,6 +267,7 @@ router.post('/events', async (req, res) => {
     try {
         switch(req.body.action) {
             case 'UPDATE':
+                console.log(req.body.data);
                 return res.json({
                     code:200,
                     message: 'Successfully',
