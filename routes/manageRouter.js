@@ -11,6 +11,8 @@ let deleteCourse = {};
 let deleteUser = {};
 let editCourse = {};
 let editUser = {};
+let editAccount = {};
+let deleteAccount = {};
 
 // Course management stuff
 router.get('/courses', (req, res) => {
@@ -156,8 +158,28 @@ router.post('/account/addAccount', (req, res) => {
 
 });
 
-router.post('/account/editAccount', (req, res) => {
-
+router.post('/account/editAccount', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        editAccount = data;
+    //console.log(editAccount);
+    else {
+        let id = editAccount.id;
+        //console.log(id);
+        let editAccountData = data;
+        //console.log(editAccountData);
+        if (editAccountData.username != '')
+            await accountController.updateOneAttributeAccount(id, "username", editAccountData.username);
+        
+        if (editAccountData.type != '')
+            await accountController.updateOneAttributeAccount(id, "type", editAccountData.type);
+            
+        return res.json({
+                code: 200,
+                message: 'Account info edited!'
+            });
+    }
 });
 
 router.post('/account/deleteAccount', (req, res) => {
