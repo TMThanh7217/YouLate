@@ -41,12 +41,14 @@ router.get('/:classroomId/attendances', async (req, res) => {
     for (let student of students) {
         let attendance = await eventController.getAttendanceTypeByEventIdAndUserId(lastEvent.id, student.id)
         student.attendance = {}
-        student.attendance[attendance.type] = true
+        if(attendance)
+            student.attendance[attendance.type] = true
     }
     for (let lecture of lectures) {
         let attendance = await eventController.getAttendanceTypeByEventIdAndUserId(lastEvent.id, lecture.id)
         lecture.attendance = {}
-        lecture.attendance[attendance.type] = true
+        if(attendance)
+            lecture.attendance[attendance.type] = true
     }
     res.render('attendance', {
         pageTitle: "Attendances",

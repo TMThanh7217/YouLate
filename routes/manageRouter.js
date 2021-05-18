@@ -266,8 +266,13 @@ router.post('/events', async (req, res) => {
     })
     try {
         switch(req.body.action) {
+            case "ADD":
+                return res.json({
+                    code:200,
+                    message: 'Successfully',
+                    data: await eventController.createEvent(req.body.data)
+                })
             case 'UPDATE':
-                console.log(req.body.data);
                 return res.json({
                     code:200,
                     message: 'Successfully',
