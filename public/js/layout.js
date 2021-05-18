@@ -561,6 +561,7 @@ $(function() {
       success: result => {
         if(result.code == 400) { // Error
           document.location.href="/manage/account";
+          alert('Username has already been taken!');
         }
         else if(result.code == 200) {// Success
           document.location.href="/manage/account";

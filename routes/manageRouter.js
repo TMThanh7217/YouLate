@@ -161,8 +161,16 @@ router.post('/account/addAccount', async (req, res) => {
     let newUser = data.newUser;
     let newAccount = data.newAccount;
     //console.log(data);
-    console.log(newUser);
-    console.log(newAccount);
+    //console.log(newUser);
+    //console.log(newAccount);
+
+    let accountCheck = await accountController.findByUsername(newAccount.username);
+    if (accountCheck)
+        return res.json({
+            code: 400,
+            message: 'Username has already been taken!'
+        });
+
     let account = await accountController.createAccount(newAccount);
     newUser.accountId = account.id;
     await userController.createUser(newUser);
