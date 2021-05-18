@@ -118,6 +118,37 @@ router.post('/courses/deleteCourse', async (req, res) => {
     }
 });
 
+router.get('/account', (req, res) => {
+    if (req.query.limit == null || isNaN(req.query.limit))
+        req.query.limit = 5;
+
+    if (req.query.page == null || isNaN(req.query.page))
+        req.query.page = 1;
+
+    // if (res.locals.user.type != authorizationAPI.ADMIN) 
+    //     authorizationAPI.renderAuthorizationError(res);
+
+    accountController.getAll(req.query)
+        .then(async data =>  {
+            //console.log(data);
+            //console.log(data.length);
+            /*for (let i = 0; i < data.length; i++) {
+                let type = await accountController.findAttributeById(data[i].accountId, "type");
+                data[i].type = type.type; // cai findattribute tra ve object, chiu dung hoi toi : ))
+            }*/
+            //console.log(data);
+            res.render('adminManageAccount', {
+                pageTitle: 'Manage - Accounnt',
+                account: data,
+                active: {
+                    manageAccount:true
+                },
+                manageRight: true
+            })
+        })
+        .catch(err => res.send(err))
+});
+
 router.get('/users', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))

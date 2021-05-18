@@ -1,5 +1,5 @@
 <div class="container-fluid shadow-default">
-    <h2 class="page-title">Admin Manage User</h2>
+    <h2 class="page-title">Admin Manage Account</h2>
 
     <form action="#" class="form-inline form-search w-100">
         <div class="form-group w-100">
@@ -29,12 +29,12 @@
                     <button type="button" name="btnCancel" id="btnCancel" class="btn btn-secondary"><i
                             class="fas fa-times"></i> Cancel</button>
                 </div>
-                <!--<div>
+                <div>
                     <br>
-                    <button type="button" data-toggle="modal" data-target="#exampleModal"
+                    <button id="btn-add-account" type="button" data-toggle="modal" data-target="#exampleModal"
                         class="btn btn-secondary">
-                        <i class="fas fa-plus"></i> Add User</button>
-                </div>-->
+                        <i class="fas fa-plus"></i> Add Account</button>
+                </div>
             </section>
         </div>
     </form>
@@ -43,29 +43,26 @@
         <thead>
             <tr>
                 <th scope="col">ID</th>
-                <th scope="col">Name</th>
-                <th scope="col">email</th>
-                <th scope="col">SDT</th>
-                <th scope="col">DoB</th>
+                <th scope="col">Username</th>
+                <th scope="col">Password</th>
                 <th scope="col">Type</th>
-                <th scope="col">Handle</th>
+                <th scope="col">Manage</th>
             </tr>
         </thead>
         <tbody>
-            {{#each users}}
+            {{#each account}}
             <tr data-id={{this.id}}>
                 <td><a class="text-decoration-none">{{this.id}}</a></td>
-                <td name='editName'>{{this.name}}</td>
-                <td name='editEmail'>{{this.email}}</td>
-                <td name='editSDT'>{{this.SDT}}</td>
-                <td name='editDoB'>{{this.DoB}}</td>
-                <td name='editType'>{{this.type}}</td>
+                <td name='accountName'>{{this.username}}</td>
+                <td name='accountResetPwd'><button type="button" name="btnAccountResetPwd" id="btnAccountResetPwd" 
+                    class="btn btn-secondary"><i class="fas fa-redo-alt"></i> Reset password</button></td>
+                <td name='accountType'>{{this.type}}</td>
     
                 <td>
-                    <button id="btn-edit-user" type="button" class="btn btn-outline-secondary btn-edit-user" 
-                        data-toggle="modal" data-target="#editUserModal"><i class="far fa-edit"></i></button>
+                    <button id="btn-edit-account" type="button" class="btn btn-outline-secondary btn-edit-account" 
+                        data-toggle="modal" data-target="#editAccountModal"><i class="far fa-edit"></i></button>
 
-                    <button type="button" class="btn btn-outline-danger btn-remove-user" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-danger btn-remove-account" data-toggle="modal"
                         data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
                 </td>
             </tr>
@@ -171,7 +168,7 @@
                 <p>Are you sure you want to delete this user?</p>
             </div>
             <div class="modal-footer">
-                <button id="btn-delete-user" type="button" class="btn btn-danger">Delete</button>
+                <button id="btn-confirm-delete-account" type="button" class="btn btn-danger">Delete</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
@@ -179,12 +176,12 @@
 </div>
 
 {{!-- Modal edit user --}}
-<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div class="modal fade" id="editAccountModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Edit User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Edit Account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -195,9 +192,9 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" for="name">Name</span>
+                                    <span class="input-group-text" for="name">Username</span>
                                 </div>
-                                <input type="text" class="form-control" id="inputEditUserName" placeholder="">
+                                <input type="text" class="form-control" id="inputAccountEditUserName" placeholder="">
                             </div>
                         </div>
                     </div>
@@ -206,31 +203,15 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" for="email">Email</span>
+                                    <label for="selectAccountEditUserEmail" class="text-center input-group-text">Type</label>
+                                    <select class="custom-select" id="selectAccountEditUserEmail">
+                                        <option value="none" selected disabled hidden>Select Type</option>
+                                        <option value="0">0</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                    </select>
                                 </div>
-                                <input type="text" class="form-control" id="inputEditUserEmail" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" for = "phoneNum">PhoneNumber</span>
-                                </div>
-                                <input type="email" class="form-control" id="inputEditUserPhoneNumber" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" for="dob">Date Of Birth</span>
-                                </div>
-                                <input type="text" class="date-picker form-control" id="inputEditUserDoB" placeholder="">
                             </div>
                         </div>
                     </div>

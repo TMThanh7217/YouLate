@@ -6,8 +6,15 @@ var Account = models.Account;
 const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
+    let limit;
+    let offset;
+    if (query.limit > 0){
+        limit = query.limit;
+        offset = query.limit * (query.page - 1);
+    }
+
     let option = {
-        sql: 'SELECT * FROM "Accounts"',
+        sql: `SELECT * FROM "Accounts" LIMIT ${limit} OFFSET ${offset}`,
         plain: false, // return all records if false, else return the 1st record
         raw: true,
         type: QueryTypes.SELECT
