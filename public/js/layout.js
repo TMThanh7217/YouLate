@@ -126,8 +126,6 @@ $(function() {
   $('.btn-logout').on('click', () => {
     document.location.href = "/authorization/logout";
   });
-  // Create Datepicker input
-  $(".date-picker").datepicker();
   
   // Create fullCalendar UI
   $('#calendar').fullCalendar({
@@ -313,43 +311,6 @@ $(function() {
     })
   })
 
-  $('.time-picker:not(.time-start,.time-end)').timepicker({
-    timeFormat: 'hh:mm p',
-    interval: 60,
-    minTime: '8',
-    maxTime: '22',
-    defaultTime: '8',
-    startTime: '8',
-    dynamic: true,
-    dropdown: true,
-    scrollbar: true
-  })
-
-  $('.time-picker.time-start').timepicker({
-    timeFormat: 'HH:mm',
-    interval: 15,
-    step: '15',
-    minTime: '18',
-    maxTime: '20',
-    defaultTime: '8',
-    startTime: '8',
-    dynamic: true,
-    dropdown: true,
-    scrollbar: true
-  });
-  $('.time-picker.time-end').timepicker({
-    timeFormat: 'HH:mm',
-    interval: 15,
-    step: '15',
-    minTime: '19',
-    maxTime: '22',
-    defaultTime: '8',
-    startTime: '8',
-    dynamic: false,
-    dropdown: true,
-    scrollbar: true
-  });
-
   $('#btnSubmitAddCourse').on('click', () => {
     let newCourse = {
       name: $('#inputCourseName').val(),
@@ -416,6 +377,47 @@ $(function() {
                         <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
                     </td>
                 </tr>`)
-    $('#eventsTable').prepend(rowEl)  
+    $('#eventsTable').prepend(rowEl)
+    $('.time-picker.time-start').timepicker({
+      timeFormat: 'HH:mm',
+      interval: 15,
+      step: '15',
+      minTime: '18',
+      maxTime: '20',
+      defaultTime: '8',
+      startTime: '8',
+      dynamic: true,
+      dropdown: true,
+      scrollbar: true
+    });
+    $('.time-picker.time-end').timepicker({
+      timeFormat: 'HH:mm',
+      interval: 15,
+      step: '15',
+      minTime: '19',
+      maxTime: '22',
+      defaultTime: '8',
+      startTime: '8',
+      dynamic: false,
+      dropdown: true,
+      scrollbar: true
+    });
+    // Create Datepicker input
+    $(".date-picker").datepicker();
   })
+
+  $('.time-picker:not(.time-start,.time-end)').timepicker({
+    timeFormat: 'hh:mm p',
+    interval: 60,
+    minTime: '8',
+    maxTime: '22',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: true,
+    dropdown: true,
+    scrollbar: true
+  })
+
+  // Create Datepicker input
+  $(".date-picker").datepicker();
 });
