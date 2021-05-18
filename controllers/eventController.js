@@ -1,6 +1,8 @@
 var controller = {};
 var models = require('../models');
 var Event = models.Event;
+var Event_User = models.Event_User
+let userController = require('./userController')
 const { QueryTypes } = require('sequelize');
 
 controller.getAll = async (query) => {
@@ -41,8 +43,18 @@ controller.findById = async (id) => {
     });
 };
 
-controller.createEvent = async (event) => {
-    return await Event.create(event);
+controller.createEvent = async event => {
+    let eventInstance = await Event.create(event)
+    
+    let userIdList =  await userController.getUserIdListByClassroomId(event.classroomId)  
+    for(let userId of userIdList.map(userInstance => userInstance.id))
+        await Event_User.create({
+            eventId: eventInstance.id,
+            userId: userId,
+            type: 'Unchecked'
+        })
+
+    return eventInstance
 }
 
 controller.updateAllAttributeEvent = (event) => {

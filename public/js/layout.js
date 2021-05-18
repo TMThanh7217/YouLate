@@ -254,6 +254,9 @@ $(function() {
     let target = $(e.target)
     let eventDataEl = target.parentsUntil('#eventsSlider')
     let eventId = eventDataEl.data('eventId')
+    $('.slider-item-active').removeClass('slider-item-active')
+    if(!eventDataEl.hasClass('slider-item-active')) eventDataEl.addClass('slider-item-active')
+    $('.table-attendance').find('td>a.btn-attendance.btn-attendance-active').removeClass('btn-attendance-active')
     $.ajax({
       url: '/data/attendances',
       method: 'POST',
@@ -266,7 +269,6 @@ $(function() {
           let attendanceRow = $(`tr[data-user-id=${user.id}].attendance-row`)
           let btnAttendance = attendanceRow.find('td>a.btn-attendance').each((_,btn) => {
             btn = $(btn)
-            if(btn.hasClass('btn-attendance-active')) btn.removeClass('btn-attendance-active')
             if(btn.data('attendanceType') == user.attendanceType) btn.addClass('btn-attendance-active')
           })
         }
@@ -526,49 +528,73 @@ $(function() {
   $('#btnAddEvent').on('click', () => {
     console.log($('tbody').find('tr[id="newEvent"]').length)
     if($('tbody').find('tr[id="newEvent"]').length) return
-    let rowHtml = `<tr id='newEvent' data-id={{this.id}} class='event-data' style='background-color: rgba(60, 179, 113,0.3)'>
+    let rowHtml = `<tr id='newEvent' class='event-data' style='background-color: rgba(60, 179, 113,0.3)'>
                       <th scope="row">
-                          <div class="inner-addon right-addon">
-                              <i class="fas fa-heading"></i>
-                              <input type="text" class="form-control"/>
-                          </div>
-                      </th>
-                      <td>
-                          <div class="inner-addon right-addon">
-                              <i class="fas fa-calendar-day"></i>
-                              <input type="text" class="form-control date-picker"/>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="inner-addon right-addon">
-                              <i class="far fa-clock"></i>
-                              <input type="text" class="form-control time-picker time-start"/>
-                          </div>
-                      </td>
-                      <td>
-                          <div class="inner-addon right-addon">
-                              <i class="fas fa-clock"></i>
-                              <input type="text" class="form-control time-picker time-end"/>
-                          </div>
-                      </td>
-                      <td><select class="form-control select-classroom-id" data-selected-id="{{this.id}}"></select></td>
-                      <td>
-                          <select class="form-control" id="sel1">
-                              <option>yes</option>
-                              <option>no</option>
-                          </select>
-                      </td>
-                      <td class='d-flex mange-event-btn-group'>
-                          <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
-                          <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
-                      </td>
+                      <div class="inner-addon right-addon">
+                          <i class="fas fa-heading"></i>
+                          <input data-name='title' type="text" class="form-control" placeholder="{{this.title}}"/>
+                      </div>
+                  </th>
+                  <td>
+                      <div class="inner-addon right-addon">
+                          <i class="fas fa-calendar-day"></i>
+                          <input data-name='date' type="text" class="form-control date-picker" placeholder="{{this.date}}"/>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="inner-addon right-addon">
+                          <i class="far fa-clock"></i>
+                          <input data-name='startTime' type="text" class="form-control time-picker time-start" placeholder="{{this.startTime}}"/>
+                      </div>
+                  </td>
+                  <td>
+                      <div class="inner-addon right-addon">
+                          <i class="fas fa-clock"></i>
+                          <input data-name='endTime' type="text" class="form-control time-picker time-end" placeholder="{{this.startTime}}"/>
+                      </div>
+                  </td>
+                  <td><select data-name='classroomId' class="form-control select-classroom-id" data-selected-id="{{this.id}}"></select></td>
+                  <td>
+                      <select data-name='edit' class="form-control" id="sel1">
+                          <option value='true' {{#if this.edit}}selected{{/if}}>yes</option>
+                          <option value='false' {{#unless this.edit}}selected{{/unless}}>no</option>
+                      </select>
+                  </td>
+                  <td class='d-flex mange-event-btn-group'>
+                      <a href="#" class='btn-manage btn-manage-edit'><i class="fas fa-2x fa-check-square"></i></a>
+                      <a href="#" class='btn-manage btn-manage-remove'><i class="fas fa-2x fa-times-circle"></i></a>
+                  </td>
                   </tr>`
     let rowEl = $(rowHtml)
     rowEl.find('a.btn-manage-remove').on('click', () => {
       $('#newEvent').remove()
     })
-    rowEl.find('a.btn-manage-edit').on('click', () => {
-      $('#newEvent').remove()
+    rowEl.find('a.btn-manage-edit').on('click', e => {
+      let target = $(e.target)
+      let dataObj = {}
+      let targetSiblings = target.parentsUntil('tr.event-data','th,td').siblings()
+      let emptyDataTrigger = false
+      targetSiblings.each((_,sib) => {
+        sib = $(sib)
+        let dataEl = sib.find('input.form-control, select')
+        dataObj[dataEl.data('name')] = dataEl.val()
+        if(!dataObj[dataEl.data('name')].trim())
+          emptyDataTrigger = true
+      })
+      if(emptyDataTrigger) return alert('Please input all data of event before confirm add!')
+      $.ajax({
+        url: '/manage/events',
+        method: 'POST',
+        data: {
+          data: dataObj,
+          action: 'ADD'
+        },
+        success: response => {
+          if (response.code != 200) return alert('ADD Fail: ' + response.message)
+          $('#newEvent').attr('data-id', response.data.id)
+          $('#newEvent').attr('style', '')
+        }
+      })
     })
     $('#eventsTable').prepend(rowEl)
     $('.time-picker.time-start').timepicker({
