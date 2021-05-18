@@ -494,7 +494,6 @@ $(function() {
         let listId = response.data
         let target = $('#newEvent').find('.select-classroom-id')
         let selectedOption = target.data('selectedId')
-        console.log(listId)
         for(let id of listId) {
           let optionEl = $(`<option value=${id}>${id}</option>`)
           if (id.toString() == selectedOption.toString())
@@ -514,7 +513,6 @@ $(function() {
         $('.select-classroom-id').each((_, target) => {
           target = $(target)
           let selectedOption = target.data('selectedId')
-          console.log(listId)
           for(let id of listId) {
             let optionEl = $(`<option value=${id}>${id}</option>`)
             if (id.toString() == selectedOption.toString())
@@ -527,11 +525,29 @@ $(function() {
 
   $('.mange-event-btn-group>.btn-manage.btn-manage-edit').on('click', e => {
     let target = $(e.target)
+    let eventId = target.parentsUntil('tbody','tr').data('id')
+    let dataObj = { id:eventId }
     let targetSiblings = target.parentsUntil('tr.event-data','th,td').siblings()
+    let emptyDataTrigger = false
     targetSiblings.each((_,sib) => {
       sib = $(sib)
-      let inputData = sib.find('input.form-control, select')
-      console.log(inputData.val())
+      let dataEl = sib.find('input.form-control, select')
+      dataObj[dataEl.data('name')] = dataEl.val()
+      if(!dataObj[dataEl.data('name')].trim())
+        emptyDataTrigger = true
+    })
+    $.ajax({
+      url: '/manage/events',
+      method: 'POST',
+      data: {
+        data: dataObj,
+        action: 'UPDATE'
+      },
+      success: response => {
+        if (response.code != 200) return alert('Update Fail: ' + response.message)
+        for(let key in response.data)
+          targetSiblings.find(`input[data-name="${key}"].form-control, select[data-name="${key}"]`).val(response.data[key])
+      }
     })
   })
 

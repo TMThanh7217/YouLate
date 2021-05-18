@@ -50,7 +50,6 @@ router.post('/classrooms', async (req, res) => {
 
     try {
         let responseData = undefined
-        console.log(req.body)
         if(req.body && req.body.id)
             responseData =  await classroomController.getById(req.body.id)
         else responseData = await classroomController.getAllClassroomIds()

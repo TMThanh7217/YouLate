@@ -173,4 +173,32 @@ router.get('/events', async (request, response) => {
     }
 })
 
+router.post('/events', async (req, res) => {
+    if(!req.body) res.json({
+        code: 400,
+        message: "Unknown"
+    })
+    try {
+        switch(req.body.action) {
+            case 'UPDATE':
+                return res.json({
+                    code:200,
+                    message: 'Successfully',
+                    data: await eventController.updateAllAttributeEvent(req.body.data)
+                })
+            default:
+                return res.json({
+                    code:400,
+                    message: 'Unknown ACTION'
+                })
+        
+        }
+    } catch (error) {
+        return res.json({
+            code:400,
+            message: error.toString()
+        })
+    }
+})
+
 module.exports = router;

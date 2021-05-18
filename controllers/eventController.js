@@ -38,7 +38,7 @@ controller.createEvent = async (event) => {
     return await Event.create(event);
 }
 
-controller.updateAllAttributeEvent = async (event) => {
+controller.updateAllAttributeEvent = (event) => {
     let option = {
         sql: `Update "Events" 
                 SET "date" = :date, "startTime" = :startTime, "endTime" = :endTime, "title" = :title
@@ -46,7 +46,7 @@ controller.updateAllAttributeEvent = async (event) => {
         type: QueryTypes.UPDATE
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
         replacements: {
             id: event.id,
             date: event.date,
