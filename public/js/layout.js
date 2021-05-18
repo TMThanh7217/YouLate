@@ -490,6 +490,30 @@ $(function() {
     $(".date-picker").datepicker();
   })
 
+  $('.time-picker.time-start').timepicker({
+    timeFormat: 'HH:mm',
+    interval: 15,
+    step: '15',
+    minTime: '18',
+    maxTime: '20',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: true,
+    dropdown: true,
+    scrollbar: true
+  });
+  $('.time-picker.time-end').timepicker({
+    timeFormat: 'HH:mm',
+    interval: 15,
+    step: '15',
+    minTime: '19',
+    maxTime: '22',
+    defaultTime: '8',
+    startTime: '8',
+    dynamic: false,
+    dropdown: true,
+    scrollbar: true
+  });
   $('.time-picker:not(.time-start,.time-end)').timepicker({
     timeFormat: 'hh:mm p',
     interval: 60,
@@ -501,7 +525,6 @@ $(function() {
     dropdown: true,
     scrollbar: true
   })
-
   // Create Datepicker input
   $(".date-picker").datepicker();
 });
