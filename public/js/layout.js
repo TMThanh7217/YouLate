@@ -253,7 +253,6 @@ $(function() {
     let target = $(e.target)
     let eventDataEl = target.parentsUntil('#eventsSlider')
     let eventId = eventDataEl.data('eventId')
-    console.log('cc')
     $.ajax({
       url: '/data/attendances',
       method: 'POST',
@@ -449,7 +448,7 @@ $(function() {
                             <input type="text" class="form-control time-picker time-end"/>
                         </div>
                     </td>
-                    <td><input type="number" name="" id="" class="form-control"></td>
+                    <td><select class="form-control select-classroom-id" data-selected-id="{{this.id}}"></select></td>
                     <td>
                         <select class="form-control" id="sel1">
                             <option>yes</option>
@@ -488,6 +487,52 @@ $(function() {
     });
     // Create Datepicker input
     $(".date-picker").datepicker();
+    $.ajax({
+      url: '/data/classrooms',
+      type: 'POST',
+      success: response => {
+        let listId = response.data
+        let target = $('#newEvent').find('.select-classroom-id')
+        let selectedOption = target.data('selectedId')
+        console.log(listId)
+        for(let id of listId) {
+          let optionEl = $(`<option value=${id}>${id}</option>`)
+          if (id.toString() == selectedOption.toString())
+            optionEl.attr('selected', 'true')
+          target.append(optionEl)
+        }
+      }
+    })    
+  })
+
+  if($('.select-classroom-id').length)
+    $.ajax({
+      url: '/data/classrooms',
+      type: 'POST',
+      success: response => {
+        let listId = response.data
+        $('.select-classroom-id').each((_, target) => {
+          target = $(target)
+          let selectedOption = target.data('selectedId')
+          console.log(listId)
+          for(let id of listId) {
+            let optionEl = $(`<option value=${id}>${id}</option>`)
+            if (id.toString() == selectedOption.toString())
+              optionEl.attr('selected', 'true')
+            target.append(optionEl)
+          }
+        })
+      }
+    })
+
+  $('.mange-event-btn-group>.btn-manage.btn-manage-edit').on('click', e => {
+    let target = $(e.target)
+    let targetSiblings = target.parentsUntil('tr.event-data','th,td').siblings()
+    targetSiblings.each((_,sib) => {
+      sib = $(sib)
+      let inputData = sib.find('input.form-control, select')
+      console.log(inputData.val())
+    })
   })
 
   $('.time-picker.time-start').timepicker({
@@ -514,6 +559,7 @@ $(function() {
     dropdown: true,
     scrollbar: true
   });
+
   $('.time-picker:not(.time-start,.time-end)').timepicker({
     timeFormat: 'hh:mm p',
     interval: 60,
@@ -525,6 +571,7 @@ $(function() {
     dropdown: true,
     scrollbar: true
   })
+
   // Create Datepicker input
   $(".date-picker").datepicker();
 });

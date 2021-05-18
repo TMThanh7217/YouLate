@@ -118,4 +118,14 @@ controller.updateOneAttributeClassroom = async (id, attribute, value) => {
     });
 }
 
+controller.getAllClassroomIds = () => {
+    let sql = 'SELECT "Classrooms"."id" FROM "Classrooms"'
+    let option = {
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+    return models.sequelize.query(sql, option)
+}
+
 module.exports = controller;
