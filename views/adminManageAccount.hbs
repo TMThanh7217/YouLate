@@ -54,8 +54,9 @@
             <tr data-id={{this.id}}>
                 <td><a class="text-decoration-none">{{this.id}}</a></td>
                 <td name='accountName'>{{this.username}}</td>
-                <td name='accountResetPwd'><button type="button" name="btnAccountResetPwd" id="btnAccountResetPwd" 
-                    class="btn btn-secondary"><i class="fas fa-redo-alt"></i> Reset password</button></td>
+                <td name='accountResetPwd'><button type="button" name="btn-account-reset-pwd" id="btn-account-reset-pwd" 
+                    class="btn btn-secondary btn-account-reset-pwd" data-toggle="modal" data-target="#resetPwdModal">
+                    <i class="fas fa-redo-alt"></i> Reset password</button></td>
                 <td name='accountType'>{{this.type}}</td>
     
                 <td>
@@ -119,7 +120,7 @@
     </div>
 </div>
 
-<!-- Modal Delete -->
+<!-- Modal delete account -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog"
     aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -186,6 +187,29 @@
             </div>
             <div class="modal-footer">
                 <button id="btn-confirm-edit-account" type="button" class="btn btn-primary">Submit</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal reset password -->
+<div class="modal fade" id="resetPwdModal" tabindex="-1" role="dialog"
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Warning</h5>
+                <button type="button" class="close" data-dismiss="modal"
+                    aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>The password will be reset to user's Date of birth <br> (Format: dd/mm/yyyy) <br> Are you sure?</p>
+            </div>
+            <div class="modal-footer">
+                <button id="btn-confirm-reset-pwd" type="button" class="btn btn-danger">Reset anyway</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>

@@ -3,7 +3,7 @@ var router = express.Router();
 var userController = require('../controllers/userController');
 
 router.get('/', async (req, res) => {
-    if(!sidenav.students) return authorizationAPI.renderAuthorizationError(res)
+    if(!res.locals.sidenav.students) return authorizationAPI.renderAuthorizationError(res)
     let temp = await userController.findAllStudentBelongToLecturerId(req.session.user.id);
     /*console.log(req.session.user.id);
     console.log(req.session.user);*/
