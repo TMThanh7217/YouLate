@@ -5,7 +5,7 @@ let sidenavController = require('../controllers/sidenavController')
 
 router.get('/', (req, res) => {
     // do something here
-    if(!sidenav.calendar) return authorizationAPI.renderAuthorizationError(res)
+    if(!res.locals.sidenav.calendar) return authorizationAPI.renderAuthorizationError(res)
     
     res.render('calendar', {
         pageTitle: 'Calendar',
