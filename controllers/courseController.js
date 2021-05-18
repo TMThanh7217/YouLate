@@ -65,7 +65,7 @@ controller.updateAllAttributeCourse = async (course) => {
     });
 }
 
-controller.updateOneAttributeCourse = async (id, attribute, value) => {
+controller.updateOneAttributeCourse = (id, attribute, value) => {
     let option = {
         sql: `Update "Courses" 
                 SET "${attribute}" = :value
@@ -73,7 +73,7 @@ controller.updateOneAttributeCourse = async (id, attribute, value) => {
         type: QueryTypes.UPDATE
     }
 
-    return await models.sequelize.query(option.sql, {
+    return models.sequelize.query(option.sql, {
         replacements: { value: value},
         type: option.type
     });
