@@ -62,7 +62,7 @@
                     <button id="btn-edit-account" type="button" class="btn btn-outline-secondary btn-edit-account" 
                         data-toggle="modal" data-target="#editAccountModal"><i class="far fa-edit"></i></button>
 
-                    <button type="button" class="btn btn-outline-danger btn-remove-account" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-danger btn-delete-account" data-toggle="modal"
                         data-target="#deleteModal"><i class="far fa-trash-alt"></i></button>
                 </td>
             </tr>
@@ -86,13 +86,13 @@
     </nav>
 </div>
 
-<!-- Modal -->
+<!-- Modal add account-->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Add User</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Add Account</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -103,50 +103,17 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <span class="input-group-text" for="name">Name</span>
+                                    <span class="input-group-text" for="name">Username</span>
                                 </div>
                                 <input type="text" class="form-control" id="name">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" for="email">Email</span>
-                                </div>
-                                <input type="text" class="form-control" id="email">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" for = "phoneNum">PhoneNumber</span>
-                                </div>
-                                <input type="email" class="form-control" id="phoneNum">
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col">
-                            <div class="input-group mb-3">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text" for="dob">Date Of Birth</span>
-                                </div>
-                                <input type="text" class="form-control" id="dob">
                             </div>
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
+                <button type="button" id="btn-confirm-add-account" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Submit</button>
             </div>
         </div>
     </div>
@@ -203,8 +170,8 @@
                         <div class="col">
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
-                                    <label for="selectAccountEditUserEmail" class="text-center input-group-text">Type</label>
-                                    <select class="custom-select" id="selectAccountEditUserEmail">
+                                    <label for="selectAccountEditType" class="text-center input-group-text">Type</label>
+                                    <select class="custom-select" id="selectAccountEditType">
                                         <option value="none" selected disabled hidden>Select Type</option>
                                         <option value="0">0</option>
                                         <option value="1">1</option>
@@ -218,7 +185,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button id="btn-confirm-edit-user" type="button" class="btn btn-primary">Submit</button>
+                <button id="btn-confirm-edit-account" type="button" class="btn btn-primary">Submit</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
