@@ -444,11 +444,50 @@ $(function() {
   //----------------------------------------------------------------------------------------------------------------
   // Account management stuff
   $('.btn-edit-account').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
 
+    data.id = Number(idRow.data('id'))
+    data.isEdited = false;
+    console.log(data)
+
+    let url = '/manage/account/editAccount';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
   });
 
   $('.btn-delete-account').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
 
+    data.id = Number(idRow.data('id'))
+    console.log(data)
+
+    let url = '/manage/account/deleteAccount';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
   });
 
   $('#btn-confirm-add-account').on('click', event => {
@@ -456,7 +495,28 @@ $(function() {
   });
 
   $('#btn-confirm-edit-account').on('click', event => {
+    let accountData = {
+      username: $('#inputAccountEditUserName').val(),
+      type: $('#selectAccountEditType').val(),
+      isEdited: true
+    };
+
+    //console.log(accountData);
     
+    let url = "/manage/account/editAccount";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: accountData,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/account";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/account";
+        }
+      }
+    })
   });
 
   $('#btn-confirm-delete-account').on('click', event => {
@@ -496,7 +556,7 @@ $(function() {
       isEdited: true
     };
 
-    console.log(courseData);
+    //console.log(courseData);
     
     let url = "/manage/users/editUser";
     $.ajax({
