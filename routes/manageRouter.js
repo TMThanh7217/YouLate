@@ -5,6 +5,8 @@ let authorizationAPI = require('../API/authorization-api');
 let userController = require('../controllers/userController');
 let accountController = require('../controllers/accountController');
 let classController = require('../controllers/classroomController');
+let deleteCourse = {};
+let deleteUser = {};
 let eventController = require('../controllers/eventController')
 
 router.get('/courses', (req, res) => {
@@ -53,6 +55,22 @@ router.post('/courses/editCourse', (req, res) => {
     });*/
 });
 
+router.post('/courses/deleteCourse', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        deleteCourse = data;
+    else {
+        deleteCourse.isDelete = data.isDelete;
+        console.log(deleteCourse);
+        await coursesController.deleteCourseById(deleteCourse.id);
+        return res.json({
+            code: 200,
+            message: 'Course deleted!'
+        });
+    }
+});
+
 router.get('/users', (req, res) => {
     
     if (req.query.limit == null || isNaN(req.query.limit))
@@ -84,6 +102,22 @@ router.get('/users', (req, res) => {
         })
         .catch(err => res.send(err))
 })
+
+router.post('/users/deleteUser', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        deleteUser = data;
+    else {
+        deleteUser.isDelete = data.isDelete;
+        console.log(deleteUser);
+        await userController.deleteUserById(deleteUser.id);
+        return res.json({
+            code: 200,
+            message: 'User deleted!'
+        });
+    }
+});
 
 router.get('/classrooms', (req, res) => {
     

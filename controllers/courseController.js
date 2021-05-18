@@ -79,4 +79,16 @@ controller.updateOneAttributeCourse = async (id, attribute, value) => {
     });
 }
 
+controller.deleteCourseById = id => {
+    let option = {
+        sql: `DELETE FROM "Courses" WHERE "id" = :id`,
+        type: QueryTypes.DELETE
+    }
+
+    return models.sequelize.query(option.sql, {
+        replacements: {id: id},
+        type: option.type
+    });
+}
+
 module.exports = controller;

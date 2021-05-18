@@ -337,6 +337,90 @@ $(function() {
     })
   })
 
+  $('.btn-remove-course').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    data.isDelete = false;
+    console.log(data)
+
+    let url = '/manage/courses/deleteCourse';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+
+  $('#btn-delete-course').on('click', () => {
+    let url = '/manage/courses/deleteCourse';
+    let data = { isDelete: true };
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/courses";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/courses";
+        }
+      }
+    })
+  });
+
+  $('.btn-remove-user').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    console.log(data)
+
+    let url = '/manage/users/deleteUser';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+
+  $('#btn-delete-user').on('click', () => {
+    let url = '/manage/users/deleteUser';
+    let data = { isDelete: true };
+    console.log(data);
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/users";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/users";
+        }
+      }
+    })
+  });
+
   $('#btnAddEvent').on('click', () => {
     console.log($('tbody').find('tr[id="newEvent"]').length)
     if($('tbody').find('tr[id="newEvent"]').length) return
