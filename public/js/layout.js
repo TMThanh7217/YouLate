@@ -230,10 +230,12 @@ $(function() {
     $('#inputEditCourseCode').attr("placeholder", data.courseCode)
     $('#inputEditCourseTopic').attr("placeholder", data.courseTopic)
     $('#inputEditCourseLine').attr("placeholder", data.courseLine)
+    $('#inputCourseStatus').attr("placeholder", data.courseStatus)
+    $('#textAreaEditCourseDescription').attr("placeholder", data.courseDesc)
   
   })
 
-  $('#btn-edit-user').on('click', event =>{
+  $('.btn-edit-user').on('click', event =>{
     let target = $(event.target)
     let data = {}
     // let idRow = target.parentsUntil('tbody')
@@ -246,7 +248,6 @@ $(function() {
     $('#inputEditUserEmail').attr('placeholder', data.editEmail)
     $('#inputEditUserPhoneNumber').attr('placeholder', data.editSDT)
     $('#inputEditUserDoB').attr('placeholder', data.editDoB)
-
   })
 
   $('.item-event').on('click', e => {
@@ -320,7 +321,7 @@ $(function() {
       courseLine: $('#inputCourseLine').val()
     };
     
-    let url = "/manage/courses/editCourse";
+    let url = "/manage/courses/addCourse";
     $.ajax({
       url: url,
       type: 'POST',
@@ -335,6 +336,108 @@ $(function() {
       }
     })
   })
+
+  $('.btn-edit-course').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    //console.log(data)
+
+    let url = '/manage/courses/editCourse';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+
+  $('#btn-confirm-edit-course').on('click', event => {
+    let courseData = {
+      name: $('#inputEditCourseName').val(),
+      code: $('#inputEditCourseCode').val(),
+      description: $('#textAreaEditCourseDescription').val(),
+      topic: $('#inputEditCourseTopic').val(),
+      status: $('#inputCourseStatus').val(),
+      courseLine: $('#inputEditCourseLine').val(),
+      isEdited: true
+    };
+
+    console.log(courseData);
+    
+    let url = "/manage/courses/editCourse";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: courseData,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/courses";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/courses";
+        }
+      }
+    })
+  });
+
+  $('.btn-edit-user').on('click', event => {
+    let target = $(event.target)
+    let data = {}
+    let idRow = target.parentsUntil('tbody', 'tr')
+    // let idRow = target.parentsUntil('tbody')
+    target.parentsUntil('tr', 'th, td').siblings().each((_, sib)=>{
+      sib = $(sib)
+      data[sib.attr('name')] = sib.text()
+    })
+
+    data.id = Number(idRow.data('id'))
+    console.log(data)
+
+    let url = '/manage/users/editUser';
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+      }
+    })
+  });
+
+  $('#btn-confirm-edit-user').on('click', event => {
+    let courseData = {
+      name: $('#inputEditUserName').val(),
+      email: $('#inputEditUserEmail').val(),
+      SDT: $('#inputEditUserPhoneNumber').val(),
+      DoB: $('#inputEditUserDoB').val(),
+      isEdited: true
+    };
+
+    console.log(courseData);
+    
+    let url = "/manage/users/editUser";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: courseData,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/users";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/users";
+        }
+      }
+    })
+  });
 
   $('.btn-remove-course').on('click', event => {
     let target = $(event.target)

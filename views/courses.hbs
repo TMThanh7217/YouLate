@@ -63,7 +63,7 @@
     </form>
     {{#if manageRight}}
 
-    {{!-- modal add course --}}
+        {{!-- modal add course --}}
         <div class="modal fade" id='modalAddCourse' tabindex="0" role="dialog">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -176,25 +176,20 @@
                                     <input type="number" class='form-control' name="inputCourseLine" id="inputEditCourseLine" placeholder="Course Line">
                                 </div>
                                 <div class="form-group col-4">
-                                    <label for="selectCourseStatus">Course Status</label>
-                                    <select class="custom-select" name='selectCourseStatus' id="selectCourseStatus">
-                                        <option selected>Status</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
+                                    <label for="inputCourseStatus">Course Status</label>
+                                    <input type="text" class='form-control' name="inputCourseStatus" id="inputCourseStatus" placeholder="Course Status">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-12">
-                                    <label for="textAreaCourseDescription">Course Description</label>
-                                    <textarea id="textAreaCourseDescription" name='textAreaCourseDescription' class="md-textarea form-control" rows='3'></textarea>
+                                    <label for="textAreaEditCourseDescription">Course Description</label>
+                                    <textarea id="textAreaEditCourseDescription" name='textAreaEditCourseDescription' class="md-textarea form-control" rows='3'></textarea>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="modal-footer">
-                        <button id='btnSummitAddCourse' type="button" class="btn btn-primary">Submit</button>
+                        <button id='btn-confirm-edit-course' type="button" class="btn btn-primary">Submit</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     </div>
                 </div>
@@ -224,7 +219,7 @@
                 <td name="courseStatus">{{this.status}}</td>
                 {{#if ../manageRight}}
                 <td class='btn-handle-group'>
-                    <a id='btnEditCourse' href="#" class='btn btn-handle btn-edit-course btn-outline-secondary'><i class="fas fa-edit" data-toggle="modal" data-target="#modalEditCourse"></i></a>
+                    <a id='btnEditCourse' href="#" class='btn btn-handle btn-edit-course btn-outline-secondary' data-toggle="modal" data-target="#modalEditCourse"><i class="fas fa-edit"></i></a>
                     
                     <a id="btnRemoveCourse" href="#" class='btn btn-handle btn-remove-course btn-outline-danger' data-toggle="modal"
                         data-target="#deleteModal"><i class="fas fa-times"></i></a>                        

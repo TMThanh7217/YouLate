@@ -5,9 +5,12 @@ let authorizationAPI = require('../API/authorization-api');
 let userController = require('../controllers/userController');
 let accountController = require('../controllers/accountController');
 let classController = require('../controllers/classroomController');
+let eventController = require('../controllers/eventController')
+
 let deleteCourse = {};
 let deleteUser = {};
-let eventController = require('../controllers/eventController')
+let editCourse = {};
+let editUser = {};
 
 router.get('/courses', (req, res) => {
     
@@ -35,7 +38,7 @@ router.get('/courses', (req, res) => {
         .catch(err => res.send(err))
 })
 
-router.post('/courses/editCourse', (req, res) => {
+router.post('/courses/addCourse', (req, res) => {
     let newCourse = req.body;
     console.log(newCourse);
     coursesController
@@ -53,6 +56,50 @@ router.post('/courses/editCourse', (req, res) => {
         code: 200,
         message: 'Course added!'
     });*/
+});
+
+router.post('/courses/editCourse', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        editCourse = data;
+    else {
+        let id = editCourse.id;
+        //console.log(id);
+        let editCourseData = data;
+        console.log(editCourseData);
+        //console.log("Edited")
+        if (editCourseData.name != '')
+            await coursesController.updateOneAttributeCourse(id, "name", editCourseData.name);
+        
+        if (editCourseData.code != '')
+            await coursesController.updateOneAttributeCourse(id, "code", editCourseData.code);
+            
+        if (editCourseData.description != '')
+            await coursesController.updateOneAttributeCourse(id, "description", editCourseData.description);
+            
+        if (editCourseData.topic != '')
+            await coursesController.updateOneAttributeCourse(id, "topic", editCourseData.topic);
+            
+        if (editCourseData.courseLine != '')
+            await coursesController.updateOneAttributeCourse(id, "courseLine", editCourseData.courseLine);
+            
+        if (editCourseData.status != '')
+            await coursesController.updateOneAttributeCourse(id, "status", editCourseData.status);
+
+        return res.json({
+                code: 200,
+                message: 'Course edited!'
+            });
+    }
+    // deleteCourse.isDelete = data.isDelete;
+    // coursesController.updateOneAttributeCourse();
+    // console.log(deleteCourse);
+    // await coursesController.deleteCourseById(deleteCourse.id);
+    // return res.json({
+    //     code: 200,
+    //     message: 'Course edited!'
+    // });
 });
 
 router.post('/courses/deleteCourse', async (req, res) => {
@@ -102,6 +149,45 @@ router.get('/users', (req, res) => {
         })
         .catch(err => res.send(err))
 })
+
+router.post('/users/editUser', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        editUser = data;
+    //console.log(editUser);
+    else {
+        let id = editUser.id;
+        //console.log(id);
+        let editUserData = data;
+        console.log(editUserData);
+        //console.log("Edited")
+        if (editUserData.name != '')
+            await userController.updateOneAttributeUser(id, "name", editUserData.name);
+        
+        if (editUserData.email != '')
+            await userController.updateOneAttributeUser(id, "email", editUserData.email);
+            
+        if (editUserData.SDT != '')
+            await userController.updateOneAttributeUser(id, "SDT", editUserData.SDT);
+            
+        if (editUserData.DoB != '')
+            await userController.updateOneAttributeUser(id, "DoB", editUserData.DoB);
+
+        return res.json({
+                code: 200,
+                message: 'User info edited!'
+            });
+    }
+    // deleteCourse.isDelete = data.isDelete;
+    // coursesController.updateOneAttributeCourse();
+    // console.log(deleteCourse);
+    // await coursesController.deleteCourseById(deleteCourse.id);
+    // return res.json({
+    //     code: 200,
+    //     message: 'Course edited!'
+    // });
+});
 
 router.post('/users/deleteUser', async (req, res) => {
     let data = req.body;
