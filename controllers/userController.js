@@ -69,7 +69,7 @@ controller.getUsersByUserTypesAndClassroomId = (userTypes, classroomId) => {
     let typesSQLConditions = '(' + userTypes.toString() + ')'
     console.log(typesSQLConditions)
     let sql = ''
-    sql += 'SELECT "Users"."id", "Users"."name", "Users"."email", "Users"."SDT" '
+    sql += 'SELECT "Users"."id", "Users"."name", "Users"."email", "Users"."SDT"'
     sql += 'FROM "Users" JOIN "Classroom_Users" ON ("Users"."id" = "Classroom_Users"."userId") JOIN "Accounts" ON("Accounts"."id" = "Users"."accountId") '
     sql += `WHERE "Classroom_Users"."classroomId" = ${classroomId} `
     sql +=  `AND "Accounts"."type" IN ${typesSQLConditions}`
@@ -94,6 +94,20 @@ controller.getLecturesByClassroomId = classroomId => {
 controller.getStudentsByClassroomId = classroomId => {
     let userTypes = [authorizationAPI.STUDENT]
     return controller.getUsersByUserTypesAndClassroomId(userTypes, classroomId)
+}
+
+controller.getUserIdListByClassroomId = classroomId => {
+    let sql = ''
+    sql += 'SELECT "Users"."id"'
+    sql += 'FROM "Users" JOIN "Classroom_Users" ON ("Users"."id" = "Classroom_Users"."userId") JOIN "Accounts" ON("Accounts"."id" = "Users"."accountId") '
+    sql += `WHERE "Classroom_Users"."classroomId" = ${classroomId} `
+    let option = {
+        plain: false, // return all records if false, else return the 1st record
+        raw: true,
+        type: QueryTypes.SELECT
+    }
+
+    return models.sequelize.query(sql, option);
 }
 
 controller.getUserWithAttendanceByEventId = eventId => {

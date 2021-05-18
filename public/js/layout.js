@@ -254,6 +254,9 @@ $(function() {
     let target = $(e.target)
     let eventDataEl = target.parentsUntil('#eventsSlider')
     let eventId = eventDataEl.data('eventId')
+    $('.slider-item-active').removeClass('slider-item-active')
+    if(!eventDataEl.hasClass('slider-item-active')) eventDataEl.addClass('slider-item-active')
+    $('.table-attendance').find('td>a.btn-attendance.btn-attendance-active').removeClass('btn-attendance-active')
     $.ajax({
       url: '/data/attendances',
       method: 'POST',
@@ -266,7 +269,6 @@ $(function() {
           let attendanceRow = $(`tr[data-user-id=${user.id}].attendance-row`)
           let btnAttendance = attendanceRow.find('td>a.btn-attendance').each((_,btn) => {
             btn = $(btn)
-            if(btn.hasClass('btn-attendance-active')) btn.removeClass('btn-attendance-active')
             if(btn.data('attendanceType') == user.attendanceType) btn.addClass('btn-attendance-active')
           })
         }

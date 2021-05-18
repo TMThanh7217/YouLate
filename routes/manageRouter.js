@@ -266,7 +266,7 @@ router.post('/events', async (req, res) => {
     })
     try {
         switch(req.body.action) {
-            case "ADD":
+            case "ADD": 
                 return res.json({
                     code:200,
                     message: 'Successfully',
