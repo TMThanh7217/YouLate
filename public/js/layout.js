@@ -520,7 +520,22 @@ $(function() {
   });
 
   $('#btn-confirm-delete-account').on('click', event => {
-    
+    let url = '/manage/account/deleteAccount';
+    let data = { isDelete: true };
+    console.log(data);
+    $.ajax({
+      url: url,
+      data: data,
+      type: 'POST',
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/manage/account";
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/manage/account";
+        }
+      }
+    })
   });
   //----------------------------------------------------------------------------------------------------------------
   // User management stuff

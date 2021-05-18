@@ -43,7 +43,7 @@ router.get('/courses', (req, res) => {
 
 router.post('/courses/addCourse', (req, res) => {
     let newCourse = req.body;
-    console.log(newCourse);
+    //console.log(newCourse);
     coursesController
         .createCourse(newCourse)
         .then(data => {
@@ -182,8 +182,20 @@ router.post('/account/editAccount', async (req, res) => {
     }
 });
 
-router.post('/account/deleteAccount', (req, res) => {
-
+router.post('/account/deleteAccount', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    if (data.id != null)
+        deleteAccount = data;
+    else {
+        deleteAccount.isDelete = data.isDelete;
+        //console.log(deleteAccount);
+        await accountController.deleteAccountById(deleteAccount.id);
+        return res.json({
+            code: 200,
+            message: 'Course deleted!'
+        });
+    }
 });
 
 //------------------------------------------------------------------------------------------------------------

@@ -120,4 +120,13 @@ controller.updateOneAttributeAccount = async (id, attribute, value) => {
     });
 }
 
+controller.deleteAccountById = id => {
+    let sql = `DELETE FROM "Accounts" WHERE "id" = :id`;
+
+    return models.sequelize.query(sql, {
+        replacements: {id: id},
+        type: QueryTypes.DELETE
+    });
+};
+
 module.exports = controller;
