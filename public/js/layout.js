@@ -298,7 +298,7 @@ $(function() {
       email: $('#profileEmail').val(),
       phoneNum: $('#profilePhonenum').val(),
       DoB: $('#profileDoB').val()
-      //,type: $('#smthing').val()
+      //,type: $('#smthing').val() //nope bad idea
     };
     //console.log(profileData)
     

@@ -11,9 +11,29 @@ router.get('/', async (req, res) => {
     let user = await userController.findById(req.session.user.id);
     let account = await accountController.findById(user.accountId);
 
+    let type = account.type;
+    let userType = {};
+    switch (type) {
+        case 0:
+            userType.isAdmin = true;
+            break;
+        case 1:
+            userType.isLecturer = true;
+            break;
+        case 2:
+            userType.isTA = true;
+            break;
+        case 3:
+            userType.isStudent = true;
+            break;
+        default:
+            userType.isStudent = true;
+    }
+
     res.render('profile', {
         pageTitle: 'Profile',
         user: user,
+        userType: userType,
         account: account,
         active: {
             profile:true
