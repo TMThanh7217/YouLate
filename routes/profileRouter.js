@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var bcrypt = require('bcrypt');
 let userController = require('../controllers/userController');
 let authorizationAPI = require('../API/authorization-api');
 let accountController = require('../controllers/accountController');
@@ -72,6 +73,55 @@ router.post('/edit', async (req, res) => {
         return res.json({
             code: 400,
             message: 'Username has already been taken!'
+        });
+    }
+});
+
+router.get('/change-password', (req, res) => {
+    res.render('changePassword', {
+        pageTitle: 'Change Password',
+        active: {
+            profile:true
+        }
+    })
+});
+
+router.post('/change-password', async (req, res) => {
+    let data = req.body;
+    //console.log(data);
+    //console.log(req.session.user);
+
+    if (!data.currentPwd || !data.newPwd || !data.confirmPwd)
+        return res.json({  
+            code: 403,
+            message: 'Please fill in data before confirm change!'
+        })
+
+    let username = req.session.user.username;
+    let curAccount = await accountController.findByUsername(username);
+    //console.log(curAccount);
+    let isCurPwd = accountController.comparePassword(data.currentPwd, curAccount.password);
+    if (isCurPwd){
+        if (data.newPwd == data.confirmPwd) {
+            let saltRounds = 10;
+            let salt = bcrypt.genSaltSync(saltRounds);
+            let hash = bcrypt.hashSync(data.newPwd, salt);
+            await accountController.updateOneAttributeAccount(curAccount.id, "password", hash);
+            return res.json({
+                code: 200,
+                message: 'Your password has been updated!'
+            });
+        }
+        else 
+            return res.json({
+                code: 401,
+                message: 'New password and confirm password does not match!'
+            })
+    }
+    else {
+        return res.json({
+            code: 400,
+            message: 'Wrong current password!'
         });
     }
 });

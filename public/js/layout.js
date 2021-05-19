@@ -318,6 +318,39 @@ $(function() {
     })
   })
 
+  $('#btn-confirm-change-password').on('click', () => {
+    let data = {
+      currentPwd: $('#inputCurrentPassword').val(),
+      newPwd: $('#inputNewPassword').val(),
+      confirmPwd: $('#inputConfirmNewPassword').val(),
+    }
+
+    let url = "/profile/change-password";
+    $.ajax({
+      url: url,
+      type: 'POST',
+      data: data,
+      success: result => {
+        if(result.code == 400) { // Error
+          document.location.href="/profile/change-password";
+          return alert(result.message)
+        }
+        else if(result.code == 200) {// Success
+          document.location.href="/profile";
+          return alert(result.message);
+        }
+        else if(result.code == 401) {// Error
+          document.location.href="/profile/change-password";
+          return alert(result.message)
+        }
+        else if(result.code == 403) {// Error
+          document.location.href="/profile/change-password";
+          return alert(result.message)
+        } 
+      }
+    })
+  });
+
   //----------------------------------------------------------------------------------------------------------------
   // Course management stuff
   $('#btnSubmitAddCourse').on('click', () => {
